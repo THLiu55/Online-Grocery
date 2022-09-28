@@ -1,0 +1,150 @@
+/*头部导航栏背景*/
+#HeaderLine{
+    background-color: rgb(22, 68, 83);
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 0.5fr 1.25fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/*Logo区域*/
+#imageFrame{
+    padding: 15px;
+}
+#Logo{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+/*搜索区域*/
+#SearchArea{
+    grid-area: 1 / 2 / 2 / 3;
+    margin: 30px;
+}
+/*--框和按钮的grid*/
+#inputFrame{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#searching{
+    grid-area: 1 / 1 / 2 / 2;
+}
+#submitting{
+    grid-area: 1 / 2 / 2 / 3;
+    text-align: center;
+}
+/*--搜索框*/
+#search{
+    background-color: #FFFFFF;
+    border-radius: 4px 0 0 4px;
+    height: 35px;
+    width: 100%;
+    border-style: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: all 0.3s ease;
+}
+#search:focus{
+    border-style: none;
+    outline-color: bisque;
+}
+/*所有button*/
+.custom-btn{
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+/*--搜索按钮添加动画特效*/
+#searchBtn{
+    margin-left: 6px;
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+    padding: 0;
+    border-radius: 0 4px 4px 0;
+    border-style: none;
+}
+#searchBtn:before, #searchBtn:after{
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: rgba(251,75,2,1);
+    /*box-shadow:*/
+    /*        -7px -7px 20px 0px rgba(255,255,255,.9),*/
+    /*        -4px -4px 5px 0px rgba(255,255,255,.9),*/
+    /*        7px 7px 20px 0px rgba(0,0,0,.2),*/
+    /*        4px 4px 5px 0px rgba(0,0,0,.3);*/
+    transition: all 0.3s ease;
+}
+#searchBtn:before{
+    height: 0%;
+    width: 3px;
+}
+#searchBtn:after{
+    width: 0%;
+    height: 3px;
+}
+#searchBtn:hover{
+    color: rgba(251,75,2,1);
+    background: #FFFFFF;
+}
+#searchBtn:hover:before{
+    height: 100%;
+}
+#searchBtn:hover:after{
+    width: 100%;
+}
+#searchBtn span:before, #searchBtn span:after{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: rgba(251,75,2,1);
+    /*box-shadow:*/
+    /*        -7px -7px 20px 0px rgba(255,255,255,.9),*/
+    /*        -4px -4px 5px 0px rgba(255,255,255,.9),*/
+    /*        7px 7px 20px 0px rgba(0,0,0,.2),*/
+    /*        4px 4px 5px 0px rgba(0,0,0,.3);*/
+    transition: all 0.3s ease;
+}
+#searchBtn span:before{
+    width: 3px;
+    height: 0%;
+}
+#searchBtn span:after{
+    height: 3px;
+    width: 0%;
+}
+#searchBtn span:hover:before{
+    height: 100%;
+}
+#searchBtn span:hover:after{
+    width: 100%;
+}
+
+/*表单*/
+form{
+    width: 100%;
+}
+
+
+#PersonalInfo{
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+
+
+
