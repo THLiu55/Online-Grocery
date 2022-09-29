@@ -140,10 +140,75 @@ form{
     width: 100%;
 }
 
-
+/*个人信息链接*/
 #PersonalInfo{
+    margin: 15px;
     grid-area: 1 / 3 / 2 / 4;
 }
+.nav-item{
+    margin: 0 65px 0 65px;
+    display: inline;
+}
+
+/*a标签*/
+a{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+/*--a标签效果*/
+a:before, a:after{
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+}
+a:before{
+    height: 0%;
+    width: 3px;
+}
+a:after{
+    width: 0%;
+    height: 3px;
+}
+a:hover{
+    background: #50a4d5;
+}
+a:hover:before {
+    height: 100%;
+}
+a:hover:after{
+    width: 100%;
+}
+/**/
+a span:before, a span:after{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+}
+a span:before{
+    height: 0%;
+    width: 3px;
+}
+a span:after{
+    width: 0%;
+    height: 3px;
+}
+a span:hover:before {
+    height: 100%;
+}
+a span:hover:after{
+    width: 100%;
+}
+
+
+
 
 
 
