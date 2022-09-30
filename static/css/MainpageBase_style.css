@@ -57,9 +57,9 @@
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow:inset 2px 2px 2px 0 rgba(255,255,255,.5),
+    7px 7px 20px 0 rgba(0,0,0,.1),
+    4px 4px 5px 0 rgba(0,0,0,.1);
     outline: none;
 }
 /*--搜索按钮添加动画特效*/
@@ -78,19 +78,12 @@
     right: 0;
     bottom: 0;
     background: rgba(251,75,2,1);
-    /*box-shadow:*/
-    /*        -7px -7px 20px 0px rgba(255,255,255,.9),*/
-    /*        -4px -4px 5px 0px rgba(255,255,255,.9),*/
-    /*        7px 7px 20px 0px rgba(0,0,0,.2),*/
-    /*        4px 4px 5px 0px rgba(0,0,0,.3);*/
     transition: all 0.3s ease;
 }
 #searchBtn:before{
-    height: 0%;
     width: 3px;
 }
 #searchBtn:after{
-    width: 0%;
     height: 3px;
 }
 #searchBtn:hover{
@@ -109,20 +102,13 @@
     left: 0;
     top: 0;
     background: rgba(251,75,2,1);
-    /*box-shadow:*/
-    /*        -7px -7px 20px 0px rgba(255,255,255,.9),*/
-    /*        -4px -4px 5px 0px rgba(255,255,255,.9),*/
-    /*        7px 7px 20px 0px rgba(0,0,0,.2),*/
-    /*        4px 4px 5px 0px rgba(0,0,0,.3);*/
     transition: all 0.3s ease;
 }
 #searchBtn span:before{
     width: 3px;
-    height: 0%;
 }
 #searchBtn span:after{
     height: 3px;
-    width: 0%;
 }
 #searchBtn span:hover:before{
     height: 100%;
@@ -146,9 +132,6 @@ form{
     padding: 15px;
     margin: 0 1vw 0 0;
     display: inline-block;
-}
-#nav_bar{
-    margin-left: 2vm;
 }
 
 /*a标签*/
