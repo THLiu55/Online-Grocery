@@ -2,9 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
-<p>Login</p>
+    <div class="Component">
+        <div class="form_components">
+            <div class="SignIn_Up">
+                <form class="log_in">
+                    <img src="../static/images/Logo.svg">
+                    <h2 title="FormTitle">Log in</h2>
+                    <div class="inputArea">
+                        <input type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="inputArea">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Login" >
+                </form>
+                <form class="sign_up">
+                    <img src="../static/images/Logo.svg">
+                    <h2> title="FormTitle">Sign up</h2>
+                    <div class="inputArea">
+                        <input type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="inputArea">
+                        <input type="password" id="Password" name="password" placeholder="Password">
+                    </div>
+                    <div class="inputArea">
+                        <input type="password" id="RePassword" placeholder="Password confirm">
+                    </div>
+                    <input type="submit" value="SignUp" >
+                </form>
+            </div>
+        </div>
+        <div class="curtain_components">
+            <div class="curtain left_curtain">
+                <div class="content">
+                    <img src="../static/images/Log.svg">
+                    <h3>Fresh blood!</h3>
+                    <p>Welcome to GoGrocery! This is a grocery list website. Come and join us!</p>
+                    <button class="btn" id="To_signUp">
+                        Sign up
+                    </button>
+                </div>
+            </div>
+            <div class="curtain right_curtain">
+                <div class="content">
+                    <h3>GoGrocery 'family' members?</h3>
+                    <p>Log yourself in. Enjoy your shopping trip in GoGrocery</p>
+                    <button class="btn" id="To_logIn">
+                        Log in
+                    </button>
+                    <img src="../static/images/register.svg">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
