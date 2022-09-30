@@ -2,41 +2,36 @@
 #HeaderLine{
     background-color: rgb(22, 68, 83);
     width: 100%;
-    height: 100px;
+    height: 6.25em;
     display: grid;
-    grid-template-columns: 0.5fr 2.25fr 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto;
 }
 
 /*Logo区域*/
 #imageFrame{
-    padding: 15px;
+    padding: 1em;
 }
 #Logo{
-    grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1 / span 1 / span 1;
 }
 
 /*搜索区域*/
 #SearchArea{
-    grid-area: 1 / 2 / 2 / 3;
-    margin: 30px;
+    grid-area: 1 / 2 / span 1 / span 4;
+    margin: 1.875em;
 }
 /*--框和按钮的grid*/
 #inputFrame{
-    margin-left: 100px;
     display: grid;
-    grid-template-columns: 10fr 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto;
 }
 #searching{
-    grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1 / span 1 / span 11;
 }
 #submitting{
-    grid-area: 1 / 2 / 2 / 3;
+    grid-area: 1 / 12 / span 1 / span 1;
     text-align: center;
 }
 /*--搜索框*/
@@ -47,7 +42,7 @@
     width: 100%;
     border-style: none;
     padding-left: 3px;
-    padding-right: 3px;
+    padding-right: 6px;
     transition: all 0.3s ease;
 }
 #search:focus{
@@ -143,15 +138,17 @@ form{
 
 /*个人信息链接*/
 #PersonalInfo{
-    grid-area: 1 / 3 / 2 / 4;
+    grid-area: 1 / 6 / span 1 / span 1;
+    display: flex;
+    justify-content: center;
 }
 .nav-item{
     padding: 15px;
-    margin: 0 25px 0 25px;
+    margin: 0 1vw 0 0;
     display: inline-block;
 }
 #nav_bar{
-    margin-left: 100px;
+    margin-left: 2vm;
 }
 
 /*a标签*/
