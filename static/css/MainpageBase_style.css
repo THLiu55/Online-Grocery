@@ -8,10 +8,29 @@
     grid-template-rows: auto;
 }
 
-/*Logo区域*/
-#imageFrame{
-    padding: 1em;
+@media only screen and (max-width: 800px) {
+  #imageFrame {
+      padding: 1em;
+      display: none;
+  }
+  #imageFrame2 {
+      padding: 1em;
+      display: block;
+  }
 }
+
+@media only screen and (min-width: 800px) {
+    #imageFrame {
+        padding: 1em;
+        display: block;
+    }
+
+    #imageFrame2 {
+        padding: 1em;
+        display: none;
+    }
+}
+
 #Logo{
     grid-area: 1 / 1 / span 1 / span 1;
 }

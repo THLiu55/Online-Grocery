@@ -12,27 +12,29 @@ user = None
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
     global user
-    username = request.args.get("name")
-    password = request.args.get("password")
-    user_tmp = User.query.filter_by(username=username).first()
+    result = request.form
+    username = result['username']
+    password = result['password']
+    user_tmp = User.query.filter_by(userName=str(username)).first()
     if user_tmp is not None:
-        if password == user_tmp.password:
+        if password == str(user_tmp.password):
             user = user_tmp
-            return redirect(url_for("app.index"))
-    return redirect(url_for("login"))
+            return redirect(url_for("index"))
+    return render_template('login.html')
 
 
 @user_bp.route("/register", methods=["GET", "POST"])
 def register():
     global user
-    username = request.args.get("name")
-    password = request.args.get("password")
-    user_tmp = User.query.filter_by(username=username).first()
+    result = request.form
+    username = result['username']
+    password = result['password']
+    user_tmp = User.query.filter_by(userName=username).first()
     if user_tmp is None:
-        user = User(username=username, password=password)
+        user = User(userName=username, password=password)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('app.index'))
+        return redirect(url_for('index'))
     else:
         return redirect(url_for('register'))
 
