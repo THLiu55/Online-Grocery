@@ -42,7 +42,7 @@ body, input{
     transition: 1s  ease-in-out;
     display: grid;
     grid-template-columns: 1fr;
-    z-index: 5;
+    z-index: 1;
 }
 
 
@@ -52,10 +52,10 @@ body, input{
     left: -25%;
     width: 50%;
     transform: translate(-50%, -50%);
-    transition: 1s 0.7s ease-in-out;
+    transition: 0.7s  ease-in-out;
     display: grid;
     grid-template-columns: 1fr;
-    z-index: 1;
+    z-index: 3;
 }
 
 form{
@@ -149,6 +149,7 @@ form{
     background-image: linear-gradient(-45deg, #164453 0%, #164453 100%);
     transition: 1.8s ease-in-out;
     border-radius: 50%;
+    z-index: 4;
 }
 
 .Component:after{
@@ -161,6 +162,7 @@ form{
     background-image: linear-gradient(-45deg, #164453 0%, #164453 100%);
     transition: 1.8s ease-in-out;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .curtain{
@@ -213,35 +215,56 @@ form{
     padding: 0.7rem 0;
 }
 
-.right_curtain #right-logo, .right_curtain .content{
-    /* transform: translateX(800px); */
-} 
+/*前面的css样式无定位*/
 
-
+/*左边的球登陆态*/
 .Component.sign-up-mode:before {
     transform: translate(-1000px, 1000px);
   }
 
-
+/*左边的幕布加logo注册态*/
 .Component.sign-up-mode .left-curtain .content,
 .Component.sign-up-mode .left-curtain #left-logo {
     transform: translateX(-1000px);
 }
 
+/*右边的幕布加logo登陆态*/
+.Component .right_curtain .content,
+.Component .right_curtain #right-logo{
+    transform: translateX(1000px);
+}
+
+/*右边的幕布加logo注册态*/
+.Component.sign-up-mode .right_curtain .content,
+.Component.sign-up-mode .right_curtain #right-logo{
+    transform: translateX(-200px);
+}
+
+/*pointer-event切换*/
+.Component.sign-up-mode .right_curtain{
+    pointer-events: all;
+}
+
+.Component.sign-up-mode .left_curtain{
+    pointer-events: none;
+}
+
+/*登陆框登陆态*/
 .Component .SignIn-form {
     transform: translate(-50%, -50%);
 }
 
-
-
+/*登陆框注册态*/
 .Component.sign-up-mode .SignIn-form {
     transform: translate(50%, -50%);
 }
 
+/*注册框注册态*/
 .Component.sign-up-mode .SignUp-form {
     transform: translate(50%, -50%);
 }
 
+/*右边的球注册态*/
 .Component.sign-up-mode:after {
     transform: translate(-1000px, 1000px);
 }
