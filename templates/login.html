@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="../static/css/Login_style.css">
 </head>
 <body>
-    <div class="Component">
+
+    <div class="Component ">
         <div class="form_components">
+            <div class="SignIn-form">
+                <form class="log_in">
+                    <h2 class="FormTitle">Log in</h2>
             <div class="SignIn_Up">
                 <form class="log_in" method="post" action="{{url_for('User.login')}}">
                     <img src="../static/images/Logo.svg">
@@ -17,8 +22,12 @@
                     <div class="inputArea">
                         <input type="password" name="password" placeholder="Password">
                     </div>
-                    <input type="submit" value="Login" >
+                    <input type="submit" class="btn" value="Login" >
                 </form>
+            </div>
+            <div class="SignUp-form">
+                <form class="sign_up">
+                    <h2 class="FormTitle">Sign up</h2>
                 <form class="sign_up" method="post" action="{{url_for('User.register')}}">
                     <img src="../static/images/Logo.svg">
                     <h2> title="FormTitle">Sign up</h2>
@@ -31,32 +40,52 @@
                     <div class="inputArea">
                         <input type="password" id="RePassword" placeholder="Password confirm">
                     </div>
-                    <input type="submit" value="SignUp" >
+                    <input type="submit" class="btn" value="SignUp" >
                 </form>
             </div>
         </div>
         <div class="curtain_components">
-            <div class="curtain left_curtain">
+            <div class="curtain left-curtain">
                 <div class="content">
-                    <img src="../static/images/Log.svg">
+                    <img class="AdPicture" src="../static/images/Log.svg">
                     <h3>Fresh blood!</h3>
                     <p>Welcome to GoGrocery! This is a grocery list website. Come and join us!</p>
-                    <button class="btn" id="To_signUp">
+
+                    <button class="btn" id="to-signUp">
                         Sign up
                     </button>
                 </div>
+                <img id="left-logo" src="../static/images/Logo.svg">
             </div>
             <div class="curtain right_curtain">
+                <img id="right-logo" src="../static/images/Logo.svg">
                 <div class="content">
                     <h3>GoGrocery 'family' members?</h3>
                     <p>Log yourself in. Enjoy your shopping trip in GoGrocery</p>
-                    <button class="btn" id="To_logIn">
+                    <button class="btn" id="to-logIn">
                         Log in
                     </button>
-                    <img src="../static/images/register.svg">
+                    <img class="AdPicture" src="../static/images/register.svg">
                 </div>
             </div>
         </div>
     </div>
+
 </body>
+
+<script>
+    const sign_in_btn = document.getElementById("to-logIn");
+    const sign_up_btn = document.getElementById("to-signUp");
+    const container = document.getElementsByClassName("Component")[0];
+
+sign_up_btn.addEventListener("click", () => {
+    container.classList.add('sign-up-mode');
+    console.log("here")
+});
+
+sign_in_btn.addEventListener("click", () => {
+  container.classList.remove("sign-up-mode");
+});
+</script>
+
 </html>
