@@ -11,17 +11,19 @@ user = None
 
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
-    global user
-    result = request.form
-    username = result['username']
-    password = result['password']
-    user_tmp = User.query.filter_by(userName=str(username)).first()
-    if user_tmp is not None:
-        if password == str(user_tmp.password):
-            user = user_tmp
-            return redirect(url_for("index"))
-    return render_template('login.html')
-
+    if request.method == 'POST':
+        global user
+        result = request.form
+        username = result['username']
+        password = result['password']
+        user_tmp = User.query.filter_by(userName=username).first()
+        if user_tmp is not None:
+            if password == user_tmp.password:
+                user = user_tmp
+                return redirect(url_for("index"))
+        return render_template('login.html')
+    else:
+        return render_template('login.html')
 
 @user_bp.route("/register", methods=["GET", "POST"])
 def register():
@@ -53,6 +55,13 @@ def shopping_bag():
         return render_template('login.html')
     else:
         return render_template('shopping_bag.html')
+
+
+@user_bp.route('/logout')
+def logout():
+    global user
+    user = None
+    return redirect("index")
 
 
 @user_bp.route("/jump/<address>", methods=['GET'])

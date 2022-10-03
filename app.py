@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from exts import db
 from blueprint.user_blueprint import user_bp
-from blueprint import user_blueprint
+from blueprint.user_blueprint import user
 import configs
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ app.register_blueprint(user_bp)
 
 @app.route('/')
 def index():
-    return render_template("MainpageBase.html")
+    return render_template("MainpageBase.html", user=user)
 
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@
     <div class="Component ">
         <div class="form_components">
             <div class="SignIn-form">
-                <form class="log_in" method="post" action="{{url_for('User.login')}}">
+                <form class="log_in" method="post" action="/user/login">
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
                         <input type="text" name="username" placeholder="Username">
@@ -22,7 +22,7 @@
                 </form>
             </div>
             <div class="SignUp-form">
-                <form class="sign_up" method="post" action="{{url_for('User.register')}}">
+                <form class="sign_up" method="post" action="/user/register">
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
                         <input type="text" name="username" placeholder="Username">

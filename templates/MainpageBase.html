@@ -14,15 +14,12 @@
 <body>
     <div id="HeaderLine">
         <div id="Logo">
-
             <div id="imageFrame">
                 <img id="webLogo" src="../static/images/Logo.svg" />
             </div>
-
             <div id="imageFrame2">
                 <img id="webLogo2" src="../static/images/Logo2.svg" />
             </div>
-
         </div>
         <div id="SearchArea">
             <form>
@@ -51,12 +48,29 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="" id="shopping_cart">
+                    <a href="{{url_for('User.profile')}}" id="shopping_cart">
                         <span>
                             <img src="../static/images/Shopping_bag.svg">
                         </span>
                     </a>
                 </div>
+                {% if user == None %}
+                    <div class="nav-item">
+                        <a href="{{url_for('User.login')}}" id="logout-btn">
+                            <span>
+                                <img src="../static/images/Shopping_bag.svg">
+                            </span>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="nav-item">
+                        <a href="{{url_for('User.logout')}}" id="log-in btn">
+                            <span>
+                                <img src="../static/images/Shopping_bag.svg">
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
