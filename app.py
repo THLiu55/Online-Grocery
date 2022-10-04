@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from exts import db
+from exts import db, mail_sender
 from blueprint.user_blueprint import user_bp
 from blueprint.user_blueprint import user
 import configs
@@ -7,10 +7,12 @@ import configs
 app = Flask(__name__)
 app.config.from_object(configs)
 db.init_app(app)
+mail_sender.init_app(app)
 app.register_blueprint(user_bp)
 
 @app.route('/')
 def index():
+    db.create_all(app=app)
     return render_template("MainpageBase.html", user=user)
 
 

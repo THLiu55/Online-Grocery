@@ -4,7 +4,7 @@
     width: 100%;
     height: 6.25em;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
     grid-template-rows: auto;
 }
 
@@ -37,7 +37,7 @@
 
 /*搜索区域*/
 #SearchArea{
-    grid-area: 1 / 2 / span 1 / span 4;
+    grid-area: 1 / 2 / span 1 / span 6;
     margin: 1.875em;
 }
 /*--框和按钮的grid*/
@@ -143,7 +143,7 @@ form{
 
 /*个人信息链接*/
 #PersonalInfo{
-    grid-area: 1 / 6 / span 1 / span 1;
+    grid-area: 1 / 8 / span 1 / span 1;
     display: flex;
     justify-content: center;
 }
@@ -206,6 +206,18 @@ a span:hover:before {
 }
 a span:hover:after{
     width: 100%;
+}
+
+.state_image{
+    display: inline-block;
+}
+
+
+
+.state_text{
+    display: inline-block;
+    text-decoration: none;
+    color: #FFFFFF;
 }
 
 

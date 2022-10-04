@@ -10,13 +10,13 @@
     <div class="Component ">
         <div class="form_components">
             <div class="SignIn-form">
-                <form class="log_in" method="post" action="/user/login">
+                <form class="log_in" method="post" action="{{url_for('User.captcha')}}">
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
                         <input type="text" name="username" placeholder="Username">
                     </div>
                     <div class="inputArea">
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="email" placeholder="Password">
                     </div>
                     <input type="submit" class="btn" value="Login" >
                 </form>

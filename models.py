@@ -1,11 +1,18 @@
 from exts import db
 
 
-class User(db.Model):
+class Customer(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     userName = db.Column(db.CHAR(200), unique=True, nullable=False)
     password = db.Column(db.CHAR(200), nullable=False)
+    email = db.Column(db.CHAR(200), unique=True, nullable=False)
+
+class Captcha(db.Model):
+    __tablename__ = 'captcha'
+    email = db.Column(db.CHAR(200), primary_key=True)
+    captcha = db.Column(db.CHAR(10), unique=True, nullable=False)
+    create_time = db.Column(db.DateTime, nullable=False)
 
 
 class ShoppingList(db.Model):
@@ -13,7 +20,7 @@ class ShoppingList(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     total_cost = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', backref='shoppingList')
+    user = db.relationship('Customer', backref='shoppingList')
 
 
 class Order(db.Model):
@@ -45,3 +52,10 @@ class Shop(db.Model):
     name = db.Column(db.CHAR(200), nullable=False, unique=True)
     logo_address = db.Column(db.CHAR(200), nullable=False)
 
+
+# sequence to drop all tables:
+# drop table `order`
+# drop table `shoppingList`
+# drop table user
+# drop table product;
+# drop table shop;

@@ -56,17 +56,23 @@
                 </div>
                 {% if user == None %}
                     <div class="nav-item">
-                        <a href="{{url_for('User.login')}}" id="logout-btn">
-                            <span>
-                                <img src="../static/images/Shopping_bag.svg">
+                        <a href="{{url_for('User.login')}}" class="state" id="login-btn">
+                            <span class="state_image">
+                                <img src="../static/images/login.svg">
+                            </span>
+                            <span class="state_text">
+                                Log in
                             </span>
                         </a>
                     </div>
                 {% else %}
                     <div class="nav-item">
-                        <a href="{{url_for('User.logout')}}" id="log-in btn">
-                            <span>
-                                <img src="../static/images/Shopping_bag.svg">
+                        <a href="{{url_for('User.logout')}}" class="state" id="logout-btn">
+                            <span class="state_image">
+                                <img src="../static/images/logout.svg">
+                            </span>
+                            <span class="state_text">
+                                Log out
                             </span>
                         </a>
                     </div>
