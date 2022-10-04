@@ -16,9 +16,11 @@
                         <input type="text" name="username" placeholder="Username">
                     </div>
                     <div class="inputArea">
-                        <input type="password" name="email" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password">
                     </div>
-                    <input type="submit" class="btn" value="Login" >
+                    <a href="{{url_for('User.captcha', email='1500425069@qq.com')}}">
+                        <button class="btn">Click</button>
+                    </a>
                 </form>
             </div>
             <div class="SignUp-form">
