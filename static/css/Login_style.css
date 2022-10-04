@@ -47,6 +47,7 @@ body, input{
 
 
 .SignUp-form {
+    margin-left: 10%;
     position: absolute;
     top: 50%;
     left: -25%;
@@ -58,24 +59,37 @@ body, input{
     z-index: 7;
 }
 
-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 5rem;
-    transition: all 0.2s 0.7s; 
-    overflow: hidden;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2; 
-}
+/*form{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    padding: 0 5rem;*/
+/*    transition: all 0.2s 0.7s; */
+/*    overflow: hidden;*/
+/*    grid-column: 1 / 2;*/
+/*    grid-row: 1 / 2; */
+/*}*/
 
 .sign_up{
     z-index: 1;
 }
 
+.sign_up .inputArea{
+    margin: 1.2em 0;
+}
+
 .log_in{
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5rem;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
 }
 
 /*字体，登陆注册框样式调整*/
@@ -92,12 +106,18 @@ form{
     margin: 10px 0;
     height: 3em;
     border-radius: 20px;
-    padding: 0 0.4rem;
+    padding: 0 0 0 0.4rem;
     position: relative;
     text-align: center;
     display: grid;
     grid-template-rows: 100%;
 }
+
+.email_area{
+    display: flex;
+    flex-direction: row;
+}
+
 
 .inputArea input{
     background: none;
@@ -125,6 +145,26 @@ form{
     text-transform: uppercase;
     font-weight: 600;
     margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#email_input{
+    width: 100%;
+    margin-right: 1em;
+}
+
+#send_button{
+    width: 80px;
+    padding: 0 1em;
+    background-color: #5995fd;
+    border: none;
+    outline: none;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -171,17 +211,18 @@ form{
     align-items: flex-end;
     justify-content: space-around;
     text-align: center;
-    z-index: 6; 
 }
 
-.left_curtain{
+.left-curtain{
     pointer-events: all;
     padding: 3rem 17% 2rem 12%;
+    z-index: 6;
 }
 
 .right_curtain{
     pointer-events: none;
     padding: 3rem 12% 2rem 17%;
+    z-index: 8;
 }
 
 #left-logo{
