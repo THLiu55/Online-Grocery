@@ -1,7 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, g
 from exts import db, mail_sender
 from blueprint.user_blueprint import user_bp
-from blueprint.user_blueprint import user
 import configs
 
 app = Flask(__name__)
@@ -13,7 +12,7 @@ app.register_blueprint(user_bp)
 @app.route('/')
 def index():
     db.create_all(app=app)
-    return render_template("MainpageBase.html", user=user)
+    return render_template("MainpageBase.html", user=g.get('user', None))
 
 
 if __name__ == '__main__':

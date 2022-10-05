@@ -1,48 +1,36 @@
 import random
 from datetime import datetime
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify
 from models import Customer, Captcha
 from exts import db, mail_sender
 from flask_mail import Message
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 user_bp = Blueprint("User", __name__, url_prefix="/user")
-
-# Global
-user = None
 
 
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        print(2)
-        global user
-        result = request.form
-        email = result['email']
-        password = result['password']
+        form = request.form
+        email = form['email']
+        password = form['password']
         user_tmp = Customer.query.filter_by(email=email).first()
-        if user_tmp is not None:
-            if password == user_tmp.password:
-                user = user_tmp
-                return render_template('MainpageBase.html')
-        return render_template('login.html')
+        if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
+            g.user = user_tmp
+            return render_template('MainpageBase.html')
+        return jsonify({'code': 400, 'message': 'email or password not correct'})
     else:
-        print(3)
         return render_template('login.html')
 
 
-@user_bp.route("/captcha/<type>", methods=["GET", "POST"])
-def captcha(email):
-    print(1)
-
-
-
-
-@user_bp.route("/register/<type>", methods=["GET", "POST"])
-def register(type):
-    if type == "1":  # if send email button clicked, go here
+@user_bp.route("/register", methods=["GET", "POST"])
+def register():
+    method = request.args.get('type')
+    if method == "send":  # if send email button clicked, go here
         # get email address
-        email = request.args.get("email")
+        form = request.form
+        email = form["email"]
         # here the email format validity has already been checked
         user_tmp = Customer.query.filter_by(email=email).first()  # check if the email has been registered
         if user_tmp is None:
@@ -67,29 +55,28 @@ def register(type):
                 html=render_template('email.html', captcha=captcha)
             )
             mail_sender.send(message)
-            return {'code': 200}
-        return {'code': 400, 'message': "registered email"}
-
+            return jsonify({'code': 200})
+        return jsonify({'code': 400, 'message': "registered email"})
     else:  # confirm register clicked, go here
         form = request.form
         # if the computer goes here, the format validation has all been checked
         username = form.get("username")
-        password = form.get("password")
+        password = generate_password_hash(form.get("password"))
         email = form.get("email")
         captcha = form.get("captcha")
-        user_tmp = Customer.query.filter_by(username=username).first()
+        user_tmp = Customer.query.filter_by(userName=username).first()
         pair = Captcha.query.filter_by(email=email).first()
-        if (user_tmp is None) and (pair is not None):
-            if (datetime.now() - pair.create_time).seconds > 1800:
+        if (user_tmp is None) and (pair is not None):  # if username is unique & email with captcha has been sent
+            if (datetime.now() - pair.create_time).seconds > 1800:  # check if captcha is out of date
                 return {'code': 400, 'message': "captcha out of time"}
-            if pair.captcha == captcha:
+            if pair.captcha != captcha:  # check if captcha is correct
                 return {'code': 400, 'message': "captcha wrong"}
-            new_customer = Customer(password=password, username=username, email=email)
+            # store new customer item into database
+            new_customer = Customer(password=password, userName=username, email=email)
             db.session.add(new_customer)
             db.session.commit()
-            return {'code': 200}
-        return {'code': 400, 'message': "registered username"}
-
+            return jsonify({'code': 200})
+        return jsonify({'code': 400, 'message': "registered username"})
 
 
 @user_bp.route("/profile")
