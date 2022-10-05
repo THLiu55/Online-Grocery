@@ -18,7 +18,7 @@
                     <div class="inputArea">
                         <input type="password" name="password" placeholder="Password">
                     </div>
-                    <input type="submit" class="btn">Log in</input>
+                    <input type="submit" class="btn" value="Log in" />
                 </form>
             </div>
             <div class="SignUp-form">
@@ -26,19 +26,27 @@
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
                         <input type="text" name="username" placeholder="Username">
+                        <div class="wrong_error" id="username_error"></div>
                     </div>
                     <div class="inputArea">
                         <input type="password" id="Password" name="password" placeholder="Password">
+                        <div class="wrong_error" id="password_error"></div>
                     </div>
                     <div class="inputArea">
                         <input type="password" id="RePassword" placeholder="Password confirm">
-                    </div>
-                    <div class="inputArea email_area">
-                        <input type="email" id="email_input" name="email" placeholder="Email address">
-                        <button type="submit" onclick="send_email()">SEND</button>
+                        <div class="wrong_error" id="Repassword_error"></div>
                     </div>
                     <div class="inputArea">
+                        <div class="email_area">
+                            <input type="email" id="email_input" name="email" placeholder="Email address">
+                            <button type="submit" id="send_button" onclick="send_email()">SEND</button>
+                        </div>
+                        <div class="wrong_error" id="email_error"></div>
+                    </div>
+
+                    <div class="inputArea">
                         <input type="text" id="Captcha" name="captcha" placeholder="Captcha">
+                        <div class="wrong_error" id="captcha_error"></div>
                     </div>
                     <input type="submit" class="btn" value="SignUp" onclick="register()">
                 </form>
