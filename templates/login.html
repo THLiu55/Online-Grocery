@@ -10,7 +10,7 @@
     <div class="Component ">
         <div class="form_components">
             <div class="SignIn-form">
-                <form class="log_in" method="post" action="{{url_for('User.login')}}">
+                <form class="log_in" method="post" name="form1">
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
                         <input type="text" name="email" placeholder="User email">
@@ -18,11 +18,11 @@
                     <div class="inputArea">
                         <input type="password" name="password" placeholder="Password">
                     </div>
-                    <input type="submit" class="btn">Log in</input>
+                    <input type="submit" class="btn" value="Log in" onclick="login()"/>
                 </form>
             </div>
             <div class="SignUp-form">
-                <form class="sign_up" method="post" name="form1">
+                <form class="sign_up" method="post" name="form2">
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
                         <input type="text" name="username" placeholder="Username">
@@ -35,12 +35,14 @@
                     </div>
                     <div class="inputArea email_area">
                         <input type="email" id="email_input" name="email" placeholder="Email address">
-                        <button type="submit" onclick="send_email()">SEND</button>
+                        <button type="button"  id="send_button" onclick="send_email()">
+                            <div id="count">SEND</div>
+                        </button>
                     </div>
                     <div class="inputArea">
                         <input type="text" id="Captcha" name="captcha" placeholder="Captcha">
                     </div>
-                    <input type="submit" class="btn" value="SignUp" onclick="register()">
+                    <input type="button" class="btn" value="SignUp" onclick="register()">
                 </form>
             </div>
         </div>
@@ -72,30 +74,6 @@
     </div>
 
 </body>
-
-<script>
-    // button for animation
-    const to_sign_in_btn = document.getElementById("to-logIn");
-    const to_sign_up_btn = document.getElementById("to-signUp");
-    const container = document.getElementsByClassName("Component")[0];
-    // add animation when switching from sign up to sign in
-    to_sign_up_btn.addEventListener("click", () => {
-        container.classList.add('sign-up-mode');
-    });
-    to_sign_in_btn.addEventListener("click", () => {
-        container.classList.remove("sign-up-mode");
-    });
-
-    function send_email() {
-        document.form1.action = "/user/register?type=send"
-        document.form1.submit()
-    }
-
-    function register() {
-        document.form1.action = "/user/register?type=register"
-        document.form1.submit()
-    }
-
-</script>
-
+<script type="text/javascript" src="../static/js/utils.js"></script>
+<script type="text/javascript" src="../static/js/login.js"></script>
 </html>
