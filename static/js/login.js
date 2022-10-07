@@ -14,20 +14,53 @@ to_sign_in_btn.addEventListener("click", () => {
 
 // send email
 function send_email() {
+    const email_error = document.getElementById("email_error");
+    const num_div = document.getElementById('count')
     const fd = new FormData()
     fd.set('email', document.getElementById('email_input').value)
-    var xhr = new XMLHttpRequest()
+    let xhr = new XMLHttpRequest()
     xhr.onload = function() {
-        console.log(JSON.parse(xhr.responseText))
-        countDown().then(r => {})
+        let response = JSON.parse(xhr.responseText)
+        console.log(response)
+        if (response.code === 400){
+            email_error.innerHTML = response.message;
+        }
+        if (response.code === 200){
+            countDown(30, num_div).then(r => {})
+        }
     }
-    xhr.open('POST', '/user/register?type=send', false)
+    xhr.open('POST', '/user/register?type=send', true)
     xhr.send(fd)
 }
 
 function register() {
-    document.form2.action = "/user/register?type=register"
-    document.form2.submit()
+    const email_error = document.getElementById("email_error");
+    const username_error = document.getElementById("username_error");
+    const password_error = document.getElementById("password_error");
+    const Repassword_error = document.getElementById("Repassword_error");
+    const captcha_error = document.getElementById("captcha_error");
+
+    const num_div = document.getElementById('count')
+    const fd = new FormData(document.form2)
+    let xhr = new XMLHttpRequest()
+    xhr.onload = function() {
+        let response = JSON.parse(xhr.responseText)
+        console.log(response)
+        if (response.code === 400){
+            email_error.innerHTML = response.message;
+        }
+        if (response.code === 200){
+            countDown(30, num_div).then(r => {})
+        }
+    }
+    xhr.open('POST', '/user/register?type=send', true)
+    xhr.send(fd)
+}
+
+// set input event listener, present the error message
+function email_listener(){
+    const email_error = document.getElementById("email_error");
+    email_error.innerHTML = "";
 }
 
 function login() {
