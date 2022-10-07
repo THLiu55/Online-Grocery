@@ -25,7 +25,7 @@
                 <form class="sign_up" method="post" name="form2">
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" oninput=username_listener() placeholder="Username">
                         <div class="wrong_error" id="username_error"></div>
                     </div>
                     <div class="inputArea">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="inputArea">
                         <div class="email_area">
-                            <input type="email" id="email_input" name="email" oninput="email_listener()" placeholder="Email address">
+                            <input type="email" id="email_input" name="email" oninput=email_listener() placeholder="Email address">
                             <button type="button" id="send_button" onclick="send_email()">
                                 <div id="count">SEND</div>
                             </button>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="inputArea">
-                        <input type="text" id="Captcha" name="captcha" placeholder="Captcha">
+                        <input type="text" id="Captcha" name="captcha" oninput=captcha_listener() placeholder="Captcha">
                         <div class="wrong_error" id="captcha_error"></div>
                     </div>
                     <input type="button" class="btn" value="SignUp" onclick="register()">
