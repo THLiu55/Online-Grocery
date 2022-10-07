@@ -24,8 +24,7 @@ function send_email() {
         console.log(response)
         if (response.code === 400){
             email_error.innerHTML = response.message;
-        }
-        if (response.code === 200){
+        } else {
             countDown(30, num_div).then(r => {})
         }
     }
@@ -37,23 +36,23 @@ function register() {
     const email_error = document.getElementById("email_error");
     const username_error = document.getElementById("username_error");
     const password_error = document.getElementById("password_error");
-    const Repassword_error = document.getElementById("Repassword_error");
+    const repassword_error = document.getElementById("Repassword_error");
     const captcha_error = document.getElementById("captcha_error");
 
-    const num_div = document.getElementById('count')
     const fd = new FormData(document.form2)
+
     let xhr = new XMLHttpRequest()
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
         console.log(response)
         if (response.code === 400){
-            email_error.innerHTML = response.message;
+
         }
         if (response.code === 200){
-            countDown(30, num_div).then(r => {})
+
         }
     }
-    xhr.open('POST', '/user/register?type=send', true)
+    xhr.open('POST', '/user/register?type=register', true)
     xhr.send(fd)
 }
 
