@@ -16,7 +16,7 @@
                     <input type="text" name="email" placeholder="Your email address">
                     <div class="wrong_error" id="email_error_inForget"></div>
                 </div>
-                <input type="button" id="continue-email" onclick="email_continue()" class="btn" value="continue">
+                <input type="button" id="continue-email" onclick=email_continue() class="btn" value="continue">
             </form>
         </div>
         <div class="InputFrame" id="captcha-area">
@@ -27,7 +27,7 @@
                     <input type="text" name="email" placeholder="Captcha received">
                     <div class="wrong_error" id="captcha_error_inForget"></div>
                 </div>
-                <input type="button" id="continue-captcha" onclick="captcha_continue()" class="btn" value="continue">
+                <input type="button" id="continue-captcha" onclick=captcha_continue() class="btn" value="continue">
             </form>
         </div>
         <div class="InputFrame" id="password-area">
@@ -57,10 +57,10 @@
                 <form class="log_in" method="post" name="form1">
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
-                        <input type="text" name="email" placeholder="User email">
+                        <input type="text" name="email" id="login-email" placeholder="User email">
                     </div>
                     <div class="inputArea">
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" id="login-password" placeholder="Password">
                         <button type="button" id="forget_password">Forget password?</button>
                     </div>
                     <input type="submit" class="btn" value="Log in" onclick="login()"/>
@@ -129,4 +129,5 @@
 </body>
 <script type="text/javascript" src="../static/js/utils.js"></script>
 <script type="text/javascript" src="../static/js/login.js"></script>
+<script type="text/javascript" src="../static/js/passwordFindBack.js"></script>
 </html>
