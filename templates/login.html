@@ -25,15 +25,15 @@
                 <form class="sign_up" method="post" name="form2">
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
-                        <input type="text" name="username" oninput=username_listener() placeholder="Username">
+                        <input type="text" name="username" id="username_input" oninput=username_listener() placeholder="Username">
                         <div class="wrong_error" id="username_error"></div>
                     </div>
                     <div class="inputArea">
-                        <input type="password" id="Password" name="password" placeholder="Password">
+                        <input type="password" id="password_input" name="password" oninput=password_listener() placeholder="Password">
                         <div class="wrong_error" id="password_error"></div>
                     </div>
                     <div class="inputArea">
-                        <input type="password" id="RePassword" placeholder="Password confirm">
+                        <input type="password" id="repassword_input" oninput=rePassword_listener() placeholder="Password confirm">
                         <div class="wrong_error" id="Repassword_error"></div>
                     </div>
                     <div class="inputArea">
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="inputArea">
-                        <input type="text" id="Captcha" name="captcha" oninput=captcha_listener() placeholder="Captcha">
+                        <input type="text" id="captcha_input" name="captcha" oninput=captcha_listener() placeholder="Captcha">
                         <div class="wrong_error" id="captcha_error"></div>
                     </div>
                     <input type="button" class="btn" value="SignUp" onclick="register()">
