@@ -98,7 +98,7 @@ body, input{
     color: #444;
     margin-bottom: 10px;
 }
-
+/*the style of input frame (div)*/
 .inputArea{
     max-width: 22em;
     width: 100%;
@@ -111,6 +111,11 @@ body, input{
     /*text-align: center;*/
     display: grid;
     grid-template-rows: 100%;
+}
+
+/*the style to extend the gap between the login button and the input frame*/
+#attention{
+    margin-bottom: 1forgetem;
 }
 
 .email_area{
@@ -321,11 +326,17 @@ body, input{
     width: 9em;
     padding: 5px 0;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
+    display: block;
+    margin: 15px auto;
+    border:none;
+    border-bottom: 0.1px solid #b7b7b7;
 }
 
 #forget_password:hover{
     color: #5995fd;
+    border:none;
+    border-bottom: 0.1px solid #5995fd;
 }
 
 /*the back effect when forget password pop out*/
