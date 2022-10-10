@@ -142,6 +142,55 @@ body, input{
     font-weight: 500;
 }
 
+/*the framework of input area (div) in forget password*/
+.InputFrame{
+    margin-bottom: 40px;
+    transition: all .2s ease;
+}
+/*the animation of appearance and disappearance*/
+
+
+/*the style of InputArea in forget password*/
+.forget-input-area .inputArea{
+    margin: 20px 0;
+}
+
+
+/*the style of continue button in forget password framework*/
+.forget-input-area .btn{
+    display: block;
+    margin: auto;
+}
+
+/*back button in forget password framework*/
+#back_btn{
+    background: none;
+    border: none;
+    outline: none;
+    height: 29px;
+    color: #9c9c9c;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+/* the display of email, captcha and password reset area*/
+#email-area{
+    display: block;
+}
+#captcha-area{
+    display: none;
+}
+#password-area{
+    display: none;
+}
+
+#back_btn:hover{
+    color: black;
+}
+
+/* normal button style */
 .btn{
     width: 150px;
     background-color: #5995fd;
@@ -264,7 +313,59 @@ body, input{
     padding: 0.7rem 0;
 }
 
-/*前面的css样式无定位*/
+/*forget password button style*/
+#forget_password{
+    font-size: 12px;
+    background: none;
+    border-style: none;
+    width: 9em;
+    padding: 5px 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+#forget_password:hover{
+    color: #5995fd;
+}
+
+/*the back effect when forget password pop out*/
+.back_effect{
+    width:100%;
+      height:100%;
+      visibility: hidden;
+      opacity: 0;
+      position:fixed;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+      background: rgba(8, 7, 7, 0.6);
+      z-index: 100;
+      transition: all .2s ease;
+      backdrop-filter: saturate(180%) blur(1px);
+}
+
+/*the forget password framework*/
+.forget-pass-component{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 60%;
+    visibility: hidden;
+    opacity: 0;
+    background-color: white;
+    border-radius: 5px;
+    transition: all .2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9001;
+}
+
+/*The previous css defines no position*/
 
 /*左边的球登陆态*/
 .Component.sign-up-mode:before {

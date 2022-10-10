@@ -6,8 +6,52 @@
     <link rel="stylesheet" href="../static/css/Login_style.css">
 </head>
 <body>
+    {# forget password part #}
+    <div class="forget-pass-component">
+        <div class="InputFrame" id="email-area">
+            <form class="forget-input-area" novalidate>
+                <h2 class="FormTitle">Forget password?</h2>
+                <p>Please enter your email address</p>
+                <div class="inputArea">
+                    <input type="text" name="email" placeholder="Your email address">
+                    <div class="wrong_error" id="email_error_inForget"></div>
+                </div>
+                <input type="button" id="continue-email" onclick="email_continue()" class="btn" value="continue">
+            </form>
+        </div>
+        <div class="InputFrame" id="captcha-area">
+            <form class="forget-input-area" novalidate>
+                <h2 class="FormTitle">Forget password?</h2>
+                <p>Please enter the captcha</p>
+                <div class="inputArea">
+                    <input type="text" name="email" placeholder="Captcha received">
+                    <div class="wrong_error" id="captcha_error_inForget"></div>
+                </div>
+                <input type="button" id="continue-captcha" onclick="captcha_continue()" class="btn" value="continue">
+            </form>
+        </div>
+        <div class="InputFrame" id="password-area">
+            <form class="forget-input-area" novalidate>
+                <h2 class="FormTitle">Forget password?</h2>
+                <p>Please reset your password</p>
+                <div class="inputArea">
+                    <input type="text" name="email" placeholder="Enter your new password">
+                </div>
+                <div class="inputArea">
+                    <input type="text" name="email" placeholder="Confirm your new password">
+                    <div class="wrong_error" id="password_error_inForget"></div>
+                </div>
+                <input type="button" id="continue-password"  class="btn" value="SUBMIT">
+            </form>
+        </div>
+        <button class="btn-in-forget" id="back_btn">Back to LOGIN</button>
+    </div>
 
-    <div class="Component ">
+    {# back effect part #}
+    <div class="back_effect"></div>
+
+    {# login part  #}
+    <div class="Component">
         <div class="form_components">
             <div class="SignIn-form">
                 <form class="log_in" method="post" name="form1">
@@ -17,6 +61,7 @@
                     </div>
                     <div class="inputArea">
                         <input type="password" name="password" placeholder="Password">
+                        <button type="button" id="forget_password">Forget password?</button>
                     </div>
                     <input type="submit" class="btn" value="Log in" onclick="login()"/>
                 </form>
