@@ -1,3 +1,5 @@
+const reg = /^[.]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+
 // delay a second
 function delay(milliseconds) {
     return new Promise(resolve => {
@@ -5,7 +7,7 @@ function delay(milliseconds) {
     });
 }
 
-// count Down for 30 seconds
+// count Down for seconds (used in sending email)
 async function countDown(seconds) {
     const num_div = document.getElementById('count')
     const sending_btn = document.getElementById('send_button')
@@ -18,5 +20,10 @@ async function countDown(seconds) {
     sending_btn.disabled = false
     sending_btn.style.backgroundColor = '#5995fd'
     num_div.innerHTML = "SEND";
+}
+
+// check the email format
+function checkEmailFormat(email) {
+    return reg.test(email)
 }
 

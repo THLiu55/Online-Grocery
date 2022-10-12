@@ -26,9 +26,6 @@ const login_password_input = document.getElementById("login-password")
 // boolean value that represent each input is valid
 let validUserName = false, validPassword = false, validRePassword = false, validEmail = false, validCaptcha = false
 
-// regular expression of email
-const reg = /^[.]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
-
 // add animation when switching from sign up to sign in
 to_sign_up_btn.addEventListener("click", () => {
     container.classList.add('sign-up-mode');
@@ -47,7 +44,7 @@ function send_email() {
         return;
     }
     // check again (in case email is not input by typing)
-    validEmail = reg.test(email)
+    validEmail = checkEmailFormat(email)
     console.log(email)
     console.log(validEmail)
     // check if is wrong format
@@ -139,6 +136,7 @@ function register() {
                     break
             }
         } else {
+            // go to log in page and load email and password automatically
             container.classList.remove("sign-up-mode");
             login_email_input.value = email_input.value;
             login_password_input.value = password_input.value;
@@ -154,7 +152,7 @@ function email_listener() {
     let email = email_input.value
     console.log(email)
     // check if the email is in correct format (aaa@bbb.ccc)
-    if (reg.test(email)) {
+    if (checkEmailFormat(email)) {
         validEmail = true
     } else {
         validEmail = false
@@ -266,6 +264,9 @@ function login() {
     document.form2.action = "/user/login"
     document.form2.submit()
 }
+
+
+console.log('here')
 
 
 
