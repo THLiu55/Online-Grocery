@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GoGrocery</title>
+    <title> {% block title %} {% endblock %} </title>
     <style>
         *{
             margin: 0;
             padding: 0;
         }
+
+        body{
+            width: 100%;
+        }
     </style>
+    <link rel="stylesheet" href="../static/css/fluidImage.css">
     <link rel="stylesheet" href="../static/css/MainpageBase_style.css">
+    <link rel="stylesheet" href="../static/css/cardContent.css">
 </head>
 <body>
     <div id="HeaderLine">
@@ -84,12 +90,12 @@
         </div>
     </div>
 
+    {% block body %} {% endblock %}
 
+    {% block footer %} {% endblock %}
 
 </body>
 
-<script>
-
-</script>
+<script type="text/javascript" src="../static/js/fluidImagesPlayer.js"></script>
 
 </html>

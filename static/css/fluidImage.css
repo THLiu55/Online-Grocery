@@ -1,0 +1,75 @@
+/*the style of container*/
+#fluid-image-container{
+    width: 100%;
+    height: 35em;
+    overflow: hidden;
+}
+/*the style of <ul>, which contains the images*/
+#image-list{
+    width: 500vw;
+    height: 35em;
+    text-decoration: none;
+    list-style: none;
+}
+/*the style of <li> in the <ul>*/
+#image-list li{
+    float: left;
+    width: 100vw;
+    height: 35em;
+}
+/*the style of the items inside the <li>*/
+.block-item{
+    width: 100vw;
+    height: 35em;
+}
+/*the style of prev and next*/
+.prev{
+    width: 1.5em;
+    height: 5em;
+    color: #694c1f;
+    text-align: center;
+    line-height: 5em;
+    position: absolute;
+    left: 1px;
+    top: 8%;
+    cursor: pointer;
+    font-size: 32px;
+    transition: ease 0.1s 0.1s;
+}
+.next{
+    width: 1.5em;
+    height: 5em;
+    color: #694c1f;
+    text-align: center;
+    line-height: 5em;
+    position: absolute;
+    right: 1px;
+    top: 8%;
+    cursor: pointer;
+    font-size: 32px;
+    transition: ease 0.1s 0.1s;
+}
+/*when the div is hovered*/
+.prev:hover{
+    border: solid 3px #694c1f;
+}
+.next:hover{
+    border: solid 3px #694c1f;
+}
+/*each image block*/
+#b1{
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+                url("../images/classification.jpeg") no-repeat center top / 100% 100%;
+}
+#b2{
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+                url("../images/games.jpeg") no-repeat center top / 100% 100%;
+}
+#b3{
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+                url("../images/toys.jpeg") no-repeat center top / 100% 100%;
+}
+#b4{
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+                url("../images/furniture.jpeg") no-repeat center top / 100% 100%;
+}

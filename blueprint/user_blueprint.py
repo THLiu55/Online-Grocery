@@ -18,7 +18,7 @@ def login():
         user_tmp = Customer.query.filter_by(email=email).first()
         if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
             g.user = user_tmp
-            return render_template('MainpageBase.html')
+            return render_template('index.html')
         return jsonify({'code': 400, 'message': 'email or password not correct'})
     else:
         return render_template('login.html')

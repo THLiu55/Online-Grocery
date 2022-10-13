@@ -12,7 +12,7 @@ app.register_blueprint(user_bp)
 @app.route('/')
 def index():
     db.create_all()
-    return render_template("MainpageBase.html", user=g.get('user', None))
+    return render_template("index.html", user=g.get('user', None))
 
 
 if __name__ == '__main__':

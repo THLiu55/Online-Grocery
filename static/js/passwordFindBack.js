@@ -69,14 +69,14 @@ back_to_main_btn.addEventListener("click", function (event){
 //
 function email_continue(){
     // clear wrong notation
-    email_error_in_forget.style = ''
-
-    // get input email
-    email_find_back = find_back_email_input.value
-    if (!checkEmailFormat(email_find_back)) {
-        email_error_in_forget.innerHTML = "format wrong"
-        return
-    }
+    // email_error_in_forget.style = ''
+    //
+    // // get input email
+    // email_find_back = find_back_email_input.value
+    // if (!checkEmailFormat(email_find_back)) {
+    //     email_error_in_forget.innerHTML = "format wrong"
+    //     return
+    // }
     // redirect animation
     EmailArea.style.display = 'none';
     CaptchaArea.style.display = 'block';
