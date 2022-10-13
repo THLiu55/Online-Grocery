@@ -84,12 +84,14 @@ def register():
             return jsonify({'code': 400, 'message': "email not validate"})
 
 
+# backend support for finding back (reset) password
 @user_bp.route("/findPassword",  methods=["POST"])
 def find_back():
     method = request.args.get('type')
+    # get posted form
+    form = request.form
     if method == "send":
-        # get email address
-        form = request.form
+        # get email
         email = form["email"]
         # here the email format validity has already been checked
         user_tmp = Customer.query.filter_by(email=email).first()  # check if the email has been registered
@@ -115,13 +117,38 @@ def find_back():
             mail_sender.send(message)
             return jsonify({'code': 200, 'message': "email send successfully"})
         return jsonify({'code': 400, 'message': "email not registered"})
-    else:
-        form = request.form
+    elif method == "captcha":
+        # get email & corresponding captcha
         email = form["email"]
+        captcha = form["captcha"]
+        if checkCaptcha(email=email, captcha=captcha):
+            return jsonify({'code':200, 'message': "captcha correct"})
+        return jsonify({"code": 200, "message": "wrong captcha"})
+    else:
+        # get email & captcha & new password
+        email = form["email"]
+        captcha = form["captcha"]
         password = form["password"]
-        user_tmp = Customer.query.filter_by(email=email).first()  # check if the email has been registered
-        user_tmp.password = generate_password_hash(password=password)
-        return jsonify({'code': 200, 'message': "password successfully changed"})
+        # check if captcha match
+        if checkCaptcha(email=email, captcha=captcha):
+            # get the user object
+            user_tmp = Customer.query.filter(email=email).first()
+            # reset his password
+            user_tmp.password = password
+            db.session.commit()
+            return jsonify({"code": 200, "message": "reset done"})
+        return jsonify({"code": 400, "message": "Fail to reset, please try again"})
+
+
+# check captcha
+def checkCaptcha(email, captcha):
+    pair_tmp = Captcha.query.filter_by(email=email).first()
+    if pair_tmp is not None and pair_tmp.captcha == captcha:
+        return True
+    return False
+
+
+
 
 
 # generate captcha (random int * 6)

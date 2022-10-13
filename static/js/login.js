@@ -144,121 +144,29 @@ function register() {
     }
 }
 
-// set input event listeners
-function email_listener() {
-    // clear the error message
-    email_error.innerHTML = "";
-    // obtain input email
-    let email = email_input.value
-    console.log(email)
-    // check if the email is in correct format (aaa@bbb.ccc)
-    if (checkEmailFormat(email)) {
-        validEmail = true
-    } else {
-        validEmail = false
-    }
+
+// various listeners for signup page
+function username_listener_sign_up() {
+    validUserName = username_listener(username_error, username_input);
 }
 
-function username_listener() {
-    // clear error message
-    username_error.innerHTML = "";
-    // obtain user name
-    let username = username_input.value
-    // check if username is valid (3 < length < 20)
-    if (username.length >= 3 && username.length <= 20) {
-        validUserName = true;
-        return
-    }
-    validUserName = false;
-    if (username.length < 3) {
-        username_error.innerHTML = "too short"
-    }
-    if (username.length > 20) {
-        username_error.innerHTML = "too long"
-    }
+function password_listener_sign_up() {
+    validPassword = username_listener(username_error, username_input);
 }
 
-function captcha_listener() {
-    captcha_error.innerHTML = "";
-    // obtain captcha
-    let captcha = captcha_input.value
-    // check if captcha is valid (int(0-9) * 6)
-    for (let i = 0; i < captcha.length; i++) {
-        if (i === 6 || captcha[i] < '0' || captcha[i] > '9') {
-            validCaptcha = false;
-            captcha_error.innerHTML = "wrong captcha";
-            return;
-        }
-    }
-    validCaptcha = true
+function rePassword_listener_sign_up() {
+    validRePassword = rePassword_listener(repassword_error, password_input, repassword_input)
 }
 
-function password_listener() {
-    // get password
-    password_error.innerHTML = ""
-    let hasLetter = false, hasNum = false, hasCap = false
-    let password = password_input.value
-    let len = password.length
-
-    // check length
-    if (len < 6) {
-        password_error.innerHTML = "too short"
-        validPassword = false
-        return;
-    }
-    if (len > 20) {
-        password_error.innerHTML = "too long"
-        validPassword = false
-        return;
-    }
-
-    // check format
-    for (let i = 0; i < password.length; i++) {
-        console.log(password[i] < 'z')
-        if ('0' <= password[i] && password[i] <= '9') {
-            hasNum = true
-        } else if (('a' <= password[i] && password[i] <= 'z') || ('A' <= password[i] && password[i] <= 'Z')) {
-            hasLetter = true
-            if ('A' <= password[i] && password[i] <= 'Z') {
-                hasCap = true
-            }
-        }
-        // if all satisfied -> return
-        if (hasNum && hasLetter && hasCap && (6 <= len <= 20)) {
-            validPassword = true;
-            return;
-        }
-    }
-    // show error message and set valid to false
-    if (!hasLetter) {
-        password_error.innerHTML = "weak (need letters)"
-        validPassword = false
-        return;
-    }
-    if (!hasNum) {
-        password_error.innerHTML = "weak (need number)"
-        validPassword = false
-        return;
-    }
-    if (!hasCap) {
-        password_error.innerHTML = "weak (need capital letter)"
-        validPassword = false
-    }
+function email_listener_sign_up() {
+    validEmail = email_listener(email_input, email_error);
 }
 
-// check if re-input password == password
-function rePassword_listener() {
-    // clear error message
-    repassword_error.innerHTML = ""
-    let pass = password_input.value
-    let repass = repassword_input.value
-    validRePassword = (pass == repass)
-    console.log(pass)
-    console.log(repass)
-    if (!validRePassword) {
-        repassword_error.innerHTML = "password not match"
-    }
+function captcha_listener_sign_up() {
+    validCaptcha = captcha_listener(captcha_input, captcha_error);
 }
+
+
 
 function login() {
     document.form2.action = "/user/login"
