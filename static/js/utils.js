@@ -1,4 +1,8 @@
-const reg = /^[.]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+const reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
+
+function checkEmailFormat(email) {
+    return reg.test(email)
+}
 
 // delay a second
 function delay(milliseconds) {
@@ -22,13 +26,6 @@ async function countDown(seconds) {
     num_div.innerHTML = "SEND";
 }
 
-// check the email format
-function checkEmailFormat(email) {
-    return reg.test(email)
-}
-
-// listeners for various input area (log in & sign up & forget password):
-
 // set input event listeners
 function email_listener(email_input, email_error) {
     // clear the error message
@@ -36,7 +33,16 @@ function email_listener(email_input, email_error) {
     // obtain input email
     let email = email_input.value
     // check if the email is in correct format (aaa@bbb.ccc)
-    return checkEmailFormat(email)
+    let correct = reg.test(email)
+    console.log(email)
+    if (correct) {
+        return true
+    }
+    if (email !== '') {
+        email_error.innerHTML = "incorrect format"
+    } else {
+        email_error.innerHTML = "empty"
+    }
 }
 
 function username_listener(username_error, username_input) {
@@ -48,8 +54,13 @@ function username_listener(username_error, username_input) {
     if (username.length >= 3 && username.length <= 20) {
         return true;
     }
+    if (username.length === 0) {
+        username_error.innerHTML = "empty"
+        return false;
+    }
     if (username.length < 3) {
         username_error.innerHTML = "too short"
+        return false
     }
     if (username.length > 20) {
         username_error.innerHTML = "too long"
@@ -99,7 +110,7 @@ function password_listener(password_input, password_error) {
             }
         }
         // if all satisfied -> return
-        if (hasNum && hasLetter && hasCap && (6 <= len <= 20)) {
+        if (hasNum && hasLetter && hasCap && 6 <= len && len <= 20) {
             return true
         }
     }

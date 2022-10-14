@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../static/css/fluidImage.css">
     <link rel="stylesheet" href="../static/css/MainpageBase_style.css">
     <link rel="stylesheet" href="../static/css/cardContent.css">
+    <link rel="stylesheet" href="../static/css/shoppingCartMain.css">
 </head>
 <body>
     <div id="HeaderLine">
@@ -47,7 +48,7 @@
             <div>
                 {% if user == None %}
                     <div class="nav-item">
-                        <a href="{{url_for('User.login')}}" id="profile">
+                        <a href="{{url_for('User.login')}}" id="login">
                             <span>
                                 <img class="bar-pic" src="../static/images/profile.jpg">
                             </span>
@@ -98,5 +99,6 @@
 
 <script type="text/javascript" src="../static/js/fluidImagesPlayer.js"></script>
 <script type="text/javascript" src="../static/js/cardEffect.js"></script>
+<script type="text/javascript" src="../static/js/shoppingSlider.js"></script>
 
 </html>

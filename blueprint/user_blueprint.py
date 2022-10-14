@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, g, jso
 from models import Customer, Captcha
 from exts import db, mail_sender
 from flask_mail import Message
+import staticContents
 from werkzeug.security import generate_password_hash, check_password_hash
 
 user_bp = Blueprint("User", __name__, url_prefix="/user")
@@ -18,10 +19,9 @@ def login():
         user_tmp = Customer.query.filter_by(email=email).first()
         if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
             g.user = user_tmp
-            return render_template('index.html')
-        return jsonify({'code': 400, 'message': 'email or password not correct'})
-    else:
-        return render_template('login.html')
+            print(g.user)
+            return render_template("index.html", user=g.user, categories=staticContents.categories)
+    return render_template('login.html')
 
 
 @user_bp.route("/register", methods=["GET", "POST"])
@@ -132,9 +132,9 @@ def find_back():
         # check if captcha match
         if checkCaptcha(email=email, captcha=captcha):
             # get the user object
-            user_tmp = Customer.query.filter(email=email).first()
+            user_tmp = Customer.query.filter_by(email=email).first()
             # reset his password
-            user_tmp.password = password
+            user_tmp.password = generate_password_hash(password)
             db.session.commit()
             return jsonify({"code": 200, "message": "reset done"})
         return jsonify({"code": 400, "message": "Fail to reset, please try again"})

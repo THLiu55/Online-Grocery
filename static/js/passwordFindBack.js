@@ -1,6 +1,5 @@
 let email_find_back = ''
 let captcha_find_back = ''
-let password_reset = ''
 
 // get the elements (input & button & display error holder)
 const forget_pass_btn = document.getElementById("forget_password");
@@ -84,30 +83,20 @@ function email_continue() {
 
     // post the captcha to the backend
     let xhr = new XMLHttpRequest()
-    const fd = new FormData()
+    let fd = new FormData()
     fd.set("email", email_find_back)
-    xhr.open('POST', '/user/findPassword?type=captcha', true)
+    xhr.open('POST', '/user/findPassword?type=send', true)
     xhr.send(fd)
 
-    // after the email had been sent
-    xhr.onload = function() {
-        let response = JSON.parse(xhr.responseText)
-        console.log(response)
-        if (response.code === 400) {
-            // display error message
-            email_error_in_forget.innerHTML = "wrong captcha"
-        } else {
-            // redirect to password resetting page
-            CaptchaArea.style.display = 'none';
-            PasswordArea.style.display = 'block';
-            setTimeout(function () {
-                PasswordArea.style.opacity = '1';
+    // redirect to password resetting page
+    EmailArea.style.display = 'none';
+    CaptchaArea.style.display = 'block';
+    setTimeout(function () {
+                CaptchaArea.style.opacity = '1';
             }, .2)
-            setTimeout(function () {
-                CaptchaArea.style.opacity = '0';
+    setTimeout(function () {
+                EmailArea.style.opacity = '0';
             }, .2)
-        }
-    }
 }
 
 
@@ -126,7 +115,7 @@ function captcha_continue() {
 
     // send the captcha to backend
     let xhr = new XMLHttpRequest()
-    const fd = new FormData()
+    let fd = new FormData()
     fd.set("email", email_find_back)
     fd.set("captcha", captcha_find_back)
     xhr.open('POST', '/user/findPassword?type=captcha', true)
@@ -169,10 +158,10 @@ function resetPassword() {
 
     // send the new password to backend and  reset the password
     let xhr = new XMLHttpRequest()
-    const fd = new FormData()
+    let fd = new FormData()
     fd.set("email", email_find_back)
     fd.set("captcha", captcha_find_back)
-    fd.set("password", password_reset)
+    fd.set("password", password)
     xhr.open('POST', '/user/findPassword?type=reset', true)
     xhr.send(fd)
 

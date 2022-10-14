@@ -1,12 +1,10 @@
 // the effect of the pictures loaded at the first time
 
-//set timer for loading process (timeout)
 window.addEventListener('load', function() {
-
-	// setTimeout to simulate the delay from a real page load
-	setTimeout(Reload, 1000);
-
+	Reload()
 });
+
+
 //reload function (change the url of card images)
 function Reload(){
 	var category_images = document.querySelectorAll('.category-image');

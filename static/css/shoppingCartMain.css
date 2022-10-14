@@ -1,0 +1,106 @@
+/*the style of shopping cart content frame (div)*/
+.shopping-cart-present{
+    display: block;
+	margin: 2rem;
+	padding: 1rem;
+	text-align: left;
+	list-style: none;
+	font-size: 1rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+/*the style of section*/
+section{
+	width: 100%;
+	overflow-x: auto;
+}
+/* -- style of <ul>*/
+#shopping-list{
+	width: max-content;
+	display: block;
+	margin: 1rem 0;
+	padding: 0;
+	font-size: 0;
+	text-align: center;
+	list-style: none;
+}
+/* -- style of <li>*/
+.shopping-item{
+	float: left;
+	display: inline-block;
+	max-width: 10rem;
+	margin: 1rem;
+	font-size: 1rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+/* -- the hover style of <li>*/
+.shopping-item:hover{
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+/*the style of shopping item description*/
+.shopping-item-description{
+	display: block;
+	padding: 1em 0.5em;
+	color: #515151;
+	text-decoration: none;
+}
+/*the style of image inside the <a>*/
+.shopping-item-image img{
+	display: block;
+	width: 100%;
+	opacity: 0;
+}
+/*the style of <a> tag (image)*/
+.shopping-item-image{
+	display: block;
+	background: #fff center center no-repeat;
+	background-size: cover;
+}
+.shopping-item-description h2{
+	margin: 0 0 0.5em;
+}
+.shopping-item-description p{
+	margin: 0;
+}
+/*the style of prev and next buttons*/
+.slider-next{
+	border-radius: 3px;
+	position: absolute;
+	display: inline-block;
+	width: 3em;
+	right: 2.5em;
+    height: 1.5em;
+    color: #694c1f;
+    text-align: center;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+}
+.slider-prev{
+	border-radius: 3px;
+	position: absolute;
+	display: inline-block;
+	width: 3em;
+	right: 6.5em;
+    height: 1.5em;
+    color: #694c1f;
+    text-align: center;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+}
+.slider-next:hover{
+	background-color: #333333;
+	color: white;
+	transform: translateY(-0.5rem) scale(1.0125);
+}
+.slider-prev:hover{
+	background-color: #333333;
+	color: white;
+	transform: translateY(-0.5rem) scale(1.0125);
+}
+

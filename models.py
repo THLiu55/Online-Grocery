@@ -1,12 +1,15 @@
 from exts import db
 
 
+# database models
+
 class Customer(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     userName = db.Column(db.CHAR(200), unique=True, nullable=False)
     password = db.Column(db.CHAR(200), nullable=False)
     email = db.Column(db.CHAR(200), unique=True, nullable=False)
+
 
 class Captcha(db.Model):
     __tablename__ = 'captcha'
@@ -40,6 +43,7 @@ class Product(db.Model):
     price = db.Column(db.Integer, nullable=False)
     name = db.Column(db.CHAR(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    tag = db.Column(db.CHAR(200), nullable=False)
     picture_address = db.Column(db.CHAR(200), nullable=False)
     shop_id = db.Column(db.Integer, db.ForeignKey('shop.id'))
     shop = db.relationship('Shop', backref='products')

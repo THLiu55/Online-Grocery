@@ -24,7 +24,7 @@ const login_password_input = document.getElementById("login-password")
 
 
 // boolean value that represent each input is valid
-let validUserName = false, validPassword = false, validRePassword = false, validEmail = false, validCaptcha = false
+let validUserName = false, validPassword = false, validRePassword = false, validEmail = false
 
 // add animation when switching from sign up to sign in
 to_sign_up_btn.addEventListener("click", () => {
@@ -43,23 +43,21 @@ function send_email() {
         email_error.innerHTML = "empty email"
         return;
     }
-    // check again (in case email is not input by typing)
-    validEmail = checkEmailFormat(email)
-    console.log(email)
-    console.log(validEmail)
     // check if is wrong format
     if (!validEmail) {
         email_error.innerHTML = "invalid email format"
         return;
     }
     // send email
+
+    // animation when the email is sent
+    countDown(60, num_div).then(r => {})
+
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('email', document.getElementById('email_input').value)
     xhr.open('POST', '/user/register?type=send', true)
     xhr.send(fd)
-    // animation when the email is sent
-    countDown(60, num_div).then(r => {})
 
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
@@ -98,10 +96,14 @@ function register() {
     }
     if (!flag) return;
 
+    console.log(1)
+
     // check data validation:
-    if (!validEmail || !validUserName || !validPassword || !validRePassword || !validCaptcha) {
+    if (!validEmail || !validUserName || !validPassword || !validRePassword) {
         return;
     }
+
+    console.log(2)
 
     // send registered form to flask backend
     let xhr = new XMLHttpRequest()
@@ -151,7 +153,7 @@ function username_listener_sign_up() {
 }
 
 function password_listener_sign_up() {
-    validPassword = username_listener(username_error, username_input);
+    validPassword = password_listener(password_input, password_error);
 }
 
 function rePassword_listener_sign_up() {
@@ -160,10 +162,6 @@ function rePassword_listener_sign_up() {
 
 function email_listener_sign_up() {
     validEmail = email_listener(email_input, email_error);
-}
-
-function captcha_listener_sign_up() {
-    validCaptcha = captcha_listener(captcha_input, captcha_error);
 }
 
 
