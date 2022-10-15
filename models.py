@@ -27,7 +27,7 @@ class ShoppingList(db.Model):
 
 
 class Order(db.Model):
-    __tablename__ = 'order'
+    __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     good_amount = db.Column(db.Integer, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
@@ -44,7 +44,7 @@ class Product(db.Model):
     name = db.Column(db.CHAR(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     tag = db.Column(db.CHAR(200), nullable=False)
-    picture_address = db.Column(db.CHAR(200), nullable=False)
+    picture_address = db.Column(db.TEXT(2000), nullable=False)
     shop_id = db.Column(db.Integer, db.ForeignKey('shop.id'))
     shop = db.relationship('Shop', backref='products')
 
@@ -52,14 +52,15 @@ class Product(db.Model):
 class Shop(db.Model):
     __tablename__ = 'shop'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    password = db.Column(db.CHAR(200), nullable=False)
     name = db.Column(db.CHAR(200), nullable=False, unique=True)
-    logo_address = db.Column(db.CHAR(200), nullable=False)
+    logo_address = db.Column(db.TEXT(2000), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('Customer', backref='shop')
 
 
 # sequence to drop all tables:
-# drop table `order`
-# drop table `shoppingList`
-# drop table user
+# drop table `orders`;
+# drop table `shoppingList`;
 # drop table product;
 # drop table shop;
+# drop table user;

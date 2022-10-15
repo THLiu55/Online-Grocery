@@ -2,7 +2,7 @@
 #HeaderLine{
     background-color: rgb(22, 68, 83);
     width: 100%;
-    height: 3.25em;
+    height: 3.5em;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
     grid-template-rows: auto;

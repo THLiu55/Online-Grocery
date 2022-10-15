@@ -11,9 +11,9 @@ mail_sender.init_app(app)
 app.register_blueprint(user_bp)
 
 
-
 @app.route('/')
 def index():
+    db.create_all()
     return render_template("index.html", user=g.get('user', None), categories=staticContents.categories)
 
 

@@ -54,8 +54,8 @@ section{
 /*the style of image inside the <a>*/
 .shopping-item-image img{
 	display: block;
-	width: 100%;
-	opacity: 0;
+	width: 10em;
+	height: 10em;
 }
 /*the style of <a> tag (image)*/
 .shopping-item-image{
@@ -68,40 +68,5 @@ section{
 }
 .shopping-item-description p{
 	margin: 0;
-}
-/*the style of prev and next buttons*/
-.slider-next{
-	border-radius: 3px;
-	position: absolute;
-	display: inline-block;
-	width: 3em;
-	right: 2.5em;
-    height: 1.5em;
-    color: #694c1f;
-    text-align: center;
-	cursor: pointer;
-	transition: all 0.1s ease-in-out;
-}
-.slider-prev{
-	border-radius: 3px;
-	position: absolute;
-	display: inline-block;
-	width: 3em;
-	right: 6.5em;
-    height: 1.5em;
-    color: #694c1f;
-    text-align: center;
-	cursor: pointer;
-	transition: all 0.1s ease-in-out;
-}
-.slider-next:hover{
-	background-color: #333333;
-	color: white;
-	transform: translateY(-0.5rem) scale(1.0125);
-}
-.slider-prev:hover{
-	background-color: #333333;
-	color: white;
-	transform: translateY(-0.5rem) scale(1.0125);
 }
 

@@ -35,11 +35,11 @@
                 <h2 class="FormTitle">Forget password?</h2>
                 <p>Please reset your password</p>
                 <div class="inputArea">
-                    <input type="text" id="find-back-password" oninput="forget_password_listener()" placeholder="Enter your new password">
+                    <input type="password" id="find-back-password" oninput="forget_password_listener()" placeholder="Enter your new password">
                     <div class="wrong_error" id="password_error_inForget"></div>
                 </div>
                 <div class="inputArea">
-                    <input type="text" id="find-back-re-password" oninput="forget_re_password_listener()" placeholder="Confirm your new password">
+                    <input type="password" id="find-back-re-password" oninput="forget_re_password_listener()" placeholder="Confirm your new password">
                     <div class="wrong_error" id="re_password_error_inForget"></div>
                 </div>
                 <input type="button" id="continue-password" onclick="resetPassword()" class="btn" value="SUBMIT">

@@ -1,7 +1,7 @@
 import random
 from datetime import datetime
 from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify
-from models import Customer, Captcha
+from models import Customer, Captcha, ShoppingList
 from exts import db, mail_sender
 from flask_mail import Message
 import staticContents
@@ -19,7 +19,6 @@ def login():
         user_tmp = Customer.query.filter_by(email=email).first()
         if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
             g.user = user_tmp
-            print(g.user)
             return render_template("index.html", user=g.user, categories=staticContents.categories)
     return render_template('login.html')
 
@@ -73,6 +72,10 @@ def register():
             # store new customer item into database
             new_customer = Customer(password=password, userName=username, email=email)
             db.session.add(new_customer)
+            db.session.commit()
+            # initiate corresponding shopping car
+            shopping_car = ShoppingList(user_id=new_customer.id, total_cost=0)
+            db.session.add(shopping_car)
             db.session.commit()
             g.user = new_customer
             return jsonify({'code': 200, 'message': ""})

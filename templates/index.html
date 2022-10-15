@@ -43,109 +43,25 @@
                     </li>
                 {% endfor %}
             </ul>
+            {% if user != None %}
             <div class="shopping-cart-present">
                 <h2>Your Shopping Cart Content</h2>
-                <div class="slider-prev">
-                    <
-                </div>
-                <div class="slider-next">
-                    >
-                </div>
                 <section id="slider">
                     <ul id="shopping-list">
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
-                        <li class="shopping-item">
-                            <a class="shopping-item-image" href="" style="background-image: url(../static/images/books100.png)">
-                                <img src="../static/images/books100.png" alt="Books">
-                            </a >
-                            <a class="shopping-item-description" href="" >
-                                <h2>something</h2>
-                                <p>$99.9</p >
-                            </a >
-                        </li>
+                        {% for order in user.shoppingList[0].orders %}
+                            <li class="shopping-item">
+                                <a class="shopping-item-image" href="">
+                                    <img src="{{ order.product.picture_address }}" alt="{{ order.product.description }}">
+                                </a>
+                                <a class="shopping-item-description" href="" >
+                                    <p>${{ order.product.price }}</p >
+                                </a >
+                            </li>
+                        {% endfor %}
                     </ul>
                 </section>
             </div>
+            {% endif %}
         </div>
 
 
