@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="../static/css/Login_style.css">
 </head>
 <body>
-<!-- forget password part -->
+    <!-- forget password part -->
     <div class="forget-pass-component">
+        <!-- input email -->
         <div class="InputFrame" id="email-area">
             <form class="forget-input-area" novalidate>
                 <h2 class="FormTitle">Forget password?</h2>
@@ -19,6 +20,7 @@
                 <input type="button" id="continue-email" onclick=email_continue() class="btn" value="continue">
             </form>
         </div>
+        <!-- input captcha -->
         <div class="InputFrame" id="captcha-area">
             <form class="forget-input-area" novalidate>
                 <h2 class="FormTitle">Forget password?</h2>
@@ -30,6 +32,7 @@
                 <input type="button" id="continue-captcha" onclick=captcha_continue() class="btn" value="continue">
             </form>
         </div>
+        <!-- reset password -->
         <div class="InputFrame" id="password-area">
             <form class="forget-input-area" novalidate>
                 <h2 class="FormTitle">Forget password?</h2>
@@ -48,13 +51,15 @@
         <button class="btn-in-forget" id="back_btn">Back to LOGIN</button>
     </div>
 
-<!-- back effect part -->
+    <!-- back effect part -->
     <div class="back_effect"></div>
 
-<!-- login part -->
+    <!-- login/signup part -->
     <div class="Component">
+        <!-- forms area -->
         <div class="form_components">
             <div class="SignIn-form">
+                <!-- login form -->
                 <form class="log_in" method="post" name="form1">
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
@@ -68,6 +73,7 @@
                 </form>
             </div>
             <div class="SignUp-form">
+                <!-- signup form -->
                 <form class="sign_up" method="post" name="form2">
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
@@ -100,7 +106,9 @@
                 </form>
             </div>
         </div>
+        <!-- curtain component area -->
         <div class="curtain_components">
+            <!-- left curtain component -->
             <div class="curtain left-curtain">
                 <div class="content">
                     <img class="AdPicture" src="../static/images/Log.svg">
@@ -113,6 +121,7 @@
                 </div>
                 <img id="left-logo" src="../static/images/Logo.svg">
             </div>
+            <!-- right curtain component -->
             <div class="curtain right_curtain">
                 <img id="right-logo" src="../static/images/Logo.svg">
                 <div class="content">

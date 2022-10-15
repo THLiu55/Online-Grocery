@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="../static/css/shoppingCartMain.css">
 </head>
 <body>
+    <!-- top bar area -->
     <div id="HeaderLine">
+        <!-- logo for website -->
         <div id="Logo">
             <div id="imageFrame">
                 <img id="webLogo" src="../static/images/Logo.svg" />
@@ -28,6 +30,7 @@
                 <img id="webLogo2" src="../static/images/Logo2.svg" />
             </div>
         </div>
+        <!-- search area -->
         <div id="SearchArea">
             <form>
                 <div id="inputFrame">
@@ -44,8 +47,10 @@
                 </div>
             </form>
         </div>
+        <!-- personal information area -->
         <div id="PersonalInfo">
             <div>
+                <!-- user profile -->
                 {% if user == None %}
                     <div class="nav-item">
                         <a href="{{url_for('User.login')}}" id="login">
@@ -63,6 +68,7 @@
                         </a>
                     </div>
                 {% endif %}
+                <!-- shopping cart -->
                 <div class="nav-item">
                     <a href="{{url_for('User.shopping_bag')}}" id="shopping_cart">
                         <span>
@@ -70,6 +76,7 @@
                         </span>
                     </a>
                 </div>
+                <!-- login/logout state -->
                 {% if user == None %}
                     <div class="nav-item">
                         <a href="{{url_for('User.login')}}" class="state" id="login-btn">

@@ -2,7 +2,9 @@
 {% block title %} home {% endblock %}
 
 {% block body %}
+    <!-- this is the area of basic content in main page -->
     <div class="whole-container">
+        <!-- top fluid image slider (below the top bar) -->
         <div id="fluid-image-container">
             <ul id="image-list">
                 <li>
@@ -18,7 +20,7 @@
                     <div class="block-item" id="b4"></div>
                 </li>
                 <li>
-<!--                    same id to make the image player recycle-->
+                <!--  same id to make the image player recycle-->
                     <div class="block-item" id="b1"></div>
                 </li>
             </ul>
@@ -29,6 +31,7 @@
                 >
             </div>
         </div>
+        <!-- classification cards area -->
         <div class="content-area">
             <ul id="card-list">
                 {% for category in categories %}
@@ -43,6 +46,7 @@
                     </li>
                 {% endfor %}
             </ul>
+            <!-- shopping cart area -->
             {% if user != None %}
             <div class="shopping-cart-present">
                 <h2>Your Shopping Cart Content</h2>

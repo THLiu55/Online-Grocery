@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 
-/*设置全局字体*/
+/*set font for global use*/
 body, input{
     font-family: Helvetica;
 }
-
+/*the style of the intro picture (in the login/signup page)*/
 .AdPicture{
     width: 25em;
     height: 25em;
@@ -17,7 +17,7 @@ body, input{
     transition-delay: 0.4s;
 }
 
-/*调整整体布局*/
+/*set the layout for the entire login/signup component*/
 .Component{
     position: relative;
     width: 100%;
@@ -25,7 +25,7 @@ body, input{
     min-height: 100vh;
     overflow: hidden;
 }
-
+/*the style of forms area (div)*/
 .form_components{
     position: absolute;
     width: 100%;
@@ -33,7 +33,7 @@ body, input{
     top: 0;
     left: 0;
 }
-
+/*layout for login form (div)*/
 .SignIn-form{
     position: absolute;
     top: 50%;
@@ -45,7 +45,7 @@ body, input{
     z-index: 1;
 }
 
-
+/*layout for signup form (div)*/
 .SignUp-form {
     margin-left: 10%;
     position: absolute;
@@ -59,18 +59,7 @@ body, input{
     z-index: 7;
 }
 
-/*form{*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    flex-direction: column;*/
-/*    padding: 0 5rem;*/
-/*    transition: all 0.2s 0.7s; */
-/*    overflow: hidden;*/
-/*    grid-column: 1 / 2;*/
-/*    grid-row: 1 / 2; */
-/*}*/
-
+/*signup form (form)*/
 .sign_up{
     z-index: 1;
 }
@@ -78,7 +67,7 @@ body, input{
 .sign_up .inputArea{
     margin: 1.2em 0;
 }
-
+/*login form (form)*/
 .log_in{
     z-index: 2;
     display: flex;
@@ -92,7 +81,7 @@ body, input{
     grid-row: 1 / 2;
 }
 
-/*字体，登陆注册框样式调整*/
+/*the style of font and login/signup framework*/
 .FormTitle{
     font-size: 2.5rem;
     color: #444;
@@ -115,14 +104,14 @@ body, input{
 
 /*the style to extend the gap between the login button and the input frame*/
 #attention{
-    margin-bottom: 1forgetem;
+    margin-bottom: 1em;
 }
 
 .email_area{
     display: flex;
     flex-direction: row;
 }
-
+/*the style of validation error information present*/
 .wrong_error{
     font-size: 12px;
     color: red;
@@ -131,7 +120,7 @@ body, input{
 .email_area #email_error{
     display: block;
 }
-
+/*the style of input frame in inputArea (div)*/
 .inputArea input{
     background: none;
     outline: none;
@@ -152,8 +141,6 @@ body, input{
     margin-bottom: 40px;
     transition: all .2s ease;
 }
-/*the animation of appearance and disappearance*/
-
 
 /*the style of InputArea in forget password*/
 .forget-input-area .inputArea{
@@ -215,7 +202,7 @@ body, input{
     width: 100%;
     margin-right: 1em;
 }
-
+/*area of captcha send button*/
 #send_button{
     width: 80px;
     padding: 0 1em;
@@ -230,7 +217,7 @@ body, input{
     cursor: pointer;
     transition: 0.5s;
 }
-
+/*style of curtain components*/
 .curtain_components{
     position: absolute;
     height: 100%;
@@ -240,7 +227,7 @@ body, input{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-
+/*style of sphere left*/
 .Component:before{
     content: "";
     position: absolute;
@@ -253,7 +240,7 @@ body, input{
     border-radius: 50%;
     z-index: 4;
 }
-
+/*style of sphere right*/
 .Component:after{
     content: "";
     position: absolute;
@@ -266,7 +253,7 @@ body, input{
     border-radius: 50%;
     z-index: 2;
 }
-
+/*style of curtain(div)*/
 .curtain{
     display: flex;
     flex-direction: column;
@@ -274,25 +261,25 @@ body, input{
     justify-content: space-around;
     text-align: center;
 }
-
+/*--left*/
 .left-curtain{
     pointer-events: all;
     padding: 3rem 17% 2rem 12%;
     z-index: 6;
 }
-
+/*--right*/
 .right_curtain{
     pointer-events: none;
     padding: 3rem 12% 2rem 17%;
     z-index: 8;
 }
-
+/*style of logo in the left curtain*/
 #left-logo{
     position: absolute;
     bottom: 0.5em;
     left: 0.5em;
 }
-
+/*style of the content inside the curtain*/
 .curtain .content{
     color: #fff;
     transition: transform 0.9s ease-in-out;
@@ -306,7 +293,7 @@ body, input{
 #right-logo{
     transition: transform 0.9s ease-in-out;
 }
-
+/*font set in the curtain*/
 .curtain h3{
     font-weight: 600;
     line-height: 1;
@@ -378,30 +365,30 @@ body, input{
 
 /*The previous css defines no position*/
 
-/*左边的球登陆态*/
+/*left sphere -- login state*/
 .Component.sign-up-mode:before {
     transform: translate(-1000px, 1000px);
   }
 
-/*左边的幕布加logo注册态*/
+/*left curtain + logo -- signup state*/
 .Component.sign-up-mode .left-curtain .content,
 .Component.sign-up-mode .left-curtain #left-logo {
     transform: translateX(-1000px);
 }
 
-/*右边的幕布加logo登陆态*/
+/*right curtain + logo -- login state*/
 .Component .right_curtain .content,
 .Component .right_curtain #right-logo{
     transform: translateX(1000px);
 }
 
-/*右边的幕布加logo注册态*/
+/*right curtain + logo -- signup state*/
 .Component.sign-up-mode .right_curtain .content,
 .Component.sign-up-mode .right_curtain #right-logo{
     transform: translateX(-200px);
 }
 
-/*pointer-event切换*/
+/*pointer-event switch*/
 .Component.sign-up-mode .right_curtain{
     pointer-events: all;
 }
@@ -410,22 +397,22 @@ body, input{
     pointer-events: none;
 }
 
-/*登陆框登陆态*/
+/*login area -- login state*/
 .Component .SignIn-form {
     transform: translate(-50%, -50%);
 }
 
-/*登陆框注册态*/
+/*login area -- signup state*/
 .Component.sign-up-mode .SignIn-form {
     transform: translate(50%, -50%);
 }
 
-/*注册框注册态*/
+/*signup area -- signup state*/
 .Component.sign-up-mode .SignUp-form {
     transform: translate(50%, -50%);
 }
 
-/*右边的球注册态*/
+/*right sphere -- signup state*/
 .Component.sign-up-mode:after {
     transform: translate(-1000px, 1000px);
 }
