@@ -4,6 +4,8 @@ import os
 SQLALCHEMY_DATABASE_URI = os.environ.get("DB_URI")
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
+SECRET_KEY = os.environ.get('SECRETE_KEY')
+
 # email configurations
 MAIL_SERVER = "smtp.163.com"
 MAIL_PORT = 465
