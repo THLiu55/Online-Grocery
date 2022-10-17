@@ -136,6 +136,12 @@ function register() {
                 case 'email not validate':
                     email_error.innerHTML = msg
                     break
+                case 'wrong username format':
+                    username_error.innerHTML = msg
+                    break
+                case 'wrong password format':
+                    password_error.innerHTML = msg
+                    break
             }
         } else {
             // go to log in page and load email and password automatically

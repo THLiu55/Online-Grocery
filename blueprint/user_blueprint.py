@@ -56,9 +56,15 @@ def register():
         return jsonify({'code': 400, 'message': "registered email"})
     else:  # confirm register clicked, go here
         form = request.form
-        # if the computer goes here, the format validation has all been checked
         username = form.get("username")
         password = generate_password_hash(form.get("password"))
+        # in case frontend vlidation not work: (double check)
+        check = formatCheck(username=username, password=password)
+        if check == 1:
+            return jsonify({'code': 400, 'message': "wrong username format"})
+        if check == 2:
+            return jsonify({'code': 400, 'message': "wrong password format"})
+        # if the computer goes here, the format validation has all been checked
         email = form.get("email")
         captcha = form.get("captcha")
         user_tmp = Customer.query.filter_by(email=email).first()
@@ -151,7 +157,27 @@ def checkCaptcha(email, captcha):
     return False
 
 
-
+# check input format in register form
+def formatCheck(username, password):
+    name_len = len(username)
+    if name_len < 3 or name_len > 20:
+        return 1  # return 1 means username format problem
+    have_letter = False
+    have_num = False
+    have_cap = False
+    password_len = len(password)
+    for s in password:
+        if s.isdigit():
+            have_num = True
+            continue
+        if s.isalpha():
+            have_letter = True
+        if s.isupper():
+            have_cap = True
+    print(str(have_num) + " " + str(have_cap) + " " + str(have_letter))
+    if have_num and have_cap and have_letter and 20 >= password_len >= 6:
+        return 0  # return 0 means both password and username have right format
+    return 2  # return 2 means wrong format on password
 
 
 # generate captcha (random int * 6)
