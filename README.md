@@ -3,8 +3,6 @@
 
 To execute the app, you must add the following environmental variables:
 
-DB_URI=sqlite:///(url for your empty sqlite database)
-
 MAIL_USERNAME=thliu328@163.com;
 
 MAIL_PASSWORD=UPYBHLJLKQZZUVRA

@@ -1,7 +1,7 @@
 # database configurations
 import os
 
-SQLALCHEMY_DATABASE_URI = os.environ.get("DB_URI")
+SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getcwd() + os.path.sep + "online_shop.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 SECRET_KEY = os.environ.get('SECRETE_KEY')
