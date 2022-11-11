@@ -1,8 +1,9 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, session
 from exts import db, mail_sender
 from blueprint.user_blueprint import user_bp
 import staticContents
 import configs
+from models import Customer
 
 app = Flask(__name__)
 app.config.from_object(configs)
@@ -13,8 +14,11 @@ app.register_blueprint(user_bp)
 
 @app.route('/')
 def index():
-    db.create_all()
-    return render_template("index.html", user=g.get('user', None), categories=staticContents.categories)
+    if "email" in session:
+        email = session["email"]
+        user = Customer.query.filter_by(email=email).first()
+        return render_template("index.html", user=user, categories=staticContents.categories)
+    return render_template("index.html", user=None, categories=staticContents.categories)
 
 
 if __name__ == '__main__':

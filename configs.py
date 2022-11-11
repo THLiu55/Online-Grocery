@@ -4,7 +4,7 @@ import os
 SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getcwd() + os.path.sep + "online_shop.db"
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-SECRET_KEY = os.environ.get('SECRETE_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # email configurations
 MAIL_SERVER = "smtp.163.com"

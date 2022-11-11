@@ -14,6 +14,7 @@
                 <h2 class="FormTitle">Forget password?</h2>
                 <p>Please enter your email address</p>
                 <div class="inputArea">
+
                     <input type="email" id="find-back-email" oninput="forget_email_listener()" placeholder="Your email address">
                     <div class="wrong_error" id="email_error_inForget"></div>
                 </div>
@@ -60,37 +61,43 @@
         <div class="form_components">
             <div class="SignIn-form">
                 <!-- login form -->
-                <form class="log_in" method="post" name="form1">
+                <form id="log-in-form" class="log_in" method="post" name="form1">
+                    {{ login_form.hidden_tag() }}
                     <h2 class="FormTitle">Log in</h2>
                     <div class="inputArea">
-                        <input type="text" name="email" id="login-email" placeholder="User email">
+                        {{ login_form.email_login(id="login-email", placeholder="User email") }}
                     </div>
                     <div class="inputArea" id="attention">
-                        <input type="password" name="password" id="login-password" placeholder="Password">
+                        {{ login_form.password_login(id="login-password", placeholder="Password") }}
                     </div>
-                    <input type="submit" class="btn" value="Log in" onclick="login()"/>
+
+                    <button type="button" class="btn" onclick="login()">Log in</button>
+
                     <button type="button" id="forget_password">Forget password?</button>
                 </form>
             </div>
             <div class="SignUp-form">
                 <!-- signup form -->
-                <form class="sign_up" method="post" name="form2">
+
+                <form id="sign-up-form" class="sign_up" method="post" name="form2">
+
+                    {{ register_form.hidden_tag() }}
                     <h2 class="FormTitle">Sign up</h2>
                     <div class="inputArea">
-                        <input type="text" name="username" id="username_input" oninput=username_listener_sign_up() placeholder="Username">
+                        {{ register_form.username(id="username_input", oninput='username_listener_sign_up()', placeholder="Username") }}
                         <div class="wrong_error" id="username_error"></div>
                     </div>
                     <div class="inputArea">
-                        <input type="password" id="password_input" name="password" oninput=password_listener_sign_up() placeholder="Password">
+                        {{ register_form.password(id="password_input", oninput="password_listener_sign_up()", placeholder="Password") }}
                         <div class="wrong_error" id="password_error"></div>
                     </div>
                     <div class="inputArea">
-                        <input type="password" id="repassword_input" oninput=rePassword_listener_sign_up() placeholder="Password confirm">
+                        {{ register_form.repassword(id="repassword_input", oninput="rePassword_listener_sign_up()", placeholder="Password confirm") }}
                         <div class="wrong_error" id="Repassword_error"></div>
                     </div>
                     <div class="inputArea">
                         <div class="email_area">
-                            <input type="email" id="email_input" name="email" oninput=email_listener_sign_up() placeholder="Email address">
+                            {{ register_form.email(id="email_input", oninput="email_listener_sign_up()", placeholder="Email address") }}
                             <button type="button" id="send_button" onclick="send_email()">
                                 <div id="count">SEND</div>
                             </button>
@@ -99,7 +106,7 @@
                     </div>
 
                     <div class="inputArea">
-                        <input type="text" id="captcha_input" name="captcha" placeholder="Captcha">
+                        {{ register_form.captcha(id="captcha_input", placeholder="Captcha", oninput="captcha_listener_sign_up()") }}
                         <div class="wrong_error" id="captcha_error"></div>
                     </div>
                     <input type="button" class="btn" value="SignUp" onclick="register()">

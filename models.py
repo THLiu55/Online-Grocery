@@ -10,7 +10,6 @@ class Customer(db.Model):
     password = db.Column(db.CHAR(200), nullable=False)
     email = db.Column(db.CHAR(200), unique=True, nullable=False)
 
-
 class Captcha(db.Model):
     __tablename__ = 'captcha'
     email = db.Column(db.CHAR(200), primary_key=True)

@@ -2,6 +2,7 @@
 const to_sign_in_btn = document.getElementById("to-logIn");
 const to_sign_up_btn = document.getElementById("to-signUp");
 const container = document.getElementsByClassName("Component")[0];
+const register_submit_btn = document.getElementById('register_submit')
 
 // error message displayer
 const email_error = document.getElementById("email_error");
@@ -37,18 +38,18 @@ to_sign_in_btn.addEventListener("click", () => {
 
 // send email
 function send_email() {
-    // check if is empty
-    let email = email_input.value
-    if (email === '') {
-        email_error.innerHTML = "empty email"
-        return;
-    }
-    // check if is wrong format
-    if (!validEmail) {
-        email_error.innerHTML = "invalid email format"
-        return;
-    }
-    // send email
+    // // check if is empty
+    // let email = email_input.value
+    // if (email === '') {
+    //     email_error.innerHTML = "empty email"
+    //     return;
+    // }
+    // // check if is wrong format
+    // if (!validEmail) {
+    //     email_error.innerHTML = "invalid email format"
+    //     return;
+    // }
+    // // send email
 
     // animation when the email is sent
     countDown(60, num_div).then(r => {})
@@ -56,66 +57,61 @@ function send_email() {
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('email', document.getElementById('email_input').value)
-    xhr.open('POST', '/user/register?type=send', true)
+    xhr.open('POST', '/user/login?type=send', true)
     xhr.send(fd)
 
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
         console.log(response)
-        if (response.code === 400){  // error notification for registered email
-            email_error.innerHTML = response.message;
-        }
     }
 
 }
 
 function register() {
-    // check empty
-    let flag = true
 
-    if (username_input.value === '') {
-        username_error.innerHTML = 'empty user name'
-        flag = false;
-    }
-    if (password_input.value === '') {
-        password_error.innerHTML = 'empty password'
-        flag = false;
-    }
-    if (repassword_input.value === '') {
-        repassword_error.innerHTML = 'empty password'
-        flag = false;
-    }
-    if (email_input.value === '') {
-        email_error.innerHTML = 'empty email'
-        flag = false;
-    }
-    if (captcha_input.value === '') {
-        captcha_error.innerHTML = 'empty captcha'
-        flag = false;
-    }
-    if (!flag) return;
-
-    console.log(1)
-
-    // check data validation:
-    if (!validEmail || !validUserName || !validPassword || !validRePassword) {
-        return;
-    }
-
-    console.log(2)
+    // // check empty
+    // let flag = true
+    //
+    // if (username_input.value === '') {
+    //     username_error.innerHTML = 'empty user name'
+    //     flag = false;
+    // }
+    // if (password_input.value === '') {
+    //     password_error.innerHTML = 'empty password'
+    //     flag = false;
+    // }
+    // if (repassword_input.value === '') {
+    //     repassword_error.innerHTML = 'empty password'
+    //     flag = false;
+    // }
+    // if (email_input.value === '') {
+    //     email_error.innerHTML = 'empty email'
+    //     flag = false;
+    // }
+    // if (captcha_input.value === '') {
+    //     captcha_error.innerHTML = 'empty captcha'
+    //     flag = false;
+    // }
+    // if (!flag) return;
+    //
+    // // check data validation:
+    // if (!validEmail || !validUserName || !validPassword || !validRePassword) {
+    //     return;
+    // }
 
     // send registered form to flask backend
     let xhr = new XMLHttpRequest()
-    const fd = new FormData(document.form2)
-    xhr.open('POST', '/user/register?type=register', true)
+    xhr.open('POST', '/user/login?type=signup', true)
+    xhr.setRequestHeader("X-CSRFToken", "{{ register_form.csrf_token._value() }}")
+    let form = document.getElementById("sign-up-form")
+    const fd = new FormData(form)
     xhr.send(fd)
 
     // display error messages
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
-        console.log(response)
-        if (response.code === 400){
+        if (response.code === 400) {
             let msg = response.message
             switch (msg) {
                 case 'captcha out of time':
@@ -143,6 +139,10 @@ function register() {
                     password_error.innerHTML = msg
                     break
             }
+        } else if (response.code === 401){
+            let msg = response.message
+            console.log(msg)
+
         } else {
             // go to log in page and load email and password automatically
             container.classList.remove("sign-up-mode");
@@ -170,16 +170,29 @@ function email_listener_sign_up() {
     validEmail = email_listener(email_input, email_error);
 }
 
-
-
-function login() {
-    document.form2.action = "/user/login"
-    document.form2.submit()
+function captcha_listener_sign_up() {
+    captcha_error.innerHTML = ""
 }
 
 
-console.log('here')
 
+function login() {
+    let xhr = new XMLHttpRequest()
+    xhr.open('POST', '/user/login?type=login', true)
+    xhr.setRequestHeader("X-CSRFToken", "{{ login_form.csrf_token._value() }}")
+    let form = document.getElementById("log-in-form")
+    xhr.send(new FormData(form))
+    xhr.onload = function() {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            console.log(200)
+            // redirect()
+            window.open("/")
+        } else {
+            console.log(response.message)
+        }
+    }
+}
 
 
 

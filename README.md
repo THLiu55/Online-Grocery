@@ -3,9 +3,9 @@
 
 To execute the app, you must add the following environmental variables:
 
-MAIL_USERNAME=thliu328@163.com;
+MAIL_USERNAME=web202211@163.com;
 
-MAIL_PASSWORD=UPYBHLJLKQZZUVRA
+MAIL_PASSWORD=SJYWULJIKRJSIAUW
 
 SECRET_KEY=dheugdu//::1234ty
 

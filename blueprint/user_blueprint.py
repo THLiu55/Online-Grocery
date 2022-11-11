@@ -1,6 +1,8 @@
 import random
 from datetime import datetime
-from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify
+from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify, session
+
+from forms import RegisterForm, LoginForm
 from models import Customer, Captcha, ShoppingList
 from exts import db, mail_sender
 from flask_mail import Message
@@ -12,85 +14,98 @@ user_bp = Blueprint("User", __name__, url_prefix="/user")
 
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        form = request.form
-        email = form['email']
-        password = form['password']
-        user_tmp = Customer.query.filter_by(email=email).first()
-        if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
-            g.user = user_tmp
-            return render_template("index.html", user=g.user, categories=staticContents.categories)
-    return render_template('login.html')
+    login_form = LoginForm()
+    register_form = RegisterForm()
 
-
-@user_bp.route("/register", methods=["GET", "POST"])
-def register():
-    method = request.args.get('type')
-    if method == "send":  # if send email button clicked, go here
-        # get email address
-        form = request.form
-        email = form["email"]
-        # here the email format validity has already been checked
-        user_tmp = Customer.query.filter_by(email=email).first()  # check if the email has been registered
-        if user_tmp is None:
-            # generate the captcha of the account
-            captcha = generateCaptcha()
-            # store the email-captcha pair to database
-            pair = Captcha.query.filter_by(email=email).first()
-            if pair is None:  # no pair -> init a new pair
-                pair = Captcha(email=email, captcha=captcha, create_time=datetime.now())
-                db.session.add(pair)
-                db.session.commit()
-            else:  # have old pair -> update captcha & create time
-                pair.captcha = captcha
-                pair.create_time = datetime.now()
-                db.session.commit()
-            # send email to user's email address
-            message = Message(
-                subject="Welcome to register GoGrocery",
-                recipients=[email],
-                html=render_template('email_register.html', captcha=captcha)
-            )
-            mail_sender.send(message)
-            return jsonify({'code': 200})
-        return jsonify({'code': 400, 'message': "registered email"})
-    else:  # confirm register clicked, go here
-        form = request.form
-        username = form.get("username")
-        password = generate_password_hash(form.get("password"))
-        # in case frontend vlidation not work: (double check)
-        check = formatCheck(username=username, password=password)
-        if check == 1:
-            return jsonify({'code': 400, 'message': "wrong username format"})
-        if check == 2:
-            return jsonify({'code': 400, 'message': "wrong password format"})
-        # if the computer goes here, the format validation has all been checked
-        email = form.get("email")
-        captcha = form.get("captcha")
-        user_tmp = Customer.query.filter_by(email=email).first()
-        user_tmp2 = Customer.query.filter_by(userName=username).first()
-        pair = Captcha.query.filter_by(email=email).first()
-        if (user_tmp is None) and (user_tmp2 is None) and (pair is not None):  # if username is unique & email with captcha has been sent
-            if (datetime.now() - pair.create_time).seconds > 1800:  # check if captcha is out of date
-                return {'code': 400, 'message': "captcha out of time"}
-            if pair.captcha != captcha:  # check if captcha is correct
-                return {'code': 400, 'message': "captcha wrong"}
-            # store new customer item into database
-            new_customer = Customer(password=password, userName=username, email=email)
-            db.session.add(new_customer)
-            db.session.commit()
-            # initiate corresponding shopping car
-            shopping_car = ShoppingList(user_id=new_customer.id, total_cost=0)
-            db.session.add(shopping_car)
-            db.session.commit()
-            g.user = new_customer
-            return jsonify({'code': 200, 'message': ""})
-        if user_tmp is not None:
+    if request.method == 'GET':
+        return render_template('login.html', register_form=register_form, login_form=login_form)
+    else:
+        operation = request.args.get('type')
+        if operation == "login":
+            if login_form.validate_on_submit():
+                email = login_form.email_login.data
+                password = login_form.password_login.data
+                user_tmp = Customer.query.filter_by(email=email).first()
+                if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
+                    session["email"] = user_tmp.email
+                    print("1")
+                    return jsonify({"code": 200, 'message': "ok"})
+                print("2")
+                return jsonify({"code": 400, 'message': "wrong email or password"})
+            else:
+                print("3")
+                # get and return the first error message generate by validator
+                for e in login_form.errors:
+                    return jsonify({'code': 400, 'message': login_form.errors.get(e)[0]})
+        elif operation == "signup":
+            if register_form.validate_on_submit():
+                email = register_form.email.data
+                captcha = register_form.captcha.data
+                username = register_form.username.data
+                password = register_form.password.data
+                user_tmp = Customer.query.filter_by(email=email).first()
+                user_tmp2 = Customer.query.filter_by(userName=username).first()
+                pair = Captcha.query.filter_by(email=email).first()
+                if (user_tmp is None) and (user_tmp2 is None) and (pair is not None):  # if username is unique & email with captcha has been sent
+                    if (datetime.now() - pair.create_time).seconds > 1800:  # check if captcha is out of date
+                        return jsonify({'code': 400, 'message': "captcha out of time"})
+                    if pair.captcha != captcha:  # check if captcha is correct
+                        return jsonify({'code': 400, 'message': "captcha wrong"})
+                    # store new customer item into database
+                    new_customer = Customer(password=generate_password_hash(password), userName=username, email=email)
+                    db.session.add(new_customer)
+                    db.session.commit()
+                    # initiate corresponding shopping car
+                    shopping_car = ShoppingList(user_id=new_customer.id, total_cost=0)
+                    db.session.add(shopping_car)
+                    db.session.commit()
+                    g.user = new_customer
+                    return jsonify({'code': 200, 'message': ""})
+                if user_tmp is not None:
+                    return jsonify({'code': 400, 'message': "registered email"})
+                if user_tmp2 is not None:
+                    return jsonify({'code': 400, 'message': "registered user name"})
+                if pair is None:
+                    return jsonify({'code': 400, 'message': "email not validate"})
+            else:
+                # get and return the first error message generate by validator
+                for e in register_form.errors:
+                    return jsonify({'code': 400, 'message': register_form.errors.get(e)[0]})
+        elif operation == "send":
+            # get email address
+            form = request.form
+            email = form["email"]
+            user_tmp = Customer.query.filter_by(email=email).first()  # check if the email has been registered
+            if user_tmp is None:
+                # generate the captcha of the account
+                captcha = generateCaptcha()
+                # store the email-captcha pair to database
+                pair = Captcha.query.filter_by(email=email).first()
+                if pair is None:  # no pair -> init a new pair
+                    pair = Captcha(email=email, captcha=captcha, create_time=datetime.now())
+                    db.session.add(pair)
+                    db.session.commit()
+                else:  # have old pair -> update captcha & create time
+                    pair.captcha = captcha
+                    pair.create_time = datetime.now()
+                    db.session.commit()
+                # send email to user's email address
+                message = Message(
+                    subject="Welcome to register GoGrocery",
+                    recipients=[email],
+                    html=render_template('email_register.html', captcha=captcha)
+                )
+                mail_sender.send(message)
+                return jsonify({'code': 200})
             return jsonify({'code': 400, 'message': "registered email"})
-        if user_tmp2 is not None:
-            return jsonify({'code': 400, 'message': "registered user name"})
-        if pair is None:
-            return jsonify({'code': 400, 'message': "email not validate"})
+        else:
+            return render_template("index.html", user=g.user, categories=staticContents.categories)
+
+
+
+
+
+
 
 
 # backend support for finding back (reset) password
@@ -191,7 +206,7 @@ def generateCaptcha():
 
 @user_bp.route("/profile")
 def profile():
-    if user is None:
+    if "email" in session:
         return render_template('login.html')
     else:
         return render_template('profile.html')
@@ -199,7 +214,7 @@ def profile():
 
 @user_bp.route('/shopping-bag')
 def shopping_bag():
-    if user is None:
+    if "email" in session:
         return render_template('login.html')
     else:
         return render_template('shopping_bag.html')
@@ -207,8 +222,7 @@ def shopping_bag():
 
 @user_bp.route('/logout')
 def logout():
-    global user
-    user = None
+    del session["email"]
     return redirect(url_for("index"))
 
 
