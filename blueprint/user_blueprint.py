@@ -207,17 +207,17 @@ def generateCaptcha():
 @user_bp.route("/profile")
 def profile():
     if "email" in session:
-        return render_template('login.html')
-    else:
         return render_template('profile.html')
+    else:
+        return redirect(url_for("login"))
 
 
 @user_bp.route('/shopping-bag')
 def shopping_bag():
     if "email" in session:
-        return render_template('login.html')
-    else:
         return render_template('shopping_bag.html')
+    else:
+        return redirect(url_for("login"))
 
 
 @user_bp.route('/logout')

@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>Profile</p>
-</body>
-</html>
+{% extends "MainpageBase.html" %}
+{% block title %} profile {% endblock %}
+
+{% block body %}
+    <!-- register input area -->
+    <div class="register-component">
+        <div class="register-input-frame">
+            <form class="shop-register-input-area" novalidate>
+                <h2 class="ShopRegistrationFormTitle">Shop Registration</h2>
+                <div class="Shop-inputArea">
+                    <p>Please enter the name of your shop</p>
+                    <input type="text" id="shop-name"  placeholder="Your shop name">
+                    <div class="wrong_error" ></div>
+                </div>
+                <div class="Shop-inputAre">
+                    <p>Please enter the description of your shop</p>
+                    <textarea id="shop-description"></textarea>
+                </div>
+                <input type="button" id="shop-register" class="profile-confirm-btn" value="Registration Confirm">
+            </form>
+        </div>
+        <button class="btn-in-forget" id="profile-back-btn">Back to PROFILE</button>
+    </div>
+
+    <!-- back effect part -->
+    <div class="profile_back_effect"></div>
+
+    <!-- main page part -->
+    <div class="profileInfo">
+        <div class="personalInfoCard">
+            <div class="profile-left-pic">
+                <img id="profile-pic" src="../static/images/profile-login.jpg" />
+            </div>
+            <div class="profile-right-info">
+                <div class="profile-header">
+                    <h2>User Profile</h2>
+                </div>
+                <div class="info-card">
+                    <p class="info-card-title">User name:</p>
+                    <p>Grey</p>
+                </div>
+                <div class="info-card">
+                    <p class="info-card-title">User email:</p>
+                    <p>2639230771@qq.com</p>
+                </div>
+                <div class="profile-btn-area">
+                    <button type="button" id="shop-register-btn">Register Shop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
