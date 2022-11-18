@@ -8,13 +8,21 @@
             <form class="shop-register-input-area" novalidate>
                 <h2 class="ShopRegistrationFormTitle">Shop Registration</h2>
                 <div class="Shop-inputArea">
-                    <p>Please enter the name of your shop</p>
-                    <input type="text" id="shop-name"  placeholder="Your shop name">
+                    <p>Please upload the logo picture for your shop</p>
+                    <div id="preview-pic-frame">
+                        <img id="preview-pic" />
+                    </div>
+                    <input type="file" id="shop-logo-input" value="choose file">
                     <div class="wrong_error" ></div>
                 </div>
-                <div class="Shop-inputAre">
+                <div class="Shop-inputArea">
+                    <p>Please enter the name of your shop</p>
+                    <input type="text" id="shop-name-input"  placeholder="Your shop name">
+                    <div class="wrong_error" ></div>
+                </div>
+                <div class="Shop-inputArea">
                     <p>Please enter the description of your shop</p>
-                    <textarea id="shop-description"></textarea>
+                    <textarea id="shop-description-input"></textarea>
                 </div>
                 <input type="button" id="shop-register" class="profile-confirm-btn" value="Registration Confirm">
             </form>
@@ -36,12 +44,16 @@
                     <h2>User Profile</h2>
                 </div>
                 <div class="info-card">
-                    <p class="info-card-title">User name:</p>
-                    <p>Grey</p>
+                    <p class="info-card-title">
+                        <span>User name:</span>
+                        <span>Grey</span>
+                    </p>
                 </div>
                 <div class="info-card">
-                    <p class="info-card-title">User email:</p>
-                    <p>2639230771@qq.com</p>
+                    <p class="info-card-title">
+                        <span>User email:</span>
+                        <span>2639230771@qq.com</span>
+                    </p>
                 </div>
                 <div class="profile-btn-area">
                     <button type="button" id="shop-register-btn">Register Shop</button>

@@ -10,7 +10,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 80%;
+    height: 95%;
     visibility: hidden;
     opacity: 0;
     background-color: white;
@@ -24,7 +24,7 @@ body{
 }
 .register-input-frame{
     display: block;
-    margin-bottom: 40px;
+    margin-bottom: 12px;
     transition: all .2s ease;
 }
 /* the back effect of profile*/
@@ -52,11 +52,28 @@ body{
     color: #9c9c9c;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 10px 0;
+    margin: 10px auto;
     cursor: pointer;
+}
+/* the style of uploading picture button */
+#shop-logo-input{
+}
+/* the style of preview frame of picture*/
+#preview-pic-frame{
+    margin-bottom: 5px;
+    border-radius: 10px;
+    width: 10rem;
+    height: 10rem;
+    outline: #9c9c9c dashed;
+}
+#preview-pic{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
 }
 /* the style of button in registration of shop*/
 .profile-confirm-btn{
+    display: block;
     padding: 5px;
     background-color: #5995fd;
     border: none;
@@ -66,7 +83,7 @@ body{
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
-    margin: 10px 0;
+    margin: 10px auto;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -76,6 +93,38 @@ body{
     color: #444;
     margin-bottom: 10px;
 }
+/* the layout of the shop registration area*/
+.Shop-inputArea{
+    margin: 15px 0 15px 0;
+}
+/* the style of label in the input area*/
+.Shop-inputArea p{
+    margin: 10px 0;
+}
+/* the style of shop input frame*/
+#shop-name-input{
+    padding: 5px;
+    border-radius: 5px;
+    border: #d5d5d5 1px solid;
+}
+#shop-name-input:focus{
+    outline: #54a8ff 1px solid;
+}
+
+/* the style of the textarea*/
+#shop-description-input{
+    font-family: sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+    border: #d5d5d5 1px dashed;
+    width: 25rem;
+    height: 8rem;
+    resize: none;
+}
+#shop-description-input:focus{
+    outline: #54a8ff 1px dashed;
+}
+
 
 /* the layout of personal information card */
 .personalInfoCard{
@@ -116,7 +165,7 @@ body{
 
 /* the style of info card */
 .info-card{
-    margin-right: 15rem;
+    margin-right: 12rem;
     color: #C0C0C0;
     display: inline-block;
 }
