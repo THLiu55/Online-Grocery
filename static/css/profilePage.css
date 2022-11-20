@@ -299,3 +299,36 @@ body{
     display: inline-block;
     vertical-align: bottom;
 }
+/* the style of shop registration notice area (when user have no shop)*/
+.shop-registration-notice-frame{
+    margin-top: 2rem;
+    padding: 10px;
+}
+.notice-frame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+/* assistant pic style */
+.assistant-notice{
+    display: inline-block;
+    vertical-align: top;
+    width: 8rem;
+    margin-right: 3rem;
+    height: 8rem;
+}
+.assistant-notice img{
+    width: 100%;
+    height: 100%;
+}
+/* word notice style */
+.registration-info-notice{
+    color: white;
+    padding: 90px 20px 90px 120px;
+    background-image: url("../images/word_notice_frame.svg");
+    background-size: 100% 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3rem;
+}

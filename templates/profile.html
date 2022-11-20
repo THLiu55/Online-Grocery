@@ -60,9 +60,6 @@
                         <span>{{ user.email }}</span>
                     </p>
                 </div>
-                <div class="profile-btn-area">
-                    <button type="button" id="shop-register-btn">Register Shop</button>
-                </div>
             </div>
         </div>
     </div>
@@ -75,6 +72,23 @@
             <div class="shop-header-info">
                 <h2>Your shop information</h2>
                 <div class="separation-line"></div>
+                <!-- if user has not registered shop -->
+                <div class="shop-registration-notice-frame">
+                    <div class="notice-frame">
+                        <div class="assistant-notice">
+                            <img src="../static/images/assistant.svg">
+                        </div>
+                        <div class="registration-info-notice">
+                            <h4>You haven't registered a shop. Want to register a new shop?</h4>
+                            <div class="profile-btn-area">
+                                <button type="button" id="shop-register-btn">Register Shop</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- if user has registered shop -->
                 <div class="shop-detailed-info">
                     <div class="shop-pic-present-frame">
                         <img src="{{ url_for("static", filename='shop_logo/' + shop.logo_address) }}"/>
