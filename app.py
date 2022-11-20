@@ -1,19 +1,29 @@
+import os
+
 from flask import Flask, render_template, g, session
 from exts import db, mail_sender
+
+app = Flask(__name__)
+upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
+
 from blueprint.user_blueprint import user_bp
+from blueprint.profile_blueprint import profile_bp
+
 import staticContents
 import configs
 from models import Customer
 
-app = Flask(__name__)
 app.config.from_object(configs)
 db.init_app(app)
 mail_sender.init_app(app)
+app.register_blueprint(profile_bp)
 app.register_blueprint(user_bp)
+
 
 
 @app.route('/')
 def index():
+    db.create_all(app=app)
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()

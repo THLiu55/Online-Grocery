@@ -5,26 +5,31 @@
     <!-- register input area -->
     <div class="register-component">
         <div class="register-input-frame">
-            <form class="shop-register-input-area" novalidate>
+            <form class="shop-register-input-area" method="post" enctype="multipart/form-data" novalidate>
+                {{ form.hidden_tag() }}
                 <h2 class="ShopRegistrationFormTitle">Shop Registration</h2>
                 <div class="Shop-inputArea">
                     <p>Please upload the logo picture for your shop</p>
                     <div id="preview-pic-frame">
                         <img id="preview-pic" />
                     </div>
-                    <input type="file" id="shop-logo-input" value="choose file">
+                    {{ form.logo(id="shop-logo-input", value="choose file") }}
+{#                    <input type="file" id="shop-logo-input" value="choose file">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the name of your shop</p>
-                    <input type="text" id="shop-name-input"  placeholder="Your shop name">
+                    {{ form.shop_name(id="shop-name-input", placeholder="Your shop name") }}
+{#                    <input type="text" id="shop-name-input"  placeholder="Your shop name">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the description of your shop</p>
-                    <textarea id="shop-description-input"></textarea>
+                    {{ form.description(id="shop-description-input") }}
+{#                    <textarea id="shop-description-input"></textarea>#}
                 </div>
-                <input type="button" id="shop-register" class="profile-confirm-btn" value="Registration Confirm">
+{#                <input type="button" id="shop-register" class="profile-confirm-btn" value="Registration Confirm">#}
+                {{ form.submit(id="shop-register", class="profile-confirm-btn",value="Registration Confirm") }}
             </form>
         </div>
         <button class="btn-in-forget" id="profile-back-btn">Back to PROFILE</button>
@@ -46,13 +51,13 @@
                 <div class="info-card">
                     <p class="info-card-title">
                         <span>User name:</span>
-                        <span>Grey</span>
+                        <span>{{ user.userName }}</span>
                     </p>
                 </div>
                 <div class="info-card">
                     <p class="info-card-title">
                         <span>User email:</span>
-                        <span>2639230771@qq.com</span>
+                        <span>{{ user.email }}</span>
                     </p>
                 </div>
                 <div class="profile-btn-area">
@@ -62,6 +67,8 @@
         </div>
     </div>
 
+    {% if shop != None %}
+
     <!-- shop info part -->
     <div class="shop-info-area">
         <div class="shop-info-frame">
@@ -70,7 +77,7 @@
                 <div class="separation-line"></div>
                 <div class="shop-detailed-info">
                     <div class="shop-pic-present-frame">
-                        <img />
+                        <img src="{{ url_for("static", filename='shop_logo/' + shop.logo_address) }}"/>
                     </div>
                     <div class="shop-detail-present-frame">
                         <div class="shop-detail-info-piece">
@@ -78,7 +85,7 @@
                             <div class="separation-line-label"></div>
                             <div class="shop-info-content">
                                 <p>
-                                    Burberry
+                                    {{ shop.name }}
                                 </p>
                             </div>
                         </div>
@@ -87,7 +94,7 @@
                             <div class="separation-line-label"></div>
                             <div class="shop-info-content">
                                 <p>
-                                    This is a famous luxury brand, which is quite famous all around the world!
+                                    {{ shop.description }}
                                 </p>
                             </div>
                         </div>
@@ -121,5 +128,8 @@
             </div>
         </div>
     </div>
+
+    {% endif %}
+
 
 {% endblock %}

@@ -28,15 +28,13 @@ def login():
                 user_tmp = Customer.query.filter_by(email=email).first()
                 if (user_tmp is not None) and (check_password_hash(user_tmp.password, password)):
                     session["email"] = user_tmp.email
-                    print("1")
                     return jsonify({"code": 200, 'message': "ok"})
-                print("2")
                 return jsonify({"code": 400, 'message': "wrong email or password"})
             else:
                 print("3")
                 # get and return the first error message generate by validator
                 for e in login_form.errors:
-                    return jsonify({'code': 400, 'message': login_form.errors.get(e)[0]})
+                    return jsonify({'code': 401, 'message': login_form.errors.get(e)[0]})
         elif operation == "signup":
             if register_form.validate_on_submit():
                 email = register_form.email.data
@@ -201,15 +199,6 @@ def generateCaptcha():
     for i in range(6):
         captcha += str(random.randint(0, 9))
     return captcha
-
-
-
-@user_bp.route("/profile")
-def profile():
-    if "email" in session:
-        return render_template('profile.html')
-    else:
-        return redirect(url_for("login"))
 
 
 @user_bp.route('/shopping-bag')

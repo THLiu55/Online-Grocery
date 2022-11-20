@@ -1,6 +1,5 @@
 from exts import db
 
-
 # database models
 
 class Customer(db.Model):
@@ -52,7 +51,8 @@ class Shop(db.Model):
     __tablename__ = 'shop'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.CHAR(200), nullable=False, unique=True)
-    logo_address = db.Column(db.TEXT(2000), nullable=False)
+    logo_address = db.Column(db.TEXT, nullable=False)
+    description = db.Column(db.TEXT, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('Customer', backref='shop')
 

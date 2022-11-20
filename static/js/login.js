@@ -38,18 +38,18 @@ to_sign_in_btn.addEventListener("click", () => {
 
 // send email
 function send_email() {
-    // // check if is empty
-    // let email = email_input.value
-    // if (email === '') {
-    //     email_error.innerHTML = "empty email"
-    //     return;
-    // }
-    // // check if is wrong format
-    // if (!validEmail) {
-    //     email_error.innerHTML = "invalid email format"
-    //     return;
-    // }
-    // // send email
+    // check if is empty
+    let email = email_input.value
+    if (email === '') {
+        email_error.innerHTML = "empty email"
+        return;
+    }
+    // check if is wrong format
+    if (!validEmail) {
+        email_error.innerHTML = "invalid email format"
+        return;
+    }
+    // send email
 
     // animation when the email is sent
     countDown(60, num_div).then(r => {})
@@ -70,35 +70,35 @@ function send_email() {
 
 function register() {
 
-    // // check empty
-    // let flag = true
-    //
-    // if (username_input.value === '') {
-    //     username_error.innerHTML = 'empty user name'
-    //     flag = false;
-    // }
-    // if (password_input.value === '') {
-    //     password_error.innerHTML = 'empty password'
-    //     flag = false;
-    // }
-    // if (repassword_input.value === '') {
-    //     repassword_error.innerHTML = 'empty password'
-    //     flag = false;
-    // }
-    // if (email_input.value === '') {
-    //     email_error.innerHTML = 'empty email'
-    //     flag = false;
-    // }
-    // if (captcha_input.value === '') {
-    //     captcha_error.innerHTML = 'empty captcha'
-    //     flag = false;
-    // }
-    // if (!flag) return;
-    //
-    // // check data validation:
-    // if (!validEmail || !validUserName || !validPassword || !validRePassword) {
-    //     return;
-    // }
+    // check empty
+    let flag = true
+
+    if (username_input.value === '') {
+        username_error.innerHTML = 'empty user name'
+        flag = false;
+    }
+    if (password_input.value === '') {
+        password_error.innerHTML = 'empty password'
+        flag = false;
+    }
+    if (repassword_input.value === '') {
+        repassword_error.innerHTML = 'empty password'
+        flag = false;
+    }
+    if (email_input.value === '') {
+        email_error.innerHTML = 'empty email'
+        flag = false;
+    }
+    if (captcha_input.value === '') {
+        captcha_error.innerHTML = 'empty captcha'
+        flag = false;
+    }
+    if (!flag) return;
+
+    // check data validation:
+    if (!validEmail || !validUserName || !validPassword || !validRePassword) {
+        return;
+    }
 
     // send registered form to flask backend
     let xhr = new XMLHttpRequest()
@@ -141,7 +141,7 @@ function register() {
             }
         } else if (response.code === 401){
             let msg = response.message
-            console.log(msg)
+            alert(msg)
 
         } else {
             // go to log in page and load email and password automatically
@@ -189,7 +189,7 @@ function login() {
             // redirect()
             window.open("/")
         } else {
-            console.log(response.message)
+            alert(response.message)
         }
     }
 }
