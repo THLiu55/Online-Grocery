@@ -129,7 +129,7 @@ body{
 /* the layout of personal information card */
 .personalInfoCard{
 	height: 20rem;
-    margin: 1rem;
+    margin: 2rem;
 	font-size: 1rem;
 	text-decoration: none;
 	overflow: hidden;
@@ -195,4 +195,107 @@ body{
 #shop-register-btn:hover{
     color: #185185;
     background-color: #f0f0f0;
+}
+
+/* the layout and style of shop information frame*/
+.shop-info-frame{
+    margin: 2rem;
+    padding: 2rem;
+	font-size: 1rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+}
+/* the style of separation line*/
+.separation-line{
+    margin-top: 2rem;
+    height: 1px;
+    width: 100%;
+    background-color: #d7d7d7;
+}
+/* the style of shop detailed information frame*/
+.shop-detailed-info{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+/* image present */
+.shop-pic-present-frame{
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 3rem;
+    width: 10rem;
+    height: 10rem;
+    outline: #d7d7d7 dashed;
+}
+.shop-pic-present-frame img{
+    width: 100%;
+    height: 100%;
+}
+/* detail information present */
+.shop-detail-present-frame{
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 3rem;
+}
+.shop-detail-info-piece{
+    margin: 1rem 0;
+}
+.shop-info-content{
+    color: #9c9c9c;
+    margin: 8px 0;
+}
+/* the style of separation line between labels and contents*/
+.separation-line-label{
+    margin: 5px 0;
+    height: 1px;
+    width: 100%;
+    background-color: #d7d7d7;
+}
+/* the style of products list*/
+.products-list{
+    width: 100%;
+    display: block;
+	margin: 1rem 0;
+	padding: 0;
+	list-style: none;
+}
+.product-item{
+    padding: 10px;
+	margin: 5px 0;
+	font-size: 1rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+}
+.product-item:hover{
+    transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+/* the style of products presentation*/
+/* products picture */
+.product-pic-frame{
+    width: 8rem;
+    height: 8rem;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 3rem;
+}
+.product-info-frame img{
+    width: 100%;
+    height: 100%;
+}
+/* products information */
+
+.product-info-frame{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3rem;
+}
+.product-description{
+    margin: 10px 0;
+}
+.product-unit-price{
+    display: inline-block;
+    vertical-align: bottom;
 }

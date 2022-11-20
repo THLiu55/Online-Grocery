@@ -5,7 +5,7 @@ let image_list = document.getElementById("image-list");
 // the total number of image blocks
 let images_number = document.getElementsByClassName("block-item").length;
 // the total length of image list
-let image_length = parseInt(window.getComputedStyle(image_list).width);
+let image_length = parseInt(window.getComputedStyle(document.getElementById("image-list")).width);
 // length of a single image block
 let single_length = image_length / images_number;
 // get prev and next block

@@ -5,9 +5,9 @@ var slider = document.getElementById("slider");
 // -- get a single <li>
 var single_li = document.getElementsByClassName("card-item")[0];
 // -- get the width of a single <li>
-var single_li_length = window.getComputedStyle(single_li).width;
+var single_li_length = window.getComputedStyle(document.getElementsByClassName("card-item")[0]).width;
 // -- get the margin of a single <li>
-var single_li_margin = window.getComputedStyle(single_li).margin;
+var single_li_margin = window.getComputedStyle(document.getElementsByClassName("card-item")[0]).margin;
 // -- compute the total length of <li>s in a line
 var total_length = 4 * (parseInt(single_li_length) + 2 * parseInt(single_li_margin));
 // -- get the width of the window
