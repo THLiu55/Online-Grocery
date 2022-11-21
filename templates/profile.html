@@ -14,19 +14,16 @@
                         <img id="preview-pic" />
                     </div>
                     {{ form.logo(id="shop-logo-input", value="choose file") }}
-{#                    <input type="file" id="shop-logo-input" value="choose file">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the name of your shop</p>
                     {{ form.shop_name(id="shop-name-input", placeholder="Your shop name") }}
-{#                    <input type="text" id="shop-name-input"  placeholder="Your shop name">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the description of your shop</p>
                     {{ form.description(id="shop-description-input") }}
-{#                    <textarea id="shop-description-input"></textarea>#}
                 </div>
 {#                <input type="button" id="shop-register" class="profile-confirm-btn" value="Registration Confirm">#}
                 {{ form.submit(id="shop-register", class="profile-confirm-btn",value="Registration Confirm") }}
@@ -64,7 +61,6 @@
         </div>
     </div>
 
-    {% if shop != None %}
 
     <!-- shop info part -->
     <div class="shop-info-area">
@@ -73,6 +69,7 @@
                 <h2>Your shop information</h2>
                 <div class="separation-line"></div>
                 <!-- if user has not registered shop -->
+                {% if shop == None %}
                 <div class="shop-registration-notice-frame">
                     <div class="notice-frame">
                         <div class="assistant-notice">
@@ -85,9 +82,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
+                {% else %}
                 <!-- if user has registered shop -->
                 <div class="shop-detailed-info">
                     <div class="shop-pic-present-frame">
@@ -139,11 +135,10 @@
                     </ul>
                 </div>
                 <div class="button"></div>
+                {% endif %}
             </div>
         </div>
     </div>
-
-    {% endif %}
 
 
 {% endblock %}
