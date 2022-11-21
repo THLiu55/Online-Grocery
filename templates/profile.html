@@ -29,7 +29,42 @@
 {#                {{ form.submit(id="shop-register", class="profile-confirm-btn",value="Registration Confirm") }}#}
             </form>
         </div>
-        <button class="btn-in-forget" id="profile-back-btn">Back to PROFILE</button>
+        <button id="profile-back-btn">Back to PROFILE</button>
+    </div>
+
+    <!-- products adding area -->
+    <div class="register-component">
+        <div class="register-input-frame">
+            <form id="products-adding-form" class="shop-register-input-area" novalidate>
+                <h2 class="ShopRegistrationFormTitle">Product Adding</h2>
+                <div class="Shop-inputArea">
+                    <p>Please upload the product picture</p>
+                    <div id="product-pic-frame">
+                        <img id="preview-pic-good" />
+                    </div>
+                    <input type="file" id="good-pic-upload" value="choose file">
+                    <div class="wrong_error" ></div>
+                </div>
+                <div class="Shop-inputArea">
+                    <p>Please enter the name of this product</p>
+                    <input type="text" id="good-name-enter" placeholder="Product Name">
+                    <div class="wrong_error" ></div>
+                </div>
+                <div class="Shop-inputArea">
+                    <p>Please enter the unit price of this product</p>
+                    <input type="text" id="good-price-enter" placeholder="Unit Price">
+                    <span>$</span>
+                    <div class="wrong_error" ></div>
+                </div>
+                <div class="Shop-inputArea">
+                    <p>Please enter the description of this product</p>
+                    <textarea id="product-description"></textarea>
+                </div>
+                <input type="button" id="add-product" class="profile-confirm-btn" value="Add Product" >
+{#                {{ form.submit(id="shop-register", class="profile-confirm-btn",value="Registration Confirm") }}#}
+            </form>
+        </div>
+        <button id="add-product-back-btn">Back to PROFILE</button>
     </div>
 
     <!-- back effect part -->
@@ -78,7 +113,7 @@
                         <div class="registration-info-notice">
                             <h4>You haven't registered a shop. Want to register a new shop?</h4>
                             <div class="profile-btn-area">
-                                <button type="button" id="shop-register-btn">Register Shop</button>
+                                <button type="button" class="shop-register-btn" id="shop-register">Register Shop</button>
                             </div>
                         </div>
                     </div>
@@ -134,10 +169,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="button"></div>
+                <div class="products-adding-area">
+                    <button type="button" class="shop-register-btn" id="products-add">Add Products</button>
+                </div>
                 {% endif %}
             </div>
         </div>
     </div>
+
 
 {% endblock %}

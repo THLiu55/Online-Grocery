@@ -1,5 +1,5 @@
 // get register shop button
-const register_shop_btn = document.getElementById("shop-register-btn");
+const register_shop_btn = document.getElementById("shop-register");
 const profile_back_btn = document.getElementById("profile-back-btn");
 
 // get picture input
