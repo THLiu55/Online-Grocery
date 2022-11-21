@@ -21,4 +21,3 @@ class ShopRegisterForm(FlaskForm):
     shop_name = StringField(validators=[InputRequired(), Length(min=3, max=100)])
     description = TextAreaField(validators=[InputRequired()])
     logo = FileField(validators=[FileAllowed(['jpg', 'png'])])
-    submit = SubmitField()
