@@ -18,6 +18,6 @@ class LoginForm(FlaskForm):
 
 
 class ShopRegisterForm(FlaskForm):
-    shop_name = StringField(validators=[InputRequired(), Length(min=3, max=100)])
-    description = TextAreaField(validators=[InputRequired()])
-    logo = FileField(validators=[FileAllowed(['jpg', 'png'])])
+    logo = FileField(validators=[InputRequired(message="shop logo can't be empty"), FileAllowed(['jpg', 'png'])])
+    shop_name = StringField(validators=[InputRequired(message="shop name can't be empty"), Length(min=3, max=100)])
+    description = TextAreaField(validators=[InputRequired(message="shop description can't be empty")])
