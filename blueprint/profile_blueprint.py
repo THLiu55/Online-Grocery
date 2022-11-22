@@ -1,11 +1,12 @@
+import logging
 import os
 
 from werkzeug.utils import secure_filename
 
 from exts import db
 from flask import Blueprint, render_template, redirect, url_for, jsonify, session, request
-from models import Customer, Shop
-from forms import ShopRegisterForm
+from models import Customer, Shop, Product
+from forms import ShopRegisterForm, NewProductForm
 
 profile_bp = Blueprint("Profile", __name__, url_prefix="/profile")
 
@@ -15,25 +16,52 @@ def index():
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
-        form = ShopRegisterForm()
+        shop_register_form = ShopRegisterForm()
+        new_product_form = NewProductForm()
         if request.method == "POST":
-            if form.validate_on_submit():
-                shop_name = form.shop_name.data
-                shop_description = form.description.data
-                shop_logo = form.logo.data
-                logo_name = str(user.id) + "_" + shop_logo.filename
-                logo_path = 'static' + os.sep + 'shop_logo' + os.sep + logo_name
-                shop_logo.save(logo_path)
-                shop = Shop(name=shop_name, logo_address=logo_name, description=shop_description, user_id=user.id)
-                db.session.add(shop)
-                db.session.commit()
-                return jsonify({'code': 200, 'message': "success"})
+            operation = request.args.get('type')
+            # the service for registering a new shop
+            if operation == "register":
+                if shop_register_form.validate_on_submit():
+                    shop_name = shop_register_form.shop_name.data
+                    shop_description = shop_register_form.description.data
+                    shop_logo = shop_register_form.logo.data
+                    logo_name = str(user.id) + "_" + shop_logo.filename
+                    logo_path = 'static' + os.sep + 'shop_logo' + os.sep + logo_name
+                    shop_logo.save(logo_path)
+                    shop = Shop(name=shop_name, logo_address=logo_name, description=shop_description, user_id=user.id)
+                    db.session.add(shop)
+                    db.session.commit()
+                    return jsonify({'code': 200, 'message': "success"})
+                else:
+                    # get the first error message from the WTForm
+                    for e in shop_register_form.errors:
+                        return jsonify({'code': 400, 'message': shop_register_form.errors.get(e)[0]})
+            # the service for adding a new product
             else:
-                for e in form.errors:
-                    return jsonify({'code': 400, 'message': form.errors.get(e)[0]})
+                if new_product_form.validate_on_submit():
+                    price = new_product_form.price.data
+                    name = new_product_form.product_name.data
+                    description = new_product_form.description.data
+                    tag = new_product_form.tag.data
+                    shop_id = user.shop[0].id
+                    product_img = new_product_form.product_pic.data
+                    product_img_name = product_img.filename
+                    img_path = 'static' + os.sep + 'product_img' + os.sep + product_img_name
+                    product_img.save(img_path)
+                    product = Product(price=price, name=name, description=description, tag=tag, shop_id=shop_id, picture_address=product_img_name)
+                    db.session.add(product)
+                    db.session.commit()
 
+                    return jsonify({"code": 200, "message": "success"})
+                else:
+                    # get the first error message from the WTForm
+                    for e in new_product_form.errors:
+                        return jsonify({'code': 400, 'message': new_product_form.errors.get(e)[0]})
+
+        # load the profile page
         if user.shop:
-            return render_template('profile.html', user=user, form=form, shop=user.shop[0])
+            return render_template('profile.html', user=user, form=shop_register_form, form1 = new_product_form, shop=user.shop[0])
         else:
-            return render_template('profile.html', user=user, form=form, shop=None)
+            return render_template('profile.html', user=user, form=shop_register_form, form1 = new_product_form, shop=None)
     return redirect(url_for("login"))
