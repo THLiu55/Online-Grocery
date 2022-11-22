@@ -157,7 +157,9 @@
                         {% for product in shop.products %}
                         <li class="product-item">
                             <div class="product-pic-frame">
+                                <a href="/product?id={{ product.id }}">
                                 <img class="product-pic-frame" src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
+                                </a>
                             </div>
                             <div class="product-info-frame">
                                 <h3>{{ product.name }}</h3>

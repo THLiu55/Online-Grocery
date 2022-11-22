@@ -2,12 +2,14 @@ from exts import db
 
 # database models
 
+
 class Customer(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     userName = db.Column(db.CHAR(200), unique=True, nullable=False)
     password = db.Column(db.CHAR(200), nullable=False)
     email = db.Column(db.CHAR(200), unique=True, nullable=False)
+
 
 class Captcha(db.Model):
     __tablename__ = 'captcha'

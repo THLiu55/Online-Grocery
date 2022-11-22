@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
 from wtforms import StringField, PasswordField, FloatField, validators, EmailField, FileField, SubmitField, \
-    TextAreaField, SelectField
-from wtforms.validators import InputRequired, Length, AnyOf, Email, EqualTo
+    TextAreaField, SelectField, IntegerField
+from wtforms.validators import InputRequired, Length, Email, EqualTo, NumberRange
 
 
 class RegisterForm(FlaskForm):
@@ -32,5 +32,7 @@ class NewProductForm(FlaskForm):
     tag = SelectField(choices=[('cloth', 'cloth'), ('furniture', 'furniture'), ('electronic', 'electronic'), ('shoe', 'shoe'), ('toy', 'toy'),
                                ('food', 'food'), ('necessity', 'necessity'), ('book', 'book'), ('else', 'else')])
 
-    
 
+class AddToCartForm(FlaskForm):
+    amount = IntegerField(validators=[InputRequired("please enter the amount you wanna buy"), NumberRange(min=1, max=10000000)])
+    submit = SubmitField()

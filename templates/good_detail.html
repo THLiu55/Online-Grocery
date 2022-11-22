@@ -4,20 +4,23 @@
 {% block body %}
     <div class="content-container">
         <div class="product-pic-container">
-            <img />
+            <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
         </div>
         <div class="product-info-container">
-            <h2 class="product-info-name">Shirt</h2>
+            <h2 class="product-info-name">{{ product.name }}</h2>
             <div class="product-info-description">
-                <p>This shirt is a cotton-made shirt</p>
+                <p>{{ product.description }}</p>
             </div>
-            <form>
+            <form method="post">
+                {{ form.hidden_tag() }}
                 <div class="input-count">
-                    <span class="unit-price">89$</span>
-                    <input type="number" id="product-number"/>
+                    <span class="unit-price">{{ product.price }}$</span>
+                    {{ form.amount(id="product-number", value="1") }}
+{#                    <input type="number" id="product-number" value="1"/>#}
                 </div>
                 <div class="cart-adding-btn-area">
-                    <button type="button" class="add-cart-btn">Add to Cart</button>
+                    {{ form.submit(class="add-cart-btn", value='Add to Cart') }}
+{#                    <button type="button" class="add-cart-btn">Add to Cart</button>#}
                 </div>
             </form>
 
