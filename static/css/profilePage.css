@@ -289,8 +289,8 @@ body{
 /* the style of products presentation*/
 /* products picture */
 .product-pic-frame{
-    width: 8rem;
-    height: 8rem;
+    width: 6rem;
+    height: 6rem;
     display: inline-block;
     vertical-align: top;
     margin-right: 3rem;
