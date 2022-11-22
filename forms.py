@@ -25,10 +25,12 @@ class ShopRegisterForm(FlaskForm):
 
 
 class NewProductForm(FlaskForm):
-    product_pic = FileField(validators=[InputRequired(message="shop logo can't be empty"), FileAllowed(['jpg', 'png'])])
-    product_name = StringField(validators=[InputRequired(message="shop name can't be empty"), Length(min=3, max=100)])
-    description = TextAreaField(validators=[InputRequired(message="shop description can't be empty")])
+    product_pic = FileField(validators=[InputRequired(message="product picture can't be empty"), FileAllowed(['jpg', 'png'])])
+    product_name = StringField(validators=[InputRequired(message="product name can't be empty"), Length(min=3, max=100)])
+    description = TextAreaField(validators=[InputRequired(message="product description can't be empty")])
     price = FloatField(validators=[InputRequired(message="please set the price")])
     tag = SelectField(choices=[('cloth', 'cloth'), ('furniture', 'furniture'), ('electronic', 'electronic'), ('shoe', 'shoe'), ('toy', 'toy'),
                                ('food', 'food'), ('necessity', 'necessity'), ('book', 'book'), ('else', 'else')])
+
+    
 
