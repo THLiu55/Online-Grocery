@@ -31,7 +31,6 @@ def login():
                     return jsonify({"code": 200, 'message': "ok"})
                 return jsonify({"code": 400, 'message': "wrong email or password"})
             else:
-                print("3")
                 # get and return the first error message generate by validator
                 for e in login_form.errors:
                     return jsonify({'code': 401, 'message': login_form.errors.get(e)[0]})
