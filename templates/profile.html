@@ -35,33 +35,38 @@
     <!-- products adding area -->
     <div class="register-component">
         <div class="register-input-frame">
-            <form id="products-adding-form" class="shop-register-input-area" novalidate>
+            <form id="products-adding-form" class="shop-register-input-area" method="post" enctype="multipart/form-data" novalidate>
+                {{ form1.hidden_tag() }}
                 <h2 class="ShopRegistrationFormTitle">Product Adding</h2>
                 <div class="Shop-inputArea">
                     <p>Please upload the product picture</p>
                     <div id="product-pic-frame">
                         <img id="preview-pic-good" />
                     </div>
-                    <input type="file" id="good-pic-upload" value="choose file">
+                    {{ form1.product_pic(id="good-pic-upload", value="choose file") }}
+{#                    <input type="file" id="good-pic-upload" value="choose file">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the name of this product</p>
-                    <input type="text" id="good-name-enter" placeholder="Product Name">
+                    {{ form1.product_name(id="good-name-enter", placeholder="Product Name") }}
+{#                    <input type="text" id="good-name-enter" placeholder="Product Name">#}
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the unit price of this product</p>
-                    <input type="text" id="good-price-enter" placeholder="Unit Price">
+                    {{ form1.price(id="good-price-enter", placeholder="Unit Price") }}
+{#                    <input type="text" id="good-price-enter" placeholder="Unit Price">#}
                     <span>$</span>
                     <div class="wrong_error" ></div>
                 </div>
                 <div class="Shop-inputArea">
                     <p>Please enter the description of this product</p>
-                    <textarea id="product-description"></textarea>
+                    {{ form1.description(id="product-description") }}
+{#                    <textarea id="product-description"></textarea>#}
                 </div>
-                <input type="button" id="add-product" class="profile-confirm-btn" value="Add Product" >
-{#                {{ form.submit(id="shop-register", class="profile-confirm-btn",value="Registration Confirm") }}#}
+                {{ form1.tag() }}
+                <input type="button" id="add-product" class="profile-confirm-btn" value="Add Product" onclick="addNewProduct()">
             </form>
         </div>
         <button id="add-product-back-btn">Back to PROFILE</button>
