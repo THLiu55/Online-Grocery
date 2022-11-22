@@ -2,23 +2,25 @@
 {% block title %} details {% endblock %}
 
 {% block body %}
-    <div class="container">
-
-        <div class="product-img-container">
-            <img src="http://bit.ly/2tMBBTd" height="420" width="327">
+    <div class="content-container">
+        <div class="product-pic-container">
+            <img />
         </div>
-
         <div class="product-info-container">
-            <div class="product-introduction">
-                <h1>Harvest Vase</h1>
-                <h2>by studio and friends</h2>
-                <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The
-                    surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
+            <h2 class="product-info-name">Shirt</h2>
+            <div class="product-info-description">
+                <p>This shirt is a cotton-made shirt</p>
             </div>
-            <div class="product-price-btn">
-                <p><span>78</span>$</p>
-                <button type="button">buy now</button>
-            </div>
+            <form>
+                <div class="input-count">
+                    <span class="unit-price">89$</span>
+                    <input type="number" id="product-number"/>
+                </div>
+                <div class="cart-adding-btn-area">
+                    <button type="button" class="add-cart-btn">Add to Cart</button>
+                </div>
+            </form>
+
         </div>
     </div>
 {% endblock %}
