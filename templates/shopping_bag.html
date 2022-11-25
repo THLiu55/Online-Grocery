@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>Shopping bag</p>
-</body>
-</html>
+{% extends "MainpageBase.html" %}
+{% block title %} profile {% endblock %}
+
+{% block body %}
+    <div class="shopping-items-container">
+        <div class="shopping-cart-item-frame">
+            <h2>Shopping cart items</h2>
+            <div class="item-frame">
+                <ul class="cart-products-list">
+                    <li class="cart-product-item">
+                        <div class="cart-product-pic-frame">
+                            <img class="cart-product-pic-frame" src="./images/good1.jpg"/>
+                        </div>
+                        <div class="cart-product-info-frame">
+                            <div class="cart-products-flex-box">
+                                <h3>Perfume</h3>
+                                <div class="cart-product-description">
+                                    this isgoodasdasdasdasdasdasdasasdasdasdasdasdasdfghjfghjdfghjfghjfghfgh
+                                </div>
+                                <div class="cart-product-unit-price">
+                                    <p>
+                                        $ 2200
+                                    </p>
+                                </div>
+                                <div class="delete-btn-area">
+                                    <button type="button" class="delete-btn">Remove product</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="overall-frame">
+                <div class="price-area">
+                    Overall: 2200$
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
