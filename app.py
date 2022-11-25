@@ -1,8 +1,11 @@
 import os
 import logging
 
-from flask import Flask, render_template, g, session
+from flask import Flask, render_template, g, session, request, redirect, url_for
 from exts import db, mail_sender
+from sqlalchemy import and_, or_
+
+from forms import SearchForm
 
 app = Flask(__name__)
 upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
@@ -15,7 +18,7 @@ from blueprint.product_blueprint import product_bp
 
 import staticContents
 import configs
-from models import Customer
+from models import Customer, Product
 
 app.config.from_object(configs)
 db.init_app(app)
@@ -24,9 +27,6 @@ mail_sender.init_app(app)
 app.register_blueprint(profile_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(product_bp)
-
-# set the global lowest recorded level
-# logging.basicConfig(level=logging.DEBUG)
 
 # # create handlers
 # info_handler = logging.FileHandler('logs/info.log')
@@ -47,15 +47,26 @@ app.register_blueprint(product_bp)
 # app.logger.addHandler(waring_handler)
 # app.logger.addHandler(error_handler)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    db.create_all(app=app)
+    searchForm = SearchForm()
+    user = None
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
-        return render_template("index.html", user=user, categories=staticContents.categories)
-    return render_template("index.html", user=None, categories=staticContents.categories)
+    return render_template("index.html", user=user, categories=staticContents.categories, searchForm=searchForm)
 
+
+@app.route("/search/", methods=['POST'])
+def search():
+    searchForm = SearchForm()
+    if searchForm.validate_on_submit():
+        keyword = searchForm.product_name.data
+        page_data = Product.query.filter(Product.name.like("%" + keyword + "%"))
+        return render_template("search_result.html", page_data=page_data, keywords=keyword, searchForm=searchForm)
+    else:
+        return redirect(url_for("index"))
 
 if __name__ == '__main__':
     app.run()

@@ -36,3 +36,9 @@ class NewProductForm(FlaskForm):
 class AddToCartForm(FlaskForm):
     amount = IntegerField(validators=[InputRequired("please enter the amount you wanna buy"), NumberRange(min=1, max=10000000)])
     submit = SubmitField()
+
+
+class SearchForm(FlaskForm):
+    product_name = StringField(validators=[Length(min=1, max=200, message="no more than 200 characters")])
+    submit = SubmitField()
+

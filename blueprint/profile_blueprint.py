@@ -6,13 +6,14 @@ from werkzeug.utils import secure_filename
 from exts import db
 from flask import Blueprint, render_template, redirect, url_for, jsonify, session, request
 from models import Customer, Shop, Product
-from forms import ShopRegisterForm, NewProductForm
+from forms import ShopRegisterForm, NewProductForm, SearchForm
 
 profile_bp = Blueprint("Profile", __name__, url_prefix="/profile")
 
 
 @profile_bp.route("/", methods=["GET", "POST"])
 def index():
+    searchForm = SearchForm()
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
@@ -61,7 +62,7 @@ def index():
 
         # load the profile page
         if user.shop:
-            return render_template('profile.html', user=user, form=shop_register_form, form1 = new_product_form, shop=user.shop[0])
+            return render_template('profile.html', user=user, form=shop_register_form, form1=new_product_form, shop=user.shop[0], searchForm=searchForm)
         else:
-            return render_template('profile.html', user=user, form=shop_register_form, form1 = new_product_form, shop=None)
+            return render_template('profile.html', user=user, form=shop_register_form, form1=new_product_form, shop=None, searchForm=searchForm)
     return redirect(url_for("login"))
