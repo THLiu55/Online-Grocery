@@ -1,3 +1,7 @@
+html, body{
+    height: 100%;
+}
+
 /* the style of shopping cart page background*/
 .shopping-items-container{
     background-color: #f3f3f3;
@@ -7,6 +11,8 @@
 
 /* the style of shopping cart frame */
 .shopping-cart-item-frame{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius: 10px;
     background-color: #ffffff;
     padding: 2rem;
@@ -104,6 +110,11 @@
 .delete-btn:hover{
     color: #185185;
     background-color: #f0f0f0;
+}
+
+/* the style of number selecting input */
+#number-of-items{
+    width: 2rem;
 }
 
 

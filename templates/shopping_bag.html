@@ -3,8 +3,13 @@
 
 {% block body %}
     <div class="shopping-items-container">
+        <h2>Shopping cart items</h2>
+        <!-- shop card frame -->
         <div class="shopping-cart-item-frame">
-            <h2>Shopping cart items</h2>
+            <div class="shop-info-header">
+                <a class="entrance-to-shop">burberry</a>
+            </div>
+            <!-- product items in shop card frame -->
             <div class="item-frame">
                 <ul class="cart-products-list">
                     <li class="cart-product-item">
@@ -18,9 +23,12 @@
                                     this isgoodasdasdasdasdasdasdasasdasdasdasdasdasdfghjfghjdfghjfghjfghfgh
                                 </div>
                                 <div class="cart-product-unit-price">
-                                    <p>
+                                    <span>
+                                        <input type="number" id="number-of-items">
+                                    </span>
+                                    <span>
                                         $ 2200
-                                    </p>
+                                    </span>
                                 </div>
                                 <div class="delete-btn-area">
                                     <button type="button" class="delete-btn">Remove product</button>
@@ -38,7 +46,11 @@
                 </div>
             </div>
         </div>
-
+        <div class="total-overall">
+            <div class="price-area">
+                   Total Overall: 2200$
+            </div>
+        </div>
 
     </div>
 
