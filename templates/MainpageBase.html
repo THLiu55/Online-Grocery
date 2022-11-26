@@ -38,17 +38,16 @@
         </div>
         <!-- search area -->
         <div id="SearchArea">
-            <form>
+            <form action="{{ url_for('search') }}" method="post">
+                {{ searchForm.hidden_tag() }}
                 <div id="inputFrame">
                     <div id="searching">
-                        <input type="text" id="search" placeholder="Search for items"/>
+                        {{ searchForm.product_name(id="search", placeholder="Search for items") }}
+{#                        <input type="text" id="search" placeholder="Search for items"/>#}
                     </div>
                     <div id="submitting">
-                        <button type="submit" class="custom-btn" id="searchBtn">
-                            <span>
-                                Search
-                            </span>
-                        </button>
+                        {{ searchForm.submit(class="custom-btn", id="searchBtn") }}
+{#                        <input type="submit" class="custom-btn" id="searchBtn" value="Search"/>#}
                     </div>
                 </div>
             </form>

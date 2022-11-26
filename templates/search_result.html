@@ -5,24 +5,28 @@
 
     <div class="shop-products-frame">
         <ul class="products-list">
+            {% for product in page_data %}
+                <a href="/product?id={{ product.id }}">
             <li class="product-item">
                 <div class="product-pic-frame">
-                    <img class="product-pic-frame" src="./images/good1.jpg"/>
+                    <img class="product-pic-frame" src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
                 </div>
                 <div class="product-info-frame">
-                    <h3>Perfume</h3>
+                    <h3>{{ product.name }}</h3>
                     <div class="product-description">
                         <p>
-                            this is good
+                            {{ product.description }}
                         </p>
                     </div>
                     <div class="product-unit-price">
                         <p>
-                            $ 2200
+                            $ {{ product.price }}
                         </p>
                     </div>
                 </div>
             </li>
+                </a>
+            {% endfor %}
         </ul>
     </div>
 

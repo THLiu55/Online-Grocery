@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify, session
 
 from exts import db
-from forms import AddToCartForm
+from forms import AddToCartForm, SearchForm
 from models import Product, Customer, Order
 
 product_bp = Blueprint("Product", __name__, url_prefix="/product")
@@ -12,12 +12,13 @@ def details():
     product_id = request.args.get("id")
     product = Product.query.filter_by(id=product_id).first()
     form = AddToCartForm()
+    searchForm = SearchForm()
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
         shop_list = user.shoppingList[0]
         if request.method == "GET":
-            return render_template('good_detail.html', product=product, shopList=shop_list, form=form)
+            return render_template('good_detail.html', product=product, shopList=shop_list, form=form, searchForm=searchForm)
         else:
             if form.validate_on_submit():
                 # get the amount of good that added to shopping cart
@@ -36,9 +37,9 @@ def details():
                 shop_list.total_cost += add_cost
                 db.session.add(new_order)
                 db.session.commit()
-                return render_template('good_detail.html', product=product, shopList=shop_list, form=form)
+                return render_template('good_detail.html', product=product, shopList=shop_list, form=form, searchForm=searchForm)
     else:
-        return render_template('good_detail.html', product=product, user=None, form=form)
+        return render_template('good_detail.html', product=product, user=None, form=form, searchForm=searchForm)
 
 
 
