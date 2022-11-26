@@ -13,16 +13,8 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="../static/css/fluidImage.css">
     <link rel="stylesheet" href="../static/css/MainpageBase_style.css">
-    <link rel="stylesheet" href="../static/css/cardContent.css">
-    <link rel="stylesheet" href="../static/css/shoppingCartMain.css">
-    <link rel="stylesheet" href="../static/css/profilePage.css">
-    <link rel="stylesheet" href="../static/css/product_details.css">
-    <link rel="stylesheet" href="../static/css/goodDetail.css">
-    <link rel="stylesheet" href="../static/css/shopInside.css">
-    <link rel="stylesheet" href="../static/css/searchResult.css">
-    <link rel="stylesheet" href="../static/css/shoppingCartPage.css">
+    {% block csslink %} {% endblock %}
 </head>
 <body>
     <!-- top bar area -->
@@ -41,6 +33,19 @@
             <form action="{{ url_for('search') }}" method="post">
                 {{ searchForm.hidden_tag() }}
                 <div id="inputFrame">
+                    <div id="selecting-category">
+                        <select class="category-selection">
+                            <option value="clothing">Clothing</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="devices">Electronic Devices</option>
+                            <option value="shoes">Shoes</option>
+                            <option value="toys">Toys</option>
+                            <option value="food">Food</option>
+                            <option value="necessities">Necessities</option>
+                            <option value="book">Book</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
                     <div id="searching">
                         {{ searchForm.product_name(id="search", placeholder="Search for items") }}
 {#                        <input type="text" id="search" placeholder="Search for items"/>#}
