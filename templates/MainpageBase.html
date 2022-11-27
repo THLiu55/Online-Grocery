@@ -35,24 +35,12 @@
                 <div id="inputFrame">
                     <div id="searching">
                         <!-- the category selection -->
-                        <select class="category-selection">
-                                <option value="clothing">Clothing</option>
-                                <option value="furniture">Furniture</option>
-                                <option value="devices">Electronic Devices</option>
-                                <option value="shoes">Shoes</option>
-                                <option value="toys">Toys</option>
-                                <option value="food">Food</option>
-                                <option value="necessities">Necessities</option>
-                                <option value="book">Book</option>
-                                <option value="all">All</option>
-                        </select>
+                        {{ searchForm.tag(class="category-selection") }}
 
                         {{ searchForm.product_name(id="search", placeholder="Search for items") }}
-{#                        <input type="text" id="search" placeholder="Search for items"/>#}
                     </div>
                     <div id="submitting">
                         {{ searchForm.submit(class="custom-btn", id="searchBtn") }}
-{#                        <input type="submit" class="custom-btn" id="searchBtn" value="Search"/>#}
                     </div>
                 </div>
             </form>

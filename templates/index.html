@@ -42,7 +42,7 @@
             <ul id="card-list">
                 {% for category in categories %}
                     <li class="card-item">
-                        <a class="category-image" href="" hover_image = '{{ category[1] }}'>
+                        <a class="category-image" href="/search?tag={{ category[4] }}" hover_image = '{{ category[1] }}'>
                         <img src='{{ category[0] }}' alt="{{category[2]}}">
                         </a>
                         <a class="category-description" href="" >
@@ -60,7 +60,7 @@
                     <ul id="shopping-list">
                         {% for order in user.shoppingList[0].orders %}
                             <li class="shopping-item">
-                                <a class="shopping-item-image" href="">
+                                <a class="shopping-item-image" href="{{ url_for("User.shopping_bag") }}">
                                     <img src="{{ url_for("static", filename='product_img/' + order.product.picture_address) }}" alt="{{ order.product.description }}">
                                 </a>
                                 <a class="shopping-item-description" href="" >
