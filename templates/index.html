@@ -63,9 +63,7 @@
                                 <a class="shopping-item-image" href="{{ url_for("User.shopping_bag") }}">
                                     <img src="{{ url_for("static", filename='product_img/' + order.product.picture_address) }}" alt="{{ order.product.description }}">
                                 </a>
-                                <a class="shopping-item-description" href="" >
-                                    <p>${{ order.product.price }}</p >
-                                </a >
+                                <p>${{ order.product.price }}</p >
                             </li>
                         {% endfor %}
                     </ul>
