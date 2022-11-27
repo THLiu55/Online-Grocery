@@ -115,7 +115,38 @@ html, body{
 /* the style of number selecting input */
 #number-of-items{
     width: 2rem;
+    border: 1px #e3e3e3 solid;
+}
+#number-of-items:focus{
+    outline: 1px #88c1ff solid;
 }
 
+/* the style of buttons of number adding and decreasing */
+#number-add{
+    width: 1rem;
+    color: white;
+    background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+    padding: 0;
+    transition: all 0.3s ease;
+    border-radius: 4px 4px 4px 4px;
+    border-style: none;
+}
+#number-decrease{
+    width: 1rem;
+    color: white;
+    background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+    padding: 0;
+    transition: all 0.3s ease;
+    border-radius: 4px 4px 4px 4px;
+    border-style: none;
+}
+#number-add:hover{
+    color: rgba(251,75,2,1);
+    background: #ffe0ad;
+}
+#number-decrease:hover{
+    color: rgba(251,75,2,1);
+    background: #ffe0ad;
+}
 
 

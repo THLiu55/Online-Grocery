@@ -51,7 +51,13 @@ function loadCart() {
                                 </div>
                                 <div class="cart-product-unit-price">
                                     <span>
-                                        <input type="number" id="number-of-items">
+                                        <button type="button" id="number-add" > + </button>
+                                    </span>
+                                    <span>
+                                        <input type="text" id="number-of-items" readonly>
+                                    </span>
+                                    <span>
+                                        <button type="button" id="number-decrease" > - </button>
                                     </span>
                                     <span>
                                         $ ${item.cost}
