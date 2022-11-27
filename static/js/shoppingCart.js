@@ -13,6 +13,7 @@ function loadCart() {
         for (let i = 0; i < prev_shop_containers.length; i++) {
             prev_shop_containers[i].remove()
         }
+        let total = 0;
         let shops = JSON.parse(response.message)
         for (let shopName in shops) {
             let newShopSpace = document.createElement('div')
@@ -28,17 +29,21 @@ function loadCart() {
             </div>
 
             <div class="overall-frame">
-                <div class="price-area">
-                    Overall: 2200$
+                <div class="price-area" id="price-per-shop">
+                    <strong></strong>
                 </div>
             </div>`
 
             let itemContainer = newShopSpace.getElementsByTagName("ul")[0]
+
             let shop = shops[shopName];
+            let shopTotalCost = 0;
             for (let itemNumber in shop) {
                 let item = JSON.parse(shop[itemNumber])
                 let address = `../static/product_img/${item.pic_address}`
                 let newItem = document.createElement('li')
+                let item_cost = item.cost * item.amount;
+                shopTotalCost += item_cost;
                 newItem.className = 'cart-product-item'
                 newItem.innerHTML = `<div class="cart-product-pic-frame">
                             <img class="cart-product-pic-frame" src=${address}/>
@@ -51,16 +56,16 @@ function loadCart() {
                                 </div>
                                 <div class="cart-product-unit-price">
                                     <span>
-                                        <button type="button" id="number-add" > + </button>
+                                        <button type="button" id="number-add" onclick="addAmount(${item.order_id})"> + </button>
                                     </span>
                                     <span>
-                                        <input type="text" id="number-of-items" readonly>
+                                        <input type="text" id="number-of-items" value="${item.amount}" readonly>
                                     </span>
                                     <span>
-                                        <button type="button" id="number-decrease" > - </button>
+                                        <button type="button" id="number-decrease" onclick="reduceAmount(${item.order_id})"> - </button>
                                     </span>
                                     <span>
-                                        $ ${item.cost}
+                                        $ ${item_cost}
                                     </span>
                                 </div>
                                 <div class="delete-btn-area">
@@ -70,9 +75,14 @@ function loadCart() {
                         </div>`
                 itemContainer.appendChild(newItem)
             }
+            total += shopTotalCost
 
+            let shopTotalCostContainer = newShopSpace.getElementsByTagName('strong')[0]
+            shopTotalCostContainer.innerHTML = `Overall: ${shopTotalCost}$`
             shop_container.insertBefore(newShopSpace, total_cost_container)
         }
+
+        document.getElementById('total').innerHTML = `Total Overall: ${total}$`
 
     }
 }
@@ -88,6 +98,36 @@ function removeItem(order_id) {
             loadCart()
         } else {
             alert("Something goes wrong, please try again")
+        }
+    }
+}
+
+function addAmount(order_id) {
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',`/user/shopping-bag?type=addAmount&id=${order_id}`, true)
+    xhr.send()
+
+    xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            loadCart()
+        } else {
+            alert("Something goes wrong, please try again")
+        }
+    }
+}
+
+function reduceAmount(order_id) {
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',`/user/shopping-bag?type=reduceAmount&id=${order_id}`, true)
+    xhr.send()
+
+    xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            loadCart()
+        } else {
+            alert(response.message)
         }
     }
 }

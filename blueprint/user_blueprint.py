@@ -226,6 +226,23 @@ def shopping_bag():
             db.session.commit()
             print("here")
             return jsonify({'code': 200, 'message': 'success'})
+        if request.args.get("type") == "addAmount":
+            order_id = int(request.args.get('id'))
+            order = Order.query.filter_by(id=order_id).first()
+            amount = order.good_amount
+            order.good_amount = amount + 1
+            db.session.commit()
+            return jsonify({"code": 200, "message": "success"})
+        if request.args.get("type") == "reduceAmount":
+            order_id = int(request.args.get('id'))
+            order = Order.query.filter_by(id=order_id).first()
+            amount = order.good_amount
+            if amount == 1:
+                return jsonify({"code": 400, "message": "can't less than one"})
+            else:
+                order.good_amount = amount - 1
+                db.session.commit()
+                return jsonify({"code": 200, "message": "success"})
         return render_template('shopping_bag.html', searchForm=searchForm, use=user)
     else:
         return redirect(url_for("login"))

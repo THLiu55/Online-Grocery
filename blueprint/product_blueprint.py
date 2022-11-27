@@ -39,7 +39,10 @@ def details():
                 db.session.commit()
                 return render_template('good_detail.html', product=product, shopList=shop_list, form=form, searchForm=searchForm)
     else:
-        return render_template('good_detail.html', product=product, user=None, form=form, searchForm=searchForm)
+        if request.method == 'GET':
+            return render_template('good_detail.html', product=product, user=None, form=form, searchForm=searchForm)
+        else:
+            return redirect(url_for("User.login"))
 
 
 
