@@ -10,8 +10,9 @@ function loadCart() {
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
         let prev_shop_containers = shop_container.getElementsByClassName("shopping-cart-item-frame")
-        for (let i = 0; i < prev_shop_containers.length; i++) {
-            prev_shop_containers[i].remove()
+        let container_len = prev_shop_containers.length
+        for (let i = 0; i < container_len; i++) {
+            prev_shop_containers[0].remove()
         }
         let total = 0;
         let shops = JSON.parse(response.message)
@@ -79,6 +80,7 @@ function loadCart() {
 
             let shopTotalCostContainer = newShopSpace.getElementsByTagName('strong')[0]
             shopTotalCostContainer.innerHTML = `Overall: ${shopTotalCost}$`
+            console.log(`insert ${newShopSpace}`)
             shop_container.insertBefore(newShopSpace, total_cost_container)
         }
 
@@ -125,7 +127,7 @@ function reduceAmount(order_id) {
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 200) {
-            loadCart()
+
         } else {
             alert(response.message)
         }
