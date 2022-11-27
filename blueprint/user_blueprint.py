@@ -245,7 +245,7 @@ def shopping_bag():
                 return jsonify({"code": 200, "message": "success"})
         return render_template('shopping_bag.html', searchForm=searchForm, use=user)
     else:
-        return redirect(url_for("login"))
+        return redirect(url_for("User.login"))
 
 
 @user_bp.route('/logout')
