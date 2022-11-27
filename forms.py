@@ -40,5 +40,7 @@ class AddToCartForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     product_name = StringField(validators=[Length(min=1, max=200, message="no more than 200 characters")])
+    tag = SelectField(choices=[('All', 'all'), ('cloth', 'cloth'), ('furniture', 'furniture'), ('electronic', 'electronic'), ('shoe', 'shoe'), ('toy', 'toy'),
+                               ('food', 'food'), ('necessity', 'necessity'), ('book', 'book'), ('else', 'else')])
     submit = SubmitField()
 

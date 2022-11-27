@@ -58,15 +58,28 @@ def index():
     return render_template("index.html", user=user, categories=staticContents.categories, searchForm=searchForm)
 
 
-@app.route("/search/", methods=['POST'])
+@app.route("/search/", methods=['POST', 'GET'])
 def search():
-    searchForm = SearchForm()
-    if searchForm.validate_on_submit():
-        keyword = searchForm.product_name.data
-        page_data = Product.query.filter(Product.name.like("%" + keyword + "%"))
-        return render_template("search_result.html", page_data=page_data, keywords=keyword, searchForm=searchForm)
+    search_form = SearchForm()
+    if request.method == 'POST':
+        if search_form.validate_on_submit():
+            keyword = search_form.product_name.data
+            tag = search_form.tag.data
+            print(tag)
+            if tag == "All":
+                page_data = Product.query.filter(Product.name.like("%" + keyword + "%"))
+            else:
+                page_data = Product.query.filter(and_(Product.name.like("%" + keyword + "%"), Product.tag == tag))
+            return render_template("search_result.html", page_data=page_data, keywords=keyword, searchForm=search_form)
+        else:
+            return redirect(url_for("index"))
     else:
-        return redirect(url_for("index"))
+        tag = request.args.get("tag")
+        page_data = Product.query.filter(Product.tag == tag)
+        return render_template("search_result.html", page_data=page_data, keywords='', searchForm=search_form)
+
+
+
 
 
 if __name__ == '__main__':
