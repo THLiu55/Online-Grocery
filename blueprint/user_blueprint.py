@@ -1,9 +1,12 @@
 import random
 from datetime import datetime
-from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify, session
+from json import dumps
 
-from forms import RegisterForm, LoginForm
-from models import Customer, Captcha, ShoppingList
+from flask import Blueprint, render_template, request, redirect, url_for, g, jsonify, session
+from sqlalchemy import delete
+
+from forms import RegisterForm, LoginForm, SearchForm
+from models import Customer, Captcha, ShoppingList, Order
 from exts import db, mail_sender
 from flask_mail import Message
 import staticContents
@@ -203,7 +206,27 @@ def generateCaptcha():
 @user_bp.route('/shopping-bag')
 def shopping_bag():
     if "email" in session:
-        return render_template('shopping_bag.html')
+        searchForm = SearchForm()
+        email = session["email"]
+        user = Customer.query.filter_by(email=email).first()
+        if request.args.get("type") == "load":
+            res = {}
+            for order in user.shoppingList[0].orders:
+                shop_name = order.product.shop.name
+                if shop_name not in res:
+                    res[shop_name] = []
+                res[shop_name].append(dumps({"cost": order.cost, "amount": order.good_amount, "order_id": order.id,
+                                             "pic_address": order.product.picture_address, "name": order.product.name,
+                                             "description": order.product.description}))
+            print(res)
+            return jsonify({"code": 200, "message": dumps(res)})
+        if request.args.get("type") == "remove":
+            removed_id = int(request.args.get('id'))
+            Order.query.filter(Order.id == removed_id).delete()
+            db.session.commit()
+            print("here")
+            return jsonify({'code': 200, 'message': 'success'})
+        return render_template('shopping_bag.html', searchForm=searchForm, use=user)
     else:
         return redirect(url_for("login"))
 

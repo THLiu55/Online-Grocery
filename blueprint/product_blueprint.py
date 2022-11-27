@@ -32,7 +32,7 @@ def details():
                         order.cost += add_cost
                         shop_list.total_cost += add_cost
                         db.session.commit()
-                        return render_template('good_detail.html', product=product, shopList=shop_list, form=form)
+                        return render_template('good_detail.html', product=product, shopList=shop_list, form=form, searchForm=searchForm)
                 new_order = Order(good_amount=add_amount, cost=add_cost, shopping_list_id=shop_list.id, product_id=product_id)
                 shop_list.total_cost += add_cost
                 db.session.add(new_order)

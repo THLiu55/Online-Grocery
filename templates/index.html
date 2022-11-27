@@ -61,7 +61,7 @@
                         {% for order in user.shoppingList[0].orders %}
                             <li class="shopping-item">
                                 <a class="shopping-item-image" href="">
-                                    <img src="{{ order.product.picture_address }}" alt="{{ order.product.description }}">
+                                    <img src="{{ url_for("static", filename='product_img/' + order.product.picture_address) }}" alt="{{ order.product.description }}">
                                 </a>
                                 <a class="shopping-item-description" href="" >
                                     <p>${{ order.product.price }}</p >

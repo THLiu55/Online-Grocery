@@ -6,51 +6,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="shopping-items-container">
+    <div class="shopping-items-container" id="shop-container">
         <h2>Shopping cart items</h2>
         <!-- shop card frame -->
-        <div class="shopping-cart-item-frame">
-            <div class="shop-info-header">
-                <a class="entrance-to-shop">burberry</a>
-            </div>
-            <!-- product items in shop card frame -->
-            <div class="item-frame">
-                <ul class="cart-products-list">
-                    <li class="cart-product-item">
-                        <div class="cart-product-pic-frame">
-                            <img class="cart-product-pic-frame" src="./images/good1.jpg"/>
-                        </div>
-                        <div class="cart-product-info-frame">
-                            <div class="cart-products-flex-box">
-                                <h3>Perfume</h3>
-                                <div class="cart-product-description">
-                                    this isgoodasdasdasdasdasdasdasasdasdasdasdasdasdfghjfghjdfghjfghjfghfgh
-                                </div>
-                                <div class="cart-product-unit-price">
-                                    <span>
-                                        <input type="number" id="number-of-items">
-                                    </span>
-                                    <span>
-                                        $ 2200
-                                    </span>
-                                </div>
-                                <div class="delete-btn-area">
-                                    <button type="button" class="delete-btn">Remove product</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="overall-frame">
-                <div class="price-area">
-                    Overall: 2200$
-                </div>
-            </div>
-        </div>
-        <div class="total-overall">
+        <div class="total-overall" id="total-cost">
             <div class="price-area">
                    Total Overall: 2200$
             </div>
@@ -59,4 +18,8 @@
     </div>
 
 
+{% endblock %}
+
+{% block jsLink %}
+    <script type="text/javascript" src="../static/js/shoppingCart.js"></script>
 {% endblock %}
