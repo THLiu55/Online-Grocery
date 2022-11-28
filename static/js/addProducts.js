@@ -2,6 +2,22 @@
 const add_good_btn = document.getElementById("products-add");
 const back_btn = document.getElementById("add-product-back-btn");
 
+// get picture input
+const product_input_file = document.getElementById("good-pic-upload");
+
+product_input_file.addEventListener("change", function () {
+    // when uploading picture, we get picture file
+    const { files } = this;
+    // get the first file
+    if (files.length >= 2){
+        files[0].remove();
+    }
+    const pic = files[0];
+    // preview this picture
+    const pic_preview = document.getElementById("preview-pic-good");
+    pic_preview.src = URL.createObjectURL(pic);
+})
+
 // add event
 add_good_btn.addEventListener("click", function () {
      let register_frame = document.getElementsByClassName("register-component")[1];
