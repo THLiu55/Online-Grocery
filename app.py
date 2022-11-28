@@ -18,7 +18,7 @@ from blueprint.product_blueprint import product_bp
 
 import staticContents
 import configs
-from models import Customer, Product
+from models import Customer, Product, Order, ShoppingList, Shop, Captcha
 
 app.config.from_object(configs)
 db.init_app(app)
@@ -79,8 +79,16 @@ def search():
         return render_template("search_result.html", page_data=page_data, keywords='', searchForm=search_form)
 
 
-# @app.route('/')
-
+@app.route('/clear')
+def clear():
+    db.session.query(Order).delete()
+    db.session.query(ShoppingList).delete()
+    db.session.query(Product).delete()
+    db.session.query(Shop).delete()
+    db.session.query(Customer).delete()
+    db.session.query(Captcha).delete()
+    db.session.commit()
+    return render_template("index.html", user=None, categories=staticContents.categories, searchForm=SearchForm())
 
 if __name__ == '__main__':
     app.run(debug=True)
