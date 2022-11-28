@@ -79,7 +79,7 @@ def search():
         return render_template("search_result.html", page_data=page_data, keywords='', searchForm=search_form)
 
 
-
+# @app.route('/')
 
 
 if __name__ == '__main__':

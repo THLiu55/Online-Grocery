@@ -43,7 +43,7 @@ function loadCart() {
                 let item = JSON.parse(shop[itemNumber])
                 let address = `../static/product_img/${item.pic_address}`
                 let newItem = document.createElement('li')
-                let item_cost = item.cost * item.amount;
+                let item_cost = item.unit_price * item.amount;
                 shopTotalCost += item_cost;
                 newItem.className = 'cart-product-item'
                 newItem.innerHTML = `<div class="cart-product-pic-frame">

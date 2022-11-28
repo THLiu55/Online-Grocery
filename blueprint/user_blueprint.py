@@ -217,7 +217,7 @@ def shopping_bag():
                     res[shop_name] = []
                 res[shop_name].append(dumps({"cost": order.cost, "amount": order.good_amount, "order_id": order.id,
                                              "pic_address": order.product.picture_address, "name": order.product.name,
-                                             "description": order.product.description}))
+                                             "description": order.product.description, "unit_price": order.product.price}))
             print(res)
             return jsonify({"code": 200, "message": dumps(res)})
         if request.args.get("type") == "remove":
