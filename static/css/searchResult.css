@@ -3,12 +3,13 @@
     padding: 1rem;
 }
 /* the style of products list*/
-.products-list{
+.search-products-list{
     display: block;
+    width: 100%;
 	padding: 0;
 	list-style: none;
 }
-.product-item{
+.search-product-item{
     display: block;
     height: 10rem;
     padding: 2rem;
@@ -19,12 +20,12 @@
 	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
     transition: transform 0.1s ease-in-out, box-shadow 0.1s;
 }
-.product-item:hover{
+.search-product-item:hover{
     transform: translateY(-0.5rem) scale(1.0125);
 	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
 }
 /* a tag */
-.product-item a{
+.search-product-item a{
     display: block;
     color: black;
 }

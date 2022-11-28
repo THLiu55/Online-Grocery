@@ -168,6 +168,7 @@ body{
 /* the layout of left picture of personal information */
 .profile-right-info{
 	display: inline-block;
+    width: 60%;
     vertical-align: top;
 }
 
@@ -275,7 +276,7 @@ body{
 }
 .product-item{
     padding: 10px;
-	margin: 5px 0;
+	margin: 1rem 0;
 	font-size: 1rem;
 	text-decoration: none;
 	overflow: hidden;
@@ -303,6 +304,7 @@ body{
 
 .product-info-frame{
     display: inline-block;
+    width: 80%;
     vertical-align: top;
     margin-left: 3rem;
 }

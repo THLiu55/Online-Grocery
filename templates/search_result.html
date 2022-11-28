@@ -9,10 +9,10 @@
 
     <div class="shop-products-frame">
         <h2>Searching Results</h2>
-        <ul class="products-list">
+        <ul class="search-products-list">
             {% for product in page_data %}
 
-            <li class="product-item">
+            <li class="search-product-item">
                 <a href="/product?id={{ product.id }}">
                     <div class="search-product-pic-frame">
                         <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>

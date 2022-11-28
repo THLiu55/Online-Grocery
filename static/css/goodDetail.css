@@ -5,12 +5,11 @@
 
 /* the style of picture frame */
 .product-pic-container{
-    width: 20%;
-    height: 15rem;
+    width: 40%;
+    height: 40rem;
     margin-right: 3rem;
     display: inline-block;
     vertical-align: top;
-    outline: #185185 dashed;
 }
 /* picture */
 .product-pic-container img{
@@ -22,8 +21,25 @@
 .product-info-container{
     display: inline-block;
     vertical-align: top;
-
+    height: 40rem;
+    width: 50%;
 }
+.product-info-flex-box{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.product-info-description{
+    position: absolute;
+    width: 100%;
+    top: 15%;
+}
+.product-info-form{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
 
 /* the style of add cart button */
 .add-cart-btn{
@@ -49,9 +65,22 @@
 }
 /* the style of product number input */
 #product-number{
-    width: 20%;
+    padding: 5px;
+    border: 1px #b7b7b7 solid;
+    width: 10%;
+}
+#product-number:focus{
+    outline: 1px #54a8ff solid;
 }
 /* the style of cart adding button area*/
 .cart-adding-btn-area{
     margin-top: 2rem;
+}
+
+/* separation */
+.separation{
+    margin-top: 3rem;
+    height: 1px;
+    width: 100%;
+    background-color: #d7d7d7;
 }

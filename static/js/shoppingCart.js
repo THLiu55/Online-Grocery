@@ -127,7 +127,7 @@ function reduceAmount(order_id) {
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 200) {
-
+            loadCart();
         } else {
             alert(response.message)
         }
