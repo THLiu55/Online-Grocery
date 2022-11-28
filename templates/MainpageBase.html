@@ -13,7 +13,7 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="../static/css/MainpageBase_style.css">
+    <link rel="stylesheet" href="{{ url_for("static", filename='css/MainpageBase_style.css') }}">
     {% block csslink %} {% endblock %}
 </head>
 <body>
@@ -22,10 +22,10 @@
         <!-- logo for website -->
         <div id="Logo">
             <div id="imageFrame">
-                <a href="{{ url_for('index') }}"><img id="webLogo" src="../static/images/Logo.svg" /></a>
+                <a href="{{ url_for('index') }}"><img id="webLogo" src="{{ url_for("static", filename='images/Logo.svg') }}"/></a>
             </div>
             <div id="imageFrame2">
-                <a href="{{ url_for('index') }}"><img id="webLogo2" src="../static/images/Logo2.svg" /></a>
+                <a href="{{ url_for('index') }}"><img id="webLogo2" src="{{ url_for("static", filename='images/Logo2.svg') }}" /></a>
             </div>
         </div>
         <!-- search area -->
@@ -111,11 +111,10 @@
 </body>
 
 {% block jsLink %} {% endblock %}
-<script type="text/javascript" src="../static/js/Jquery.js"></script>
-<script type="text/javascript" src="../static/js/addProducts.js"></script>
-<script type="text/javascript" src="../static/js/fluidImagesPlayer.js"></script>
-<script type="text/javascript" src="../static/js/cardEffect.js"></script>
-<script type="text/javascript" src="../static/js/shoppingSlider.js"></script>
-<script type="text/javascript" src="../static/js/registerShop.js"></script>
-<script type="text/javascript" src="../static/js/profile.js"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/addProducts.js') }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/fluidImagesPlayer.js') }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/cardEffect.js') }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/shoppingSlider.js') }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/registerShop.js') }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename='js/profile.js') }}"></script>
 </html>

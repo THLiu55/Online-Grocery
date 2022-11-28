@@ -2,7 +2,7 @@
 {% block title %} profile {% endblock %}
 
 {% block csslink %}
-    <link rel="stylesheet" href="../static/css/profilePage.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profilePage.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -161,7 +161,7 @@
                         {% for product in shop.products %}
                         <li class="product-item">
                             <div class="product-pic-frame">
-                                <a href="/product?id={{ product.id }}">
+                                <a href="{{ url_for('Product.details', id=product.id) }}">
                                 <img class="product-pic-frame" src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
                                 </a>
                             </div>
