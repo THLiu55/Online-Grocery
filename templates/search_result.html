@@ -8,28 +8,29 @@
 {% block body %}
 
     <div class="shop-products-frame">
+        <h2>Searching Results</h2>
         <ul class="products-list">
             {% for product in page_data %}
-                <a href="/product?id={{ product.id }}">
+
             <li class="product-item">
-                <div class="product-pic-frame">
-                    <img class="product-pic-frame" src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
-                </div>
-                <div class="product-info-frame">
-                    <h3>{{ product.name }}</h3>
-                    <div class="product-description">
-                        <p>
-                            {{ product.description }}
-                        </p>
+                <a href="/product?id={{ product.id }}">
+                    <div class="search-product-pic-frame">
+                        <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
                     </div>
-                    <div class="product-unit-price">
-                        <p>
-                            $ {{ product.price }}
-                        </p>
+                    <div class="search-product-info-frame">
+                        <div class="search-product-flex-frame">
+                            <h3>{{ product.name }}</h3>
+                            <div class="search-product-description">
+                                {{ product.description }}
+                            </div>
+                            <div class="search-product-unit-price">
+                                $ {{ product.price }}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </li>
                 </a>
+            </li>
+
             {% endfor %}
         </ul>
     </div>
