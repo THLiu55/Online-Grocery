@@ -192,7 +192,7 @@ a{
     display: inline-block;
 }
 /*--a tag effect*/
-a:before, a:after{
+.nav-item a:before, .nav-item a:after{
     position: absolute;
     content: "";
     right: -5px;
@@ -200,23 +200,23 @@ a:before, a:after{
     background: rgb(255, 255, 255);
     transition: all 0.3s ease;
 }
-a:before{
+.nav-item a:before{
     height: 0%;
     width: 3px;
 }
-a:after{
+.nav-item a:after{
     width: 0%;
     height: 3px;
 }
 
-a:hover:before {
+.nav-item a:hover:before {
     height: 100%;
 }
-a:hover:after{
+.nav-item a:hover:after{
     width: 100%;
 }
 
-a span:before, a span:after{
+.nav-item a span:before, .nav-item a span:after{
     position: absolute;
     content: "";
     left: -5px;
@@ -224,18 +224,18 @@ a span:before, a span:after{
     background: rgb(255, 255, 255);
     transition: all 0.3s ease;
 }
-a span:before{
+.nav-item a span:before{
     height: 0%;
     width: 3px;
 }
-a span:after{
+.nav-item a span:after{
     width: 0%;
     height: 3px;
 }
-a span:hover:before {
+.nav-item a span:hover:before {
     height: 100%;
 }
-a span:hover:after{
+.nav-item a span:hover:after{
     width: 100%;
 }
 
