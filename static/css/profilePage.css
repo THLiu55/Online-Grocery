@@ -7,12 +7,12 @@ body{
 /* the layout of register shop area*/
 .register-component{
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     min-width: 35rem;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 110%;
+    height: 90%;
     visibility: hidden;
     opacity: 0;
     background-color: white;
@@ -26,8 +26,13 @@ body{
 }
 .register-input-frame{
     display: flex;
-    margin-bottom: 2rem;
+    height: 100%;
     transition: all .2s ease;
+}
+/* the style of product adding form */
+.register-input-frame form{
+    display: block;
+    height: 80%;
 }
 /* the back effect of profile*/
 .profile_back_effect{
@@ -111,7 +116,7 @@ body{
 }
 /* the layout of the shop registration area*/
 .Shop-inputArea{
-    margin: 15px 0 15px 0;
+    margin: 0.5rem 0 0.5rem 0;
 }
 /* the style of label in the input area*/
 .Shop-inputArea p{
