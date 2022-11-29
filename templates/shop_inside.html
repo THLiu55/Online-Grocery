@@ -30,7 +30,7 @@
         <ul id="card-list-s">
             {% for product in shop.products %}
             <li class="card-item-s">
-                <a class="category-image-s" href="">
+                <a class="category-image-s" href="{{ url_for('Product.details', id=product.id) }}">
                     <img src="{{ url_for('static', filename='./product_img/' + product.picture_address) }}" alt="perfume">
                 </a>
                 <a class="category-description-s" href="" >
