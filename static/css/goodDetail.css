@@ -108,6 +108,7 @@ body{
     margin-top: 0.5rem;
 }
 .shop-entrance a{
+    text-decoration: none;
     cursor: pointer;
     color: #54a8ff;
 }
