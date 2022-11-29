@@ -29,7 +29,8 @@ function go_to_register() {
     profile_back_effect.style.opacity = `1`;
 }
 
-profile_back_btn.addEventListener("click", function (event) {
+
+profile_back_btn.addEventListener("click", function () {
     // close the frame (The parent of the back button is forget password component)
     event.target.parentNode.style.visibility = `hidden`;
     event.target.parentNode.style.opacity = `0`;

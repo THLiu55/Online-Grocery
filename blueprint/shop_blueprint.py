@@ -5,6 +5,7 @@ from models import Shop, Customer
 
 shop_bp = Blueprint("Shop", __name__, url_prefix="/shop")
 
+
 @shop_bp.route("/")
 def shop():
     user = None
