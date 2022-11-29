@@ -89,7 +89,7 @@
 /*--load effect*/
 .category-image-s{
 	display: block;
-	min-height: 10rem; /* layout hack */
+	min-width: 10rem; /* layout hack */
 	background: #fff center center no-repeat;
 	background-size: cover;
 }
@@ -97,5 +97,6 @@
 .category-image-s img{
 	display: block;
 	width: 100%;
+	height: 100%;
 	opacity: 1;
 }
