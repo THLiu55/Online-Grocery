@@ -53,6 +53,12 @@ body{
     width: 100%;
     top: 15%;
 }
+.product-info-description p{
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden;
+}
 .product-info-form{
     position: absolute;
     width: 100%;

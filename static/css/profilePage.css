@@ -253,6 +253,16 @@ body{
     height: 100%;
 }
 /* detail information present */
+@media (min-width: 1060px) {
+    .shop-detail-present-frame{
+        width: 70%;
+    }
+}
+@media (max-width: 1060px) {
+    .shop-detail-present-frame{
+        width: 50%;
+    }
+}
 .shop-detail-present-frame{
     vertical-align: top;
     display: inline-block;
@@ -260,10 +270,18 @@ body{
 }
 .shop-detail-info-piece{
     margin: 1rem 0;
+    width: 100%;
 }
 .shop-info-content{
+    width: 100%;
     color: #9c9c9c;
     margin: 8px 0;
+}
+.shop-info-content p{
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden;
 }
 /* the style of separation line between labels and contents*/
 .separation-line-label{
@@ -322,12 +340,21 @@ body{
     vertical-align: top;
     margin-left: 3rem;
 }
+
+.product-description p{
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden;
+ }
 .product-description{
     margin: 10px 0;
+    width: 100%;
 }
 .product-unit-price{
     display: inline-block;
     vertical-align: bottom;
+    width: 100%;
 }
 /* the style of shop registration notice area (when user have no shop)*/
 .shop-registration-notice-frame{

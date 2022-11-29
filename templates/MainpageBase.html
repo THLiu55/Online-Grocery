@@ -14,6 +14,7 @@
         }
     </style>
     <link rel="stylesheet" href="{{ url_for("static", filename='css/MainpageBase_style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />
     {% block csslink %} {% endblock %}
 </head>
 <body>
@@ -97,6 +98,14 @@
                     <a href="{{ url_for('clear') }}" id="shopping_cart">
                         <span>
                             <img class="bar-pic" src="../static/images/clean.png">
+                        </span>
+                    </a>
+                </div>
+                <!-- mode change -->
+                <div class="nav-item">
+                    <a href="{{ url_for('clear') }}" id="shopping_cart">
+                        <span>
+                            <img class="bar-pic" src="../static/images/light.png">
                         </span>
                     </a>
                 </div>

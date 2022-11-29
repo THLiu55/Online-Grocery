@@ -12,28 +12,32 @@
         <h2>Searching Results</h2>
         <ul class="search-products-list">
             {% for product in page_data %}
-
-            <li class="search-product-item">
-                <a href="/product?id={{ product.id }}">
-                    <div class="search-product-pic-frame">
-                        <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
-                    </div>
-                    <div class="search-product-info-frame">
-                        <div class="search-product-flex-frame">
-                            <h3>{{ product.name }}</h3>
-                            <div class="search-product-description">
-                                {{ product.description }}
-                            </div>
-                            <div class="search-product-unit-price">
-                                $ {{ product.price }}
+                <li class="search-product-item">
+                    <a class="search-a-tag-left" href="/product?id={{ product.id }}">
+                        <div class="search-product-pic-frame">
+                            <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
+                        </div>
+                    </a>
+                    <a class="search-a-tag-right" href="/product?id={{ product.id }}">
+                        <div class="search-product-info-frame">
+                            <div class="search-product-flex-frame">
+                                <h3>{{ product.name }}</h3>
+                                <div class="search-product-description">
+                                    {{ product.description }}
+                                </div>
+                                <div class="search-product-unit-price">
+                                    $ {{ product.price }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </li>
-
+                    </a>
+                </li>
             {% endfor %}
         </ul>
     </div>
 
+{% endblock %}
+
+{% block jsLink %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/MODE_CHANGE_searchResult.js') }}"></script>
 {% endblock %}
