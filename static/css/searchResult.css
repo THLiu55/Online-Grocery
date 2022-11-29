@@ -1,3 +1,7 @@
+body{
+    min-width: 45rem;
+}
+
 /* the style of the entire container frame */
 .shop-products-frame{
     padding: 1rem;
@@ -42,11 +46,23 @@
     width: 100%;
     height: 100%;
 }
+
+@media (min-width: 1060px) {
+    .search-product-info-frame{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1060px) {
+    .search-product-info-frame{
+        width: 50%;
+    }
+}
+
 .search-product-info-frame{
     display: inline-block;
     vertical-align: top;
     height: 10rem;
-    width: 70%;
     margin-left: 3rem;
 }
 /* the style of searching result (product info)*/

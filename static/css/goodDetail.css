@@ -1,12 +1,32 @@
+body{
+    min-width: 45rem;
+}
 /* the style of outer container */
 .content-container{
     padding: 3rem;
 }
 
+@media (min-width: 1060px) {
+    .product-pic-container{
+        height: 40rem;
+    }
+    .product-info-container{
+        height: 40rem;
+    }
+}
+
+@media (max-width: 1060px) {
+    .product-pic-container{
+        height: 30rem;
+    }
+    .product-info-container{
+        height: 30rem;
+    }
+}
+
 /* the style of picture frame */
 .product-pic-container{
     width: 40%;
-    height: 40rem;
     margin-right: 3rem;
     display: inline-block;
     vertical-align: top;
@@ -21,7 +41,6 @@
 .product-info-container{
     display: inline-block;
     vertical-align: top;
-    height: 40rem;
     width: 50%;
 }
 .product-info-flex-box{
@@ -79,8 +98,19 @@
 
 /* separation */
 .separation{
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     height: 1px;
     width: 100%;
     background-color: #d7d7d7;
+}
+/* the style of shop entrance */
+.shop-entrance{
+    margin-top: 0.5rem;
+}
+.shop-entrance a{
+    cursor: pointer;
+    color: #54a8ff;
+}
+.shop-entrance a:hover{
+    color: #164453;
 }

@@ -2,6 +2,7 @@
 
 {% block csslink %}
     <link rel="stylesheet" href="../static/css/goodDetail.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />
 {% endblock %}
 
 {% block body %}
@@ -12,6 +13,9 @@
         <div class="product-info-container">
             <div class="product-info-flex-box">
                 <h2 class="product-info-name">{{ product.name }}</h2>
+                <div class="shop-entrance">
+                    <a>sasdasdasdasdasd</a>
+                </div>
                 <div class="separation"></div>
                 <div class="product-info-description">
                     <p>{{ product.description }}</p>

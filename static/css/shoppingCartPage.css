@@ -1,6 +1,7 @@
 html, body{
     height: 100%;
     background-color: #f3f3f3;
+    min-width: 45rem;
 }
 
 /* the style of shopping cart page background*/
@@ -30,7 +31,6 @@ html, body{
 }
 .cart-product-item{
     border-radius: 10px;
-    height: 10rem;
     padding: 2rem;
 	margin: 1rem 0;
 	font-size: 1rem;
@@ -56,11 +56,21 @@ html, body{
     width: 100%;
     height: 100%;
 }
+@media (max-width: 1060px) {
+    .cart-product-info-frame{
+        width: 50%;
+    }
+}
+
+@media (min-width: 1060px) {
+    .cart-product-info-frame{
+        width: 70%;
+    }
+}
 .cart-product-info-frame{
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    width: 70%;
     margin-left: 3rem;
 }
 /* the style & layout of products flex bo */
@@ -71,13 +81,12 @@ html, body{
 }
 
 .cart-product-description{
-    position: absolute;
-    top: 30%;
+    margin: 2rem 0;
+
 }
 
 .cart-product-unit-price {
-    position: absolute;
-    bottom: 0;
+    margin: 2rem 0 ;
 }
 /* the style of overall price */
 .overall-frame{
@@ -94,7 +103,7 @@ html, body{
 .delete-btn-area{
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
 }
 /* the style of button */
 .delete-btn{

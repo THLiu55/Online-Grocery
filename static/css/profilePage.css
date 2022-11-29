@@ -1,6 +1,7 @@
 /* the entire document */
 body{
     font-family: sans-serif;
+    min-width: 45rem;
 }
 
 /* the layout of register shop area*/
@@ -152,8 +153,7 @@ body{
 
 /* the layout of left picture of personal information */
 .profile-left-pic{
-    padding-left: 12rem;
-    margin-right: 10rem;
+    width: 20%;
 	display: inline-block;
     text-align: center;
     line-height: 20rem;
@@ -168,7 +168,7 @@ body{
 /* the layout of left picture of personal information */
 .profile-right-info{
 	display: inline-block;
-    width: 60%;
+    width: 70%;
     vertical-align: top;
 }
 
@@ -301,10 +301,18 @@ body{
     height: 100%;
 }
 /* products information */
-
+@media (max-width: 1150px) {
+    .product-info-frame{
+        width: 50%;
+    }
+}
+@media (min-width: 1150px) {
+    .product-info-frame{
+        width: 80%;
+    }
+}
 .product-info-frame{
     display: inline-block;
-    width: 80%;
     vertical-align: top;
     margin-left: 3rem;
 }

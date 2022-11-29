@@ -70,3 +70,11 @@ section{
 	margin: 0;
 }
 
+/* the style of shopping card - shop entrance */
+.shop-info-header a{
+	cursor: pointer;
+    color: #54a8ff;
+}
+.shop-info-header a:hover{
+	color: #164453;
+}
