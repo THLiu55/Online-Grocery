@@ -10,11 +10,11 @@ from forms import SearchForm
 app = Flask(__name__)
 upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
 
-# logging.basicConfig(filename='test.log', level=logging.INFO)
 
 from blueprint.user_blueprint import user_bp
 from blueprint.profile_blueprint import profile_bp
 from blueprint.product_blueprint import product_bp
+from blueprint.shop_blueprint import shop_bp
 
 import staticContents
 import configs
@@ -27,6 +27,7 @@ mail_sender.init_app(app)
 app.register_blueprint(profile_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(product_bp)
+app.register_blueprint(shop_bp)
 
 # # create handlers
 # info_handler = logging.FileHandler('logs/info.log')
@@ -50,8 +51,10 @@ app.register_blueprint(product_bp)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # init forms
     searchForm = SearchForm()
     user = None
+    # load the user
     if "email" in session:
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
@@ -60,12 +63,13 @@ def index():
 
 @app.route("/search/", methods=['POST', 'GET'])
 def search():
+    # init forms
     search_form = SearchForm()
     if request.method == 'POST':
         if search_form.validate_on_submit():
+            # search items by name and tag
             keyword = search_form.product_name.data
             tag = search_form.tag.data
-            print(tag)
             if tag == "All":
                 page_data = Product.query.filter(Product.name.like("%" + keyword + "%"))
             else:
@@ -74,6 +78,7 @@ def search():
         else:
             return redirect(url_for("index"))
     else:
+        # click the card in home page == search all items with that tag
         tag = request.args.get("tag")
         page_data = Product.query.filter(Product.tag == tag)
         return render_template("search_result.html", page_data=page_data, keywords='', searchForm=search_form)
@@ -81,6 +86,7 @@ def search():
 
 @app.route('/clear')
 def clear():
+    # clear all records in database
     db.session.query(Order).delete()
     db.session.query(ShoppingList).delete()
     db.session.query(Product).delete()
@@ -89,6 +95,7 @@ def clear():
     db.session.query(Captcha).delete()
     db.session.commit()
     return render_template("index.html", user=None, categories=staticContents.categories, searchForm=SearchForm())
+
 
 if __name__ == '__main__':
     app.run(debug=True)

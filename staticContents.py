@@ -1,4 +1,5 @@
 # category card's contents
+
 categories = [('../static/images/clothing100.png', '../static/images/clothing500.png', 'Clothing Area', 'shop clothes here!', 'cloth'),
               ('../static/images/furniture100.png', '../static/images/furniture500.png', 'Furniture Area', 'decorate your warm home here!', 'furniture'),
               ('../static/images/smart100.png', '../static/images/smart500.png', 'Electronic Devices Area', 'find your smart life here!', 'electronic'),

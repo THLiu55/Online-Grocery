@@ -1,10 +1,9 @@
-from datetime import datetime
-
 from exts import db
 
 # database models
 
 
+# customer table
 class Customer(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -13,6 +12,7 @@ class Customer(db.Model):
     email = db.Column(db.CHAR(200), unique=True, nullable=False)
 
 
+# captcha table - generated for each registered email
 class Captcha(db.Model):
     __tablename__ = 'captcha'
     email = db.Column(db.CHAR(200), primary_key=True)
@@ -20,6 +20,7 @@ class Captcha(db.Model):
     create_time = db.Column(db.DateTime, nullable=False)
 
 
+# shopping list table - when a customer registered, a shopping list will be created for him/her
 class ShoppingList(db.Model):
     __tablename__ = 'shoppingList'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -28,6 +29,7 @@ class ShoppingList(db.Model):
     user = db.relationship('Customer', backref='shoppingList')
 
 
+# the order specify the customer and product and the amount of product
 class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -39,6 +41,7 @@ class Order(db.Model):
     product = db.relationship('Product', backref='orders')
 
 
+# the information of product
 class Product(db.Model):
     __tablename__ = 'product'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -51,6 +54,7 @@ class Product(db.Model):
     shop = db.relationship('Shop', backref='products')
 
 
+# information of shop
 class Shop(db.Model):
     __tablename__ = 'shop'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

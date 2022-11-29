@@ -19,14 +19,15 @@ picture_input_file.addEventListener("change", function () {
 
 })
 
-register_shop_btn.addEventListener("click", function () {
+
+function go_to_register() {
     let register_frame = document.getElementsByClassName("register-component")[0];
     register_frame.style.visibility = `visible`;
     register_frame.style.opacity = `1`;
     let profile_back_effect = document.getElementsByClassName("profile_back_effect")[0];
     profile_back_effect.style.visibility = `visible`;
     profile_back_effect.style.opacity = `1`;
-})
+}
 
 profile_back_btn.addEventListener("click", function (event) {
     // close the frame (The parent of the back button is forget password component)

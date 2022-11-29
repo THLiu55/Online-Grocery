@@ -19,7 +19,6 @@ user_bp = Blueprint("User", __name__, url_prefix="/user")
 def login():
     login_form = LoginForm()
     register_form = RegisterForm()
-
     if request.method == 'GET':
         return render_template('login.html', register_form=register_form, login_form=login_form)
     else:
@@ -100,12 +99,6 @@ def login():
             return jsonify({'code': 400, 'message': "registered email"})
         else:
             return render_template("index.html", user=g.user, categories=staticContents.categories)
-
-
-
-
-
-
 
 
 # backend support for finding back (reset) password
@@ -215,7 +208,7 @@ def shopping_bag():
                 shop_name = order.product.shop.name
                 if shop_name not in res:
                     res[shop_name] = []
-                res[shop_name].append(dumps({"cost": order.cost, "amount": order.good_amount, "order_id": order.id,
+                res[shop_name].append(dumps({"shop_id": order.product.shop.id, "cost": order.cost, "amount": order.good_amount, "order_id": order.id,
                                              "pic_address": order.product.picture_address, "name": order.product.name,
                                              "description": order.product.description, "unit_price": order.product.price}))
             print(res)

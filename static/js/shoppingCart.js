@@ -20,7 +20,7 @@ function loadCart() {
             let newShopSpace = document.createElement('div')
             newShopSpace.className = "shopping-cart-item-frame"
             newShopSpace.innerHTML =  `<div class="shop-info-header">
-                <a>${shopName}</a>
+                <a href="/shop?name=${shopName}">${shopName}</a>
             </div>
             <!-- product items in shop card frame -->
             <div class="item-frame">

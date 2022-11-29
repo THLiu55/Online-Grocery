@@ -1,6 +1,9 @@
 # database configurations
 import os
 
+# Please remember to add environment variables
+
+# set database configurations
 SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TYPE") + os.getcwd() + os.path.sep + os.environ.get("DATABASE_NAME")
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
