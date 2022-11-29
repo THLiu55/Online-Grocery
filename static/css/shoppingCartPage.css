@@ -158,5 +158,14 @@ html, body{
     color: rgba(251,75,2,1);
     background: #ffe0ad;
 }
+/* the style of shopping card - shop entrance */
+.shop-info-header a{
+    text-decoration: none;
+	cursor: pointer;
+    color: #54a8ff;
+}
+.shop-info-header a:hover{
+	color: #164453;
+}
 
 

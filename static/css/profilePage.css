@@ -7,11 +7,12 @@ body{
 /* the layout of register shop area*/
 .register-component{
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
+    min-width: 35rem;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 115%;
+    height: 110%;
     visibility: hidden;
     opacity: 0;
     background-color: white;
@@ -25,7 +26,7 @@ body{
 }
 .register-input-frame{
     display: flex;
-    margin-bottom: 12px;
+    margin-bottom: 2rem;
     transition: all .2s ease;
 }
 /* the back effect of profile*/
@@ -45,7 +46,7 @@ body{
       backdrop-filter: saturate(180%) blur(1px);
 }
 /* the style of profile back button*/
-.profile-back-btn{
+#profile-back-btn{
     background: none;
     border: none;
     outline: none;
