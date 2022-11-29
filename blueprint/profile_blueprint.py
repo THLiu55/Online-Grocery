@@ -15,6 +15,7 @@ profile_bp = Blueprint("Profile", __name__, url_prefix="/profile")
 def index():
     searchForm = SearchForm()
     if "email" in session:
+        # load user
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
         shop_register_form = ShopRegisterForm()

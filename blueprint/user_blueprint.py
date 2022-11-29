@@ -23,6 +23,7 @@ def login():
         return render_template('login.html', register_form=register_form, login_form=login_form)
     else:
         operation = request.args.get('type')
+        # login service
         if operation == "login":
             if login_form.validate_on_submit():
                 email = login_form.email_login.data
@@ -36,8 +37,10 @@ def login():
                 # get and return the first error message generate by validator
                 for e in login_form.errors:
                     return jsonify({'code': 401, 'message': login_form.errors.get(e)[0]})
+        # sign up service
         elif operation == "signup":
             if register_form.validate_on_submit():
+                # get all data from form
                 email = register_form.email.data
                 captcha = register_form.captcha.data
                 username = register_form.username.data
@@ -202,6 +205,7 @@ def shopping_bag():
         searchForm = SearchForm()
         email = session["email"]
         user = Customer.query.filter_by(email=email).first()
+        # the service for load the shopping cart
         if request.args.get("type") == "load":
             res = {}
             for order in user.shoppingList[0].orders:
