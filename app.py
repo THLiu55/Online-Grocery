@@ -1,9 +1,8 @@
 import os
-import logging
 
-from flask import Flask, render_template, g, session, request, redirect, url_for
+from flask import Flask, render_template, session, request, redirect, url_for
 from exts import db, mail_sender
-from sqlalchemy import and_, or_
+from sqlalchemy import and_
 
 from forms import SearchForm
 from blueprint.user_blueprint import user_bp
@@ -17,39 +16,7 @@ from models import Customer, Product, Order, ShoppingList, Shop, Captcha
 from logging.config import dictConfig
 
 
-# # create handlers
-# info_handler = logging.FileHandler('logs/info.log')
-# waring_handler = logging.FileHandler('logs/warning.log')
-# error_handler = logging.FileHandler('logs/error.log')
-# # set the lowest accept level for each handler
-# info_handler.setLevel(logging.INFO)
-# waring_handler.setLevel(logging.WARNING)
-# error_handler.setLevel(logging.ERROR)
-# # set the log format
-# log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# error_handler.setFormatter(log_format)
-# info_handler.setFormatter(log_format)
-# waring_handler.setFormatter(log_format)
-# # activate handlers
-# app.logger.setLevel(logging.INFO)
-# app.logger.addHandler(info_handler)
-# app.logger.addHandler(waring_handler)
-# app.logger.addHandler(error_handler)
-#
-# log_myapp_debug = app.logger.getChild("debug")
-# log_myapp_warn = app.logger.getChild("warn")
-# log_myapp_err = app.logger.getChild("error")
-#
-# log_myapp_debug.setLevel(logging.DEBUG)
-# log_myapp_debug.addHandler(logging.FileHandler('debug.log'))
-#
-# log_myapp_warn.setLevel(logging.WARNING)
-# log_myapp_warn.addHandler(logging.FileHandler('warn.log'))
-#
-# log_myapp_err.setLevel(logging.ERROR)
-# log_myapp_err.addHandler(logging.FileHandler('err.log'))
-
-
+# add configurations of loggers and handlers
 dictConfig(
     {
         'version': 1,
@@ -63,11 +30,38 @@ dictConfig(
                 'class': 'logging.StreamHandler',
                 'stream': 'ext://flask.logging.wsgi_errors_stream',
                 'formatter': 'default'
-            }
+            },
+            'info_file': {
+                "class": "logging.handlers.RotatingFileHandler",
+                "level": "INFO",
+                "formatter": "default",
+                "filename": "./logs/info.log",
+                "maxBytes": 20*1024*1024,
+                "backupCount": 10,
+                "encoding": "utf8",
+            },
+            'warn_file': {
+                "class": "logging.handlers.RotatingFileHandler",
+                "level": "WARNING",
+                "formatter": "default",
+                "filename": "./logs/warn.log",
+                "maxBytes": 20*1024*1024,
+                "backupCount": 10,
+                "encoding": "utf8",
+            },
+            'error_file': {
+                "class": "logging.handlers.RotatingFileHandler",
+                "level": "ERROR",
+                "formatter": "default",
+                "filename": "./logs/error.log",
+                "maxBytes": 20*1024*1024,
+                "backupCount": 10,
+                "encoding": "utf8",
+            },
         },
         'root': {
             'level': 'INFO',
-            'handlers': ['wsgi']
+            'handlers': ['info_file', 'error_file', 'warn_file', 'wsgi']
         }
     }
 )
@@ -76,14 +70,17 @@ dictConfig(
 app = Flask(__name__)
 upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
 
+# init
 app.config.from_object(configs)
 db.init_app(app)
 mail_sender.init_app(app)
 
+# register blueprint
 app.register_blueprint(profile_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(product_bp)
 app.register_blueprint(shop_bp)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

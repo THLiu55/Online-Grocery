@@ -1,0 +1,20 @@
+[2022-11-30 14:27:35,465] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2022-11-30 14:27:35,465] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2022-11-30 14:27:35,466] INFO in _internal:  * Restarting with stat
+[2022-11-30 14:27:35,645] WARNING in _internal:  * Debugger is active!
+[2022-11-30 14:27:35,650] INFO in _internal:  * Debugger PIN: 297-959-177
+[2022-11-30 14:28:40,364] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2022-11-30 14:28:40,364] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2022-11-30 14:28:40,365] INFO in _internal:  * Restarting with stat
+[2022-11-30 14:28:40,569] WARNING in _internal:  * Debugger is active!
+[2022-11-30 14:28:40,576] INFO in _internal:  * Debugger PIN: 297-959-177
+[2022-11-30 14:32:17,095] INFO in _internal:  * Detected change in '/Users/liutianhao/Downloads/team_2_lll/app.py', reloading
+[2022-11-30 14:32:17,135] INFO in _internal:  * Restarting with stat
+[2022-11-30 14:32:17,332] WARNING in _internal:  * Debugger is active!
+[2022-11-30 14:32:17,336] INFO in _internal:  * Debugger PIN: 297-959-177
+[2022-11-30 14:35:55,088] INFO in _internal:  * Detected change in '/Users/liutianhao/Downloads/team_2_lll/app.py', reloading
+[2022-11-30 14:35:55,122] INFO in _internal:  * Restarting with stat
+[2022-11-30 14:35:55,297] WARNING in _internal:  * Debugger is active!
+[2022-11-30 14:35:55,301] INFO in _internal:  * Debugger PIN: 297-959-177
