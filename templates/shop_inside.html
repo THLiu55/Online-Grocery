@@ -16,7 +16,7 @@
             </div>
             <div class="shop-info-frame-s">
                 <div class="info-header">
-                    <h2>{{ shop.name }}</h2>
+                    <h2 class="info-header-text">{{ shop.name }}</h2>
                 </div>
                 <div class="info-card-s">
                     <p>{{ shop.description }}</p>
@@ -43,4 +43,8 @@
         </ul>
     </div>
 
+{% endblock %}
+
+{% block jsLink %}
+    <script type="text/javascript" src="{{ url_for("static", filename='js/MODE_CHANGE_shopInside.js') }}"></script>
 {% endblock %}
