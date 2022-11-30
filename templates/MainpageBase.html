@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for("static", filename='css/MainpageBase_style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0, user-scalable=yes" />
     {% block csslink %} {% endblock %}
+    {% block jsLink %} {% endblock %}
 </head>
 <body>
     <!-- top bar area -->
@@ -103,11 +104,11 @@
                 </div>
                 <!-- mode change -->
                 <div class="nav-item">
-                    <a href="{{ url_for('clear') }}" id="shopping_cart">
+{#                    <a href="{{ url_for('clear') }}" id="shopping_cart">#}
                         <span>
-                            <img class="bar-pic" src="../static/images/light.png">
+                            <img class="bar-pic" src="../static/images/light.png" onclick="switchMode()">
                         </span>
-                    </a>
+{#                    </a>#}
                 </div>
             </div>
         </div>
@@ -116,10 +117,8 @@
     {% block body %} {% endblock %}
 
     {% block footer %} {% endblock %}
-
 </body>
 
-{% block jsLink %} {% endblock %}
 <script type="text/javascript" src="{{ url_for("static", filename='js/addProducts.js') }}"></script>
 <script type="text/javascript" src="{{ url_for("static", filename='js/fluidImagesPlayer.js') }}"></script>
 <script type="text/javascript" src="{{ url_for("static", filename='js/cardEffect.js') }}"></script>

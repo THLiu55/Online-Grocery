@@ -6,11 +6,6 @@ from exts import db, mail_sender
 from sqlalchemy import and_, or_
 
 from forms import SearchForm
-
-app = Flask(__name__)
-upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
-
-
 from blueprint.user_blueprint import user_bp
 from blueprint.profile_blueprint import profile_bp
 from blueprint.product_blueprint import product_bp
@@ -19,15 +14,8 @@ from blueprint.shop_blueprint import shop_bp
 import staticContents
 import configs
 from models import Customer, Product, Order, ShoppingList, Shop, Captcha
+from logging.config import dictConfig
 
-app.config.from_object(configs)
-db.init_app(app)
-mail_sender.init_app(app)
-
-app.register_blueprint(profile_bp)
-app.register_blueprint(user_bp)
-app.register_blueprint(product_bp)
-app.register_blueprint(shop_bp)
 
 # # create handlers
 # info_handler = logging.FileHandler('logs/info.log')
@@ -47,7 +35,49 @@ app.register_blueprint(shop_bp)
 # app.logger.addHandler(info_handler)
 # app.logger.addHandler(waring_handler)
 # app.logger.addHandler(error_handler)
+#
+# log_myapp_debug = app.logger.getChild("debug")
+# log_myapp_warn = app.logger.getChild("warn")
+# log_myapp_err = app.logger.getChild("error")
+#
+# log_myapp_debug.setLevel(logging.DEBUG)
+# log_myapp_debug.addHandler(logging.FileHandler('debug.log'))
+#
+# log_myapp_warn.setLevel(logging.WARNING)
+# log_myapp_warn.addHandler(logging.FileHandler('warn.log'))
+#
+# log_myapp_err.setLevel(logging.ERROR)
+# log_myapp_err.addHandler(logging.FileHandler('err.log'))
 
+
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
+
+
+app = Flask(__name__)
+upload_logo_dir = os.path.join(app.root_path, 'static/shop_logo')
+
+app.config.from_object(configs)
+db.init_app(app)
+mail_sender.init_app(app)
+
+app.register_blueprint(profile_bp)
+app.register_blueprint(user_bp)
+app.register_blueprint(product_bp)
+app.register_blueprint(shop_bp)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
