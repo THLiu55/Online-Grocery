@@ -41,12 +41,34 @@
 {% block jsLink %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/MODE_CHANGE_searchResult.js') }}"></script>
 
-<script>
+    <script>
+    // get all the elements needed to be switched
+    const shop_products_frame = document.getElementsByClassName("shop-products-frame")[0];
+    const search_product_item = document.getElementsByClassName("search-product-item")[0];
+    const search_product_flex_frame = document.getElementsByClassName("search-product-flex-frame")[0];
 
-function switchMode() {
-    alert("this is from search page")
-}
+    function switchMode() {
+        alert("this is from search page")
+    }
 
-</script>
+    function light_mode(){
+        // body background white
+        document.body.style.background = '#ffffff';
+        // remove dark mode classes
+        shop_products_frame.classList.remove('DARKMODE_TEXT');
+        search_product_item.classList.remove('DARKMODE_BACKGROUND_CARD');
+        search_product_flex_frame.classList.remove('DARKMODE_TEXT');
+    }
+
+    function dark_mode(){
+        // body background dark
+        document.body.style.background = '#2F2F33FF'
+        // add dark mode classes
+        shop_products_frame.classList.add('DARKMODE_TEXT');
+        search_product_item.classList.add('DARKMODE_BACKGROUND_CARD');
+        search_product_flex_frame.classList.add('DARKMODE_TEXT');
+    }
+
+    </script>
 
 {% endblock %}
