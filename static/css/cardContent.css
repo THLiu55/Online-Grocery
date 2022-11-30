@@ -67,3 +67,14 @@
 .category-description p{
 	margin: 0;
 }
+
+/* dark mode css */
+.DARKMODE_BACKGROUND_MAIN{
+    background-color: rgb(47,47,51);
+}
+.DARKMODE_TEXT{
+    color: white;
+}
+.DARKMODE_BACKGROUND_CARD{
+    background-color: rgb(30, 30, 33);
+}

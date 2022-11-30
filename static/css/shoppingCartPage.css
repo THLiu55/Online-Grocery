@@ -1,13 +1,12 @@
 html, body{
     height: 100%;
-    background-color: #f3f3f3;
     min-width: 45rem;
 }
 
 /* the style of shopping cart page background*/
 .shopping-items-container{
-
     padding: 2rem;
+    background-color: #f3f3f3;
     height: 100%;
 }
 
@@ -16,7 +15,6 @@ html, body{
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 10px;
-    background-color: #ffffff;
     padding: 2rem;
     z-index: 0;
 }
@@ -168,4 +166,17 @@ html, body{
 	color: #164453;
 }
 
+/* dark mode css */
+.DARKMODE_BACKGROUND_MAIN{
+    background-color: rgb(47,47,51);
+}
+.DARKMODE_TEXT{
+    color: white;
+}
+.DARKMODE_BACKGROUND_CARD{
+    background-color: rgb(30, 30, 33);
+}
+.LIGHTMODE_BACKGROUND_CARD{
+    background-color: #FFFFFF;
+}
 

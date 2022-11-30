@@ -78,9 +78,5 @@
 {% endblock %}
 
 {% block jsLink %}
-<script>
-function switchMode() {
-    alert("this is from index page")
-}
-</script>
+    <script type="text/javascript" src="{{ url_for("static", filename='js/MODE_CHANGE_index.js') }}"></script>
 {% endblock %}

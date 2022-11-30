@@ -135,7 +135,7 @@
                         <img src="{{ url_for("static", filename='shop_logo/' + shop.logo_address) }}"/>
                     </div>
                     <div class="shop-detail-present-frame">
-                        <div class="shop-detail-info-piece">
+                            <div class="shop-detail-info-piece">
                             <h4>Shop name</h4>
                             <div class="separation-line-label"></div>
                             <div class="shop-info-content">
@@ -196,9 +196,5 @@
 {% endblock %}
 
 {% block jsLink %}
-<script>
-function switchMode() {
-    alert("this is from profile page")
-}
-</script>
+    <script type="text/javascript" src="{{ url_for("static", filename='js/MODE_CHANGE_profile.js') }}"></script>
 {% endblock %}
