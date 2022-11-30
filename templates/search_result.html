@@ -45,9 +45,36 @@
     const shop_products_frame = document.getElementsByClassName("shop-products-frame")[0];
     const search_product_item = document.getElementsByClassName("search-product-item")[0];
     const search_product_flex_frame = document.getElementsByClassName("search-product-flex-frame")[0];
+    const mode_img = document.getElementById("mode_img_id")
+    loadBackground()
+
+    function loadBackground() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/mode?type=get', true)
+        xhr.send()
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.responseText)
+            if (response.message === "dark") {
+                dark_mode()
+                mode_img.src = "../static/images/dark.png"
+            }
+        }
+    }
 
     function switchMode() {
-        alert("this is from search page")
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/mode?type=switch', true)
+        xhr.send()
+        xhr.onload = () => {
+            let response = JSON.parse(xhr.responseText)
+            if (response.message === "dark") {
+                dark_mode()
+                mode_img.src = "../static/images/dark.png"
+            } else {
+                light_mode()
+                mode_img.src = "../static/images/light.png"
+            }
+        }
     }
 
     function light_mode(){

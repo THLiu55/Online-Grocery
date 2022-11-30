@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, session, request, redirect, url_for
+from flask import Flask, render_template, session, request, redirect, url_for, jsonify
 from exts import db, mail_sender
 from sqlalchemy import and_
 
@@ -129,6 +129,16 @@ def clear():
     db.session.commit()
     return render_template("index.html", user=None, categories=staticContents.categories, searchForm=SearchForm())
 
+@app.route('/mode')
+def mode():
+    type = request.args.get('type')
+    if type == 'switch':
+        mode = session.get("mode", "light")
+        if mode == "light":
+            session["mode"] = "dark"
+        else:
+            session["mode"] = "light"
+    return jsonify({"code": 200, "message": session.get("mode", "light")})
 
 if __name__ == '__main__':
     app.run(debug=True)
