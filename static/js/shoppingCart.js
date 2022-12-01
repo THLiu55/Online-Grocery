@@ -87,3 +87,48 @@ function loadCart() {
 
     }
 }
+
+function removeItem(order_id) {
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',`/user/shopping-bag?type=remove&id=${order_id}`, true)
+    xhr.send()
+
+    xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            loadCart()
+        } else {
+            alert("Something goes wrong, please try again")
+        }
+    }
+}
+
+function addAmount(order_id) {
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',`/user/shopping-bag?type=addAmount&id=${order_id}`, true)
+    xhr.send()
+
+    xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            loadCart()
+        } else {
+            alert("Something goes wrong, please try again")
+        }
+    }
+}
+
+function reduceAmount(order_id) {
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',`/user/shopping-bag?type=reduceAmount&id=${order_id}`, true)
+    xhr.send()
+
+    xhr.onload = function () {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 200) {
+            loadCart();
+        } else {
+            alert(response.message)
+        }
+    }
+}

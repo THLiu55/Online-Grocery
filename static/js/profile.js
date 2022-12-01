@@ -11,7 +11,7 @@ function registerShop() {
         if (response.code === 400) {
             alert(response.message)
         } else {
-            window.open("/profile")
+            location.reload()
         }
     }
 }
@@ -29,7 +29,7 @@ function addNewProduct() {
         if (response.code === 400) {
             alert(response.message)
         } else {
-            window.open("/profile")
+            location.reload()
         }
     }
 }
@@ -44,7 +44,7 @@ function removeProduct(id) {
         if (response.code === 400) {
             alert(response.message)
         } else {
-            window.open("/profile")
+            location.reload()
         }
     }
 }
