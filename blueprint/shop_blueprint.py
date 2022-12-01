@@ -5,6 +5,7 @@ from models import Shop, Customer
 
 shop_bp = Blueprint("Shop", __name__, url_prefix="/shop")
 
+# this is the backend for shop details page
 
 # into the shop detail page
 @shop_bp.route("/")

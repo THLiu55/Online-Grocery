@@ -1,7 +1,4 @@
-import logging
 import os
-
-from werkzeug.utils import secure_filename
 
 from exts import db
 from flask import Blueprint, render_template, redirect, url_for, jsonify, session, request
@@ -10,6 +7,7 @@ from forms import ShopRegisterForm, NewProductForm, SearchForm
 
 profile_bp = Blueprint("Profile", __name__, url_prefix="/profile")
 
+# this is the backend for profile page
 
 @profile_bp.route("/", methods=["GET", "POST"])
 def index():

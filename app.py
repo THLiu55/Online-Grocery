@@ -16,7 +16,7 @@ from models import Customer, Product, Order, ShoppingList, Shop, Captcha
 from logging.config import dictConfig
 
 
-# add configurations of loggers and handlers
+# add configurations of logger and handlers
 dictConfig(
     {
         'version': 1,

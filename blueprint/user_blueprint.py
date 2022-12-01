@@ -14,6 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 user_bp = Blueprint("User", __name__, url_prefix="/user")
 
+# this is the backend for login, signup, password find back page
 
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
