@@ -222,7 +222,6 @@ def shopping_bag():
             removed_id = int(request.args.get('id'))
             Order.query.filter(Order.id == removed_id).delete()
             db.session.commit()
-            print("here")
             return jsonify({'code': 200, 'message': 'success'})
         if request.args.get("type") == "addAmount":
             order_id = int(request.args.get('id'))

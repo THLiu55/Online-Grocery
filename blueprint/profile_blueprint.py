@@ -37,6 +37,11 @@ def index():
                     # get the first error message from the WTForm
                     for e in shop_register_form.errors:
                         return jsonify({'code': 400, 'message': shop_register_form.errors.get(e)[0]})
+            elif operation == "remove":
+                product_id = request.args.get("id")
+                Product.query.filter(Product.id == product_id).delete()
+                db.session.commit()
+                return jsonify({'code': 200, 'message': 'success'})
             # the service for adding a new product
             else:
                 if new_product_form.validate_on_submit():
