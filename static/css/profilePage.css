@@ -336,6 +336,7 @@ body{
     }
 }
 .product-info-frame{
+    position: relative;
     display: inline-block;
     vertical-align: top;
     margin-left: 3rem;
@@ -435,6 +436,26 @@ body{
 }
 #good-price-enter:focus{
     outline: #54a8ff 1px solid;
+}
+/* the style of remove button */
+.remove-btn-area{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.remove-btn{
+    height: 1.5rem;
+    font-weight: bold;
+    background: #185185;
+    padding: 5px;
+    color: #f0f0f0;
+    border-radius: 4px 4px 4px 4px;
+    border-style: none;
+    cursor: pointer;
+}
+.remove-btn:hover{
+    color: #185185;
+    background-color: #f0f0f0;
 }
 
 /* dark mode css */
