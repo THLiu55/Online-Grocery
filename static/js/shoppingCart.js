@@ -47,7 +47,7 @@ function loadCart() {
                 shopTotalCost += item_cost;
                 newItem.className = 'cart-product-item'
                 newItem.innerHTML = `<div class="cart-product-pic-frame">
-                            <img class="cart-product-pic-frame" src=${address}/>
+                            <img class="cart-product-pic-frame" src='${address}'/>
                         </div>
                         <div class="cart-product-info-frame">
                             <div class="cart-products-flex-box">

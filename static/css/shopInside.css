@@ -104,7 +104,10 @@ body{
 /*the style of card content*/
 /*--load effect*/
 .category-image-s{
-	display: block;
+	width: 9rem;
+    height: 8rem;
+    display: inline-block;
+    vertical-align: top;
 	min-width: 10rem; /* layout hack */
 	background: #fff center center no-repeat;
 	background-size: cover;
@@ -116,6 +119,7 @@ body{
 	height: 100%;
 	opacity: 1;
 }
+
 /* dark mode css */
 .DARKMODE_BACKGROUND_MAIN{
     background-color: rgb(47,47,51);

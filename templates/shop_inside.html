@@ -16,7 +16,7 @@
             </div>
             <div class="shop-info-frame-s">
                 <div class="info-header">
-                    <h2 class="info-header-text">{{ shop.name }}</h2>
+                        <h2 class="info-header-text">{{ shop.name }}</h2>
                 </div>
                 <div class="info-card-s">
                     <p>{{ shop.description }}</p>
@@ -31,9 +31,11 @@
         <ul id="card-list-s">
             {% for product in shop.products %}
             <li class="card-item-s">
-                <a class="category-image-s" href="{{ url_for('Product.details', id=product.id) }}">
-                    <img src="{{ url_for('static', filename='./product_img/' + product.picture_address) }}" alt="perfume">
-                </a>
+                <div class="product-pic-frame-s">
+                    <a class="category-image-s" href="{{ url_for('Product.details', id=product.id) }}">
+                        <img src="{{ url_for('static', filename='./product_img/' + product.picture_address) }}" alt="perfume">
+                    </a>
+                </div>
                 <a class="category-description-s" href="" >
                     <h2>{{ product.name }}</h2>
                     <p>{{ product.price }}$</p>
