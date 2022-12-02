@@ -108,6 +108,11 @@ def index():
 
 @app.route("/search/", methods=['POST', 'GET'])
 def search():
+    # load the user
+    user = None
+    if "email" in session:
+        email = session["email"]
+        user = Customer.query.filter_by(email=email).first()
     # init forms
     search_form = SearchForm()
     if request.method == 'POST':
@@ -119,14 +124,14 @@ def search():
                 page_data = Product.query.filter(Product.name.like("%" + keyword + "%"))
             else:
                 page_data = Product.query.filter(and_(Product.name.like("%" + keyword + "%"), Product.tag == tag))
-            return render_template("search_result.html", page_data=page_data, keywords=keyword, searchForm=search_form)
+            return render_template("search_result.html", page_data=page_data, user=user, keywords=keyword, searchForm=search_form)
         else:
             return redirect(url_for("index"))
     else:
         # click the card in home page == search all items with that tag
         tag = request.args.get("tag")
         page_data = Product.query.filter(Product.tag == tag)
-        return render_template("search_result.html", page_data=page_data, keywords='', searchForm=search_form)
+        return render_template("search_result.html", page_data=page_data, user=user, keywords='', searchForm=search_form)
 
 
 @app.route('/clear')
