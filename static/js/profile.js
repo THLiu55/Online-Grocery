@@ -27,7 +27,11 @@ function addNewProduct() {
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {
-            alert(response.message)
+            if (response.message === "Not a valid float value.") {
+                alert("price must be a number")
+            } else {
+                alert(response.message)
+            }
         } else {
             location.reload()
         }

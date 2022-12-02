@@ -1,3 +1,5 @@
+from sqlalchemy.orm import backref
+
 from exts import db
 
 # database models
@@ -38,7 +40,7 @@ class Order(db.Model):
     shopping_list_id = db.Column(db.Integer, db.ForeignKey('shoppingList.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     shopping_list = db.relationship('ShoppingList', backref='orders')
-    product = db.relationship('Product', backref='orders')
+    product = db.relationship('Product', backref=backref('orders', cascade="all,delete"))
 
 
 # the information of product

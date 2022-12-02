@@ -24,6 +24,8 @@ def index():
             if operation == "register":
                 if shop_register_form.validate_on_submit():
                     shop_name = shop_register_form.shop_name.data
+                    if len(Shop.query.filter_by(name=shop_name)) != 0:
+                        return jsonify({'code': 400, 'message': "shop name is in use"})
                     shop_description = shop_register_form.description.data
                     shop_logo = shop_register_form.logo.data
                     logo_name = str(user.id) + "_" + shop_logo.filename
@@ -39,7 +41,8 @@ def index():
                         return jsonify({'code': 400, 'message': shop_register_form.errors.get(e)[0]})
             elif operation == "remove":
                 product_id = request.args.get("id")
-                Product.query.filter(Product.id == product_id).delete()
+                product = Product.query.filter_by(id=product_id).first()
+                db.session.delete(product)
                 db.session.commit()
                 return jsonify({'code': 200, 'message': 'success'})
             # the service for adding a new product

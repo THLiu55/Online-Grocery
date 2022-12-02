@@ -84,6 +84,7 @@ app.register_blueprint(shop_bp)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    db.create_all(app=app)
     # init forms
     searchForm = SearchForm()
     user = None
@@ -129,6 +130,7 @@ def clear():
     db.session.commit()
     return render_template("index.html", user=None, categories=staticContents.categories, searchForm=SearchForm())
 
+
 @app.route('/mode')
 def mode():
     type = request.args.get('type')
@@ -139,6 +141,7 @@ def mode():
         else:
             session["mode"] = "light"
     return jsonify({"code": 200, "message": session.get("mode", "light")})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
