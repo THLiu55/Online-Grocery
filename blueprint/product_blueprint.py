@@ -6,8 +6,8 @@ from models import Product, Customer, Order
 
 product_bp = Blueprint("Product", __name__, url_prefix="/product")
 
-# this is the backend for product details page
 
+# this is the backend for product details page
 @product_bp.route("/", methods=["GET", "POST"])
 def details():
     product_id = request.args.get("id")

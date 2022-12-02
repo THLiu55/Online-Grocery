@@ -187,7 +187,7 @@ function login() {
         if (response.code === 200) {
             console.log(200)
             // redirect()
-            window.open("/")
+            window.location.href="/"
         } else {
             alert(response.message)
         }
