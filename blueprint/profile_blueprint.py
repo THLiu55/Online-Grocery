@@ -9,8 +9,9 @@ profile_bp = Blueprint("Profile", __name__, url_prefix="/profile")
 
 # this is the backend for profile page
 
+
 @profile_bp.route("/", methods=["GET", "POST"])
-def index():
+def profile():
     searchForm = SearchForm()
     if "email" in session:
         # load user
@@ -24,7 +25,7 @@ def index():
             if operation == "register":
                 if shop_register_form.validate_on_submit():
                     shop_name = shop_register_form.shop_name.data
-                    if len(Shop.query.filter_by(name=shop_name)) != 0:
+                    if Shop.query.filter_by(name=shop_name).first():
                         return jsonify({'code': 400, 'message': "shop name is in use"})
                     shop_description = shop_register_form.description.data
                     shop_logo = shop_register_form.logo.data

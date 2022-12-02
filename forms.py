@@ -23,14 +23,14 @@ class LoginForm(FlaskForm):
 
 # the form for register a shop
 class ShopRegisterForm(FlaskForm):
-    logo = FileField(validators=[InputRequired(message="shop logo can't be empty"), FileAllowed(['jpg', 'png'])])
+    logo = FileField(validators=[InputRequired(message="shop logo can't be empty"), FileAllowed(['jpg', 'png', 'jpeg'])])
     shop_name = StringField(validators=[InputRequired(message="shop name can't be empty"), Length(min=3, max=100)])
     description = TextAreaField(validators=[InputRequired(message="shop description can't be empty")])
 
 
 # the form to add a new product
 class NewProductForm(FlaskForm):
-    product_pic = FileField(validators=[InputRequired(message="product picture can't be empty"), FileAllowed(['jpg', 'png'])])
+    product_pic = FileField(validators=[InputRequired(message="product picture can't be empty"), FileAllowed(['jpg', 'png', 'jpeg'])])
     product_name = StringField(validators=[InputRequired(message="product name can't be empty"), Length(min=3, max=100)])
     description = TextAreaField(validators=[InputRequired(message="product description can't be empty")])
     price = FloatField('price', validators=[InputRequired(message="please set the price")])

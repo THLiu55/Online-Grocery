@@ -132,3 +132,7 @@ jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', 
 [2022-12-02 10:36:06,511] WARNING in _internal:  * Debugger is active!
 [2022-12-02 10:39:32,332] WARNING in _internal:  * Debugger is active!
 [2022-12-02 10:45:28,733] WARNING in _internal:  * Debugger is active!
+[2022-12-02 10:49:55,061] WARNING in _internal:  * Debugger is active!
+[2022-12-02 10:53:37,747] WARNING in _internal:  * Debugger is active!
+[2022-12-02 10:55:06,159] WARNING in _internal:  * Debugger is active!
+[2022-12-02 11:11:33,582] WARNING in _internal:  * Debugger is active!
