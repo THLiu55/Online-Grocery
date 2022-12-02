@@ -2,6 +2,7 @@ const shop_container = document.getElementById("shop-container")
 const total_cost_container = document.getElementById("total-cost")
 loadCart()
 
+// load the orders in the shopping cart (this will be )
 function loadCart() {
     let xhr = new XMLHttpRequest()
     xhr.open('GET', '/user/shopping-bag?type=load', true)
@@ -16,6 +17,8 @@ function loadCart() {
         }
         let total = 0;
         let shops = JSON.parse(response.message)
+
+        // categorize all product by shop
         for (let shopName in shops) {
             let newShopSpace = document.createElement('div')
             newShopSpace.className = "shopping-cart-item-frame"
@@ -39,11 +42,13 @@ function loadCart() {
 
             let shop = shops[shopName];
             let shopTotalCost = 0;
+            // iterate all product add them to shop
             for (let itemNumber in shop) {
                 let item = JSON.parse(shop[itemNumber])
                 let address = `../static/product_img/${item.pic_address}`
                 let newItem = document.createElement('li')
                 let item_cost = item.unit_price * item.amount;
+                // calculate the cost spent in this shop
                 shopTotalCost += item_cost;
                 newItem.className = 'cart-product-item'
                 newItem.innerHTML = `<div class="cart-product-pic-frame">
@@ -76,6 +81,7 @@ function loadCart() {
                         </div>`
                 itemContainer.appendChild(newItem)
             }
+            // calculate the money of all orders
             total += shopTotalCost
 
             let shopTotalCostContainer = newShopSpace.getElementsByTagName('strong')[0]
@@ -88,6 +94,7 @@ function loadCart() {
     }
 }
 
+// remove an order in shopping cart
 function removeItem(order_id) {
     let xhr = new XMLHttpRequest()
     xhr.open('GET',`/user/shopping-bag?type=remove&id=${order_id}`, true)
@@ -103,6 +110,7 @@ function removeItem(order_id) {
     }
 }
 
+// add the product amount of order in shopping cart
 function addAmount(order_id) {
     let xhr = new XMLHttpRequest()
     xhr.open('GET',`/user/shopping-bag?type=addAmount&id=${order_id}`, true)
@@ -118,6 +126,7 @@ function addAmount(order_id) {
     }
 }
 
+// reduce the product amount of order in shopping cart
 function reduceAmount(order_id) {
     let xhr = new XMLHttpRequest()
     xhr.open('GET',`/user/shopping-bag?type=reduceAmount&id=${order_id}`, true)

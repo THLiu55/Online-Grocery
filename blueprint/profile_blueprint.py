@@ -39,6 +39,7 @@ def index():
                     # get the first error message from the WTForm
                     for e in shop_register_form.errors:
                         return jsonify({'code': 400, 'message': shop_register_form.errors.get(e)[0]})
+            # the service to remove a product
             elif operation == "remove":
                 product_id = request.args.get("id")
                 product = Product.query.filter_by(id=product_id).first()

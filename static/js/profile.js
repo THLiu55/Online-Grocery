@@ -1,3 +1,4 @@
+// register a shop
 function registerShop() {
     let xhr = new XMLHttpRequest()
     xhr.open('POST', '/profile?type=register', true)
@@ -6,6 +7,7 @@ function registerShop() {
     const fd = new FormData(form)
     xhr.send(fd)
 
+    // deal with the response
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {
@@ -16,6 +18,7 @@ function registerShop() {
     }
 }
 
+// add a new product into the shop
 function addNewProduct() {
     let xhr = new XMLHttpRequest()
     xhr.open('POST', '/profile?type=newProduct', true)
@@ -24,6 +27,7 @@ function addNewProduct() {
     const fd = new FormData(form)
     xhr.send(fd)
 
+    // deal with the response
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {
@@ -38,11 +42,13 @@ function addNewProduct() {
     }
 }
 
+// remove a product from the shop
 function removeProduct(id) {
     let xhr = new XMLHttpRequest()
     xhr.open('POST', '/profile?type=remove&id=' + id, true)
     xhr.send()
 
+    // deal with the response
     xhr.onload = function () {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {

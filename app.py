@@ -1,5 +1,16 @@
 import os
 
+# load all environment variables
+f = open('config.txt', encoding='utf-8')
+configs = f.readlines()
+for i in range(len(configs)):
+    # strip "\n"
+    configs[i] = configs[i][:-1]
+    # set env variables
+    key = configs[i].split("=")[0]
+    val = configs[i].split("=")[1]
+    os.environ[key] = val
+
 from flask import Flask, render_template, session, request, redirect, url_for, jsonify
 from exts import db, mail_sender
 from sqlalchemy import and_
