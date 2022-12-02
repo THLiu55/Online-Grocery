@@ -101,7 +101,7 @@ html, body{
 .delete-btn-area{
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
 }
 /* the style of button */
 .delete-btn{
