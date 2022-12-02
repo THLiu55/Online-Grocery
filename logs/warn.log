@@ -178,3 +178,5 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'
 [2022-12-02 10:53:37,747] WARNING in _internal:  * Debugger is active!
 [2022-12-02 10:55:06,159] WARNING in _internal:  * Debugger is active!
 [2022-12-02 11:11:33,582] WARNING in _internal:  * Debugger is active!
+[2022-12-02 11:15:28,021] WARNING in _internal:  * Debugger is active!
+[2022-12-02 11:36:48,458] WARNING in _internal:  * Debugger is active!
