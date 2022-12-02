@@ -130,6 +130,7 @@
                 </div>
                 {% else %}
                 <!-- if user has registered shop -->
+                <!-- shop info in profile -->
                 <div class="shop-detailed-info">
                     <div class="shop-pic-present-frame">
                         <img src="{{ url_for("static", filename='shop_logo/' + shop.logo_address) }}"/>
@@ -155,6 +156,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- products content -->
                 <h2>Products in the shop</h2>
                 <div class="separation-line"></div>
                 <div class="shop-products-frame">
@@ -186,6 +188,7 @@
                         {% endfor %}
                     </ul>
                 </div>
+                <!-- adding product button -->
                 <div class="products-adding-area">
                     <button type="button" class="shop-register-btn" id="products-add">Add Products</button>
                 </div>
