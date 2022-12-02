@@ -1,3 +1,4 @@
+// check the email
 const reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
 
 function checkEmailFormat(email) {
@@ -68,6 +69,7 @@ function username_listener(username_error, username_input) {
     return false
 }
 
+// check the format of captcha
 function captcha_listener(captcha_input, captcha_error) {
     captcha_error.innerHTML = "";
     // obtain captcha
