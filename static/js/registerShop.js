@@ -5,6 +5,7 @@ const profile_back_btn = document.getElementById("profile-back-btn");
 // get picture input
 const picture_input_file = document.getElementById("shop-logo-input");
 
+// to have an overview of the logo
 picture_input_file.addEventListener("change", function () {
     // when uploading picture, we get picture file
     const { files } = this;
@@ -19,7 +20,7 @@ picture_input_file.addEventListener("change", function () {
 
 })
 
-
+// from login page to register page
 function go_to_register() {
     let register_frame = document.getElementsByClassName("register-component")[0];
     register_frame.style.visibility = `visible`;
@@ -29,7 +30,7 @@ function go_to_register() {
     profile_back_effect.style.opacity = `1`;
 }
 
-
+// from register page back to login page
 profile_back_btn.addEventListener("click", function () {
     // close the frame (The parent of the back button is forget password component)
     event.target.parentNode.style.visibility = `hidden`;

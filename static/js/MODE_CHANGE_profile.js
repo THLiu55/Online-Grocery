@@ -1,4 +1,4 @@
-        // get necessary elements for switching modes
+// get necessary elements for switching modes
         const personal_info_card = document.getElementsByClassName('personalInfoCard')[0];
         const profile_header = document.getElementsByClassName('profile-header')[0];
         const shop_info_frame = document.getElementsByClassName('shop-info-frame')[0];
