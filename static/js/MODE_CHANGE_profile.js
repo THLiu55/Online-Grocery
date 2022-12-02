@@ -10,6 +10,7 @@
         const mode_img = document.getElementById("mode_img_id");
         loadBackground()
 
+        // load background state
         function loadBackground() {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', '/mode?type=get', true)
@@ -23,6 +24,7 @@
             }
         }
 
+        // switch mode
         function switchMode() {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', '/mode?type=switch', true)

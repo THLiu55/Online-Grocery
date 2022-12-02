@@ -6,10 +6,13 @@
 {% endblock %}
 
 {% block body %}
+    <!-- the outer container of content -->
     <div class="content-container">
+        <!-- the product image frame -->
         <div class="product-pic-container">
             <img src="{{ url_for("static", filename='product_img/' + product.picture_address) }}"/>
         </div>
+        <!-- the product information frame -->
         <div class="product-info-container">
             <div class="product-info-flex-box">
                 <h2 class="product-info-name">{{ product.name }}</h2>
@@ -21,6 +24,7 @@
                     <p>{{ product.description }}</p>
                 </div>
                 <div class="product-info-form">
+                    <!-- the number choosing to add to shopping cart -->
                     <form method="post">
                         {{ form.hidden_tag() }}
                         <div class="input-count">

@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block body %}
-
+    <!-- the outer container of content -->
     <div class="shop-products-frame">
         <h2>Searching Results</h2>
+        <!-- search result list -->
         <ul class="search-products-list">
             {% for product in page_data %}
+                <!-- list items -->
                 <li class="search-product-item">
                     <a class="search-a-tag-left" href="/product?id={{ product.id }}">
                         <div class="search-product-pic-frame">
